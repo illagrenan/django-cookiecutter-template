@@ -25,9 +25,10 @@ $ pip install setuptools ipython wheel --upgrade
 Install all requirements:
 ```bash
 $ pip install setuptools ipython wheel --upgrade
-$ easy_install -U mysql-python
-$ easy_install -U pip
+$ easy_install -U mysql-python pip
+$ npm install -g bower
 $ pip install -r requirements/local.txt --upgrade
+$ bower install
 ```
 
 Migrate and run:

@@ -3,7 +3,7 @@
 
 # TEAM
 
-    Vašek Dohnal (http://www.vaclavdohnal.cz) -- developer -- @illagrenan
+    {{ cookiecutter.author_name }} (http://www.vaclavdohnal.cz) -- developer -- @{{ cookiecutter.author_username }}
 
 # THANKS
 

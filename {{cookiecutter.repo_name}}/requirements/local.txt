@@ -5,5 +5,8 @@
 -r base.txt
 
 Fabric
+# Used by Fabric
+# See: https://github.com/paramiko/paramiko/issues/461
+paramiko==1.14.2
 django-debug-toolbar
-django-nose
+django-nose>=1.3
