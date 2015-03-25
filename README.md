@@ -25,6 +25,7 @@ $ pip install setuptools ipython wheel --upgrade
 Install all requirements:
 ```bash
 $ pip install setuptools ipython wheel --upgrade
+# Windows specific: 1) it's not possible to upgrade pip with pip on Windows; 2) easy_install will download *.exe for MySQL
 $ easy_install -U mysql-python pip
 $ npm install -g bower
 $ pip install -r requirements/local.txt --upgrade
