@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Vašek Dohnal (http://www.vaclavdohnal.cz) -- developer -- @illagrenan
+    Superkodéři (http://www.superkoderi.cz) -- HTML&CSS
+
+# THANKS
+
+
+# TECHNOLOGY COLOPHON
+
+    Django, MySQL

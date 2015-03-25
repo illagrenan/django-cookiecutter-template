@@ -1,0 +1,19 @@
+{
+  "name": "{{ cookiecutter.repo_name }}",
+  "version": "{{ cookiecutter.version }}",
+  "authors": [
+    "{{ cookiecutter.author_name }} <{{ cookiecutter.email }}>"
+  ],
+  "license": "N/A",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "project/static/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
