@@ -19,12 +19,15 @@ $ cookiecutter https://github.com/illagrenan/django-cookiecutter-template.git
 Setup virtualenv:
 ```bash
 $ cd ...
-$ mkvirtualevn project_name
+$ mkvirtualenv project_name
+$ pip install setuptools ipython wheel --upgrade
+```
+Install all requirements:
+```bash
 $ pip install setuptools ipython wheel --upgrade
 $ easy_install -U mysql-python
+$ easy_install -U pip
 $ pip install -r requirements/local.txt --upgrade
-$ python manage.py migrate
-$ python manage.py runserver
 ```
 
 Migrate and run:
