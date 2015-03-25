@@ -5,6 +5,7 @@ echo "Updating project {{ cookiecutter.repo_name }}."
 workon {{ cookiecutter.repo_name }}
 
 git pull
+bower install
 
 cp -fr src/main/settings/dist/production.py src/main/settings/local.py
 
