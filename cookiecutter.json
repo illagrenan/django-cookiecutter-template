@@ -1,6 +1,8 @@
 {
   "project_name": "project_name",
   "repo_name": "{{ cookiecutter.project_name|replace(' ', '_')|lower }}",
+  "src_dir": "src",
+  "main_app": "main",
   "author_name": "Your Name",
   "author_username": "illagrenan",
   "email": "Your email",

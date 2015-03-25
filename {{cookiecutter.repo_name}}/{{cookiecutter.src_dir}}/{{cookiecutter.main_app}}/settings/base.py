@@ -211,7 +211,7 @@ MIDDLEWARE_CLASSES = (
 
 ########## URL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = '{{ cookiecutter.main_app }}.urls'
 ########## END URL CONFIGURATION
 
 

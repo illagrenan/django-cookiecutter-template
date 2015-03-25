@@ -7,7 +7,7 @@ workon {{ cookiecutter.repo_name }}
 git pull --no-edit
 bower install
 
-cp -fr src/main/settings/dist/production.py src/main/settings/local.py
+cp -fr {{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/dist/production.py src/main/settings/local.py
 
 pip install -r requirements/production.txt --use-wheel
 python src/manage.py collectstatic --noinput
