@@ -1,5 +1,7 @@
 # Django project template #
 
+[![Travis CI Badge](https://api.travis-ci.org/illagrenan/django-cookiecutter-template.png)](https://travis-ci.org/illagrenan/django-cookiecutter-template)
+
 ## How to start ##
 
 ```bash
