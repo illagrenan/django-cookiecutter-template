@@ -1,13 +1,16 @@
-# humanstxt.org/
-# The humans responsible & technology colophon
+# humanstxt.org
+# We Are People, Not Machines
 
-# TEAM
+    /* TEAM */
+    {{ cookiecutter.author_name }}
+    Site: TODO Contact
+    Twitter: @{{ cookiecutter.author_username }}
+    Location: TODO City/Country
 
-    {{ cookiecutter.author_name }} (http://www.vaclavdohnal.cz) -- developer -- @{{ cookiecutter.author_username }}
 
-# THANKS
+    /* THANKS */
+    Name: TODO Thanks
 
-
-# TECHNOLOGY COLOPHON
-
-    Django, MySQL
+    /* SITE */
+    Created: {{ cookiecutter.now }}
+    Software: Django, MySQL, Python
