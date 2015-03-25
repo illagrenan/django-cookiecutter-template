@@ -77,4 +77,5 @@ CACHES = {
 ########## APP CONFIGURATION
 INSTALLED_APPS += (
     'django_nose',
+    'debug_toolbar'
 )

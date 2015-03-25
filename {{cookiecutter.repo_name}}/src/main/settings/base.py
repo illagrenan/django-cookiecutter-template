@@ -228,7 +228,6 @@ DJANGO_APPS = (
 
     # Admin panel and documentation:
     'django.contrib.admin',
-    'django.contrib.flatpages'
     # 'django.contrib.admindocs',
 )
 

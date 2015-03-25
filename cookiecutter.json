@@ -10,5 +10,5 @@
   "now": "2015/03/25",
   "year": "{{ cookiecutter.now[:4] }}",
   "db_user": "root",
-  "db_password": "nasrat"
+  "db_password": "password"
 }
