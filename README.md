@@ -32,6 +32,8 @@ $ pip install -r requirements/local.txt --upgrade
 
 Migrate and run:
 ```bash
+$ cd src
+$ python manage.py check
 $ python manage.py migrate
 $ python manage.py runserver
 ```

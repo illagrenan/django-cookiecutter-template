@@ -109,3 +109,4 @@ crashlytics-build.properties
 # Custom
 ##############################################
 *.sock
+{{ cookiecutter.this_variable_does_not_exist_but_will_be_replaced }}src/main/settings/local.py
