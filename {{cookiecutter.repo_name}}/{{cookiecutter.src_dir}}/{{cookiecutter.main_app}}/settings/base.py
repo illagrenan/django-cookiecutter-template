@@ -5,12 +5,13 @@ from __future__ import unicode_literals
 from __future__ import print_function
 
 import os
+
+from os.path import abspath, dirname, join, normpath
+from sys import path
+
+# noinspection PyUnresolvedReferences
 import sys
 
-"""Common settings and globals."""
-
-from os.path import abspath, basename, dirname, join, normpath
-from sys import path
 
 
 # ######### PATH CONFIGURATION
@@ -275,12 +276,14 @@ LOGGING = {
         }
     },
     'handlers': {
-        'file': {
-            'level': 'DEBUG',
+        'development_debug': {
+            'formatter': 'verbose',
             'filters': ['require_debug_true'],
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(DJANGO_ROOT, '../../log/django_logging.log'),
-            'formatter': 'verbose'
+            'filename': os.path.join(DJANGO_ROOT, '../../log/django-dev-debug.log'),
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 5,
         },
         'null': {
             'level': 'DEBUG',
@@ -328,7 +331,7 @@ LOGGING = {
             'propagate': False
         },
         '': {
-            'handlers': ['file'],
+            'handlers': ['development_debug'],
             'propagate': True,
             'level': 'DEBUG',
         },

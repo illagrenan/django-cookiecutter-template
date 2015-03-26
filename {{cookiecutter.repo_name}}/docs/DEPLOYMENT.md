@@ -6,7 +6,6 @@
 $ git update-index --chmod=+x .\bin\gunicorn_start.sh
 ```
 
-
 ## Source code and requirements
 
 ```bash
