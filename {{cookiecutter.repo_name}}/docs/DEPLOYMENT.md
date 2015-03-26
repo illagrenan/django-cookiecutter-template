@@ -1,5 +1,12 @@
 # Deploy `{{ cookiecutter.project_name }}`
 
+## Permissions
+
+```bash
+$ git update-index --chmod=+x .\bin\gunicorn_start.sh
+```
+
+
 ## Source code and requirements
 
 ```bash
@@ -52,6 +59,13 @@ OK if:
 Not OK if:
 ```bash
 {{ cookiecutter.repo_name }}                    FATAL      Exited too quickly (process log may have details)
+```
+
+```bash
+$ cd /var/www/{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}
+$ gunicorn main.wsgi:application --bind 0.0.0.0:8001
+$ # When fixed:
+$ sudo supervisorctl restart {{ cookiecutter.repo_name }}
 ```
 
 ## Nginx

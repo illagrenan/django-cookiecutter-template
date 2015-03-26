@@ -35,7 +35,7 @@ def get_env_setting(setting):
 
 ########## HOST CONFIGURATION
 # See: https://docs.djangoproject.com/en/1.6/releases/1.5/#allowed-hosts-required-in-production
-ALLOWED_HOSTS = ['www.{{ cookiecutter.domain_name }}', '{{ cookiecutter.domain_name }}', "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ['www.{{ cookiecutter.domain_name }}', '{{ cookiecutter.domain_name }}', "127.0.0.1", "localhost", "0.0.0.0"]
 ########## END HOST CONFIGURATION
 
 

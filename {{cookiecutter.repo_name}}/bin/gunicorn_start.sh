@@ -5,14 +5,14 @@
 # +-----------------------+
 
 NAME="{{ cookiecutter.repo_name }}"					                        # Name of the application
-DJANGODIR=/var/www/{{ cookiecutter.repo_name }}/src			    		# Django project directory
+DJANGODIR=/var/www/{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}			    		# Django project directory
 SOCKFILE=/var/www/{{ cookiecutter.repo_name }}/gunicorn.sock			# we will communicte using this unix socket
 USER={{ cookiecutter.repo_name }}                                   		# the user to run as
 VENV_USER=vasek														        # Python virtualenv user
 GROUP=webapps                                     			                # the group to run as
 NUM_WORKERS=3                                     			                # how many worker processes should Gunicorn spawn
-DJANGO_SETTINGS_MODULE=src.main.base           			                    # which settings file should Django use
-DJANGO_WSGI_MODULE=main.wsgi			                     	            # WSGI module name
+DJANGO_SETTINGS_MODULE={{ cookiecutter.main_app }}.settings.base           			                    # which settings file should Django use
+DJANGO_WSGI_MODULE={{ cookiecutter.main_app }}.wsgi			                     	            # WSGI module name
 
 echo "Starting $NAME as `whoami`"
 
