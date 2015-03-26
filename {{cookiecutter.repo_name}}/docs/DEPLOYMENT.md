@@ -13,7 +13,8 @@ $ cd /var/www
 $ git clone git@{{ cookiecutter.git_provider }}.org:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git
 $ cd {{ cookiecutter.repo_name }}
 
-$ mkvirtualenv {{ cookiecutter.repo_name }}
+$ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
+$ virtualenv data/venv
 $ easy_install -U pip; pip install ipython setuptools wheel --upgrade
 $ pip install -r requirements/production.txt --upgrade --use-wheel
 $ bower install
@@ -22,24 +23,24 @@ $ bower install
 ## Configure Django
 
 ```bash
-$ cp /var/www/{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/dist/production.py /var/www/{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
+$ cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/dist/production.py {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
 ```
 
-## User&group
+## User&amp;group
 
 ```bash
 $ sudo groupadd --system webapps
-$ sudo useradd --system --gid webapps --home /var/www/{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
-$ sudo chown -R {{ cookiecutter.repo_name }}:users /var/www/{{ cookiecutter.repo_name }}
-$ # sudo chmod -R g+w /var/www/{{ cookiecutter.repo_name }}
-$ sudo chmod u+x /var/www/{{ cookiecutter.repo_name }}/bin/gunicorn_start.sh
+$ sudo useradd --system --gid webapps --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
+$ sudo chown -R {{ cookiecutter.repo_name }}:webapps {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
+$ sudo chmod 777 -R {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/log
+$ sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/gunicorn_start.sh
 ```
 
 
 ## Supervisor
 
 ```bash
-$ sudo cp /var/www/{{ cookiecutter.repo_name }}/conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
+$ sudo cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 $ sudo supervisorctl reread
 $ # {{ cookiecutter.repo_name }}: available
 ```
@@ -61,7 +62,7 @@ Not OK if:
 ```
 
 ```bash
-$ cd /var/www/{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}
+$ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}
 $ gunicorn main.wsgi:application --bind 0.0.0.0:8001
 $ # When fixed:
 $ sudo supervisorctl restart {{ cookiecutter.repo_name }}
@@ -70,7 +71,7 @@ $ sudo supervisorctl restart {{ cookiecutter.repo_name }}
 ## Nginx
 
 ```bash
-$ cp /var/www/{{ cookiecutter.repo_name }}/conf/nginx.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
+$ cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/nginx.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 $ sudo ln -s /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf /etc/nginx/sites-enabled/{{ cookiecutter.repo_name }}.conf
 $ sudo service nginx restart 
 ```
@@ -83,5 +84,5 @@ $ sudo service nginx restart
 
 ```bash
 $ sudo apt-get install -y apache2-utils
-$ sudo htpasswd -c /var/www/{{ cookiecutter.repo_name }}/.htpasswd admin
+$ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/.htpasswd admin
 ```

@@ -8,5 +8,5 @@ $ sudo supervisorctl stop {{ cookiecutter.repo_name }}
 $ sudo rm /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 $ 
 $ rmvirtualenv {{ cookiecutter.repo_name }}
-$ rm -r /var/www/{{ cookiecutter.repo_name }}
+$ rm -r {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 ```

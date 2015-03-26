@@ -5,8 +5,8 @@
 # +-----------------------+
 
 NAME="{{ cookiecutter.repo_name }}"					                        # Name of the application
-DJANGODIR=/var/www/{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}			    		# Django project directory
-SOCKFILE=/var/www/{{ cookiecutter.repo_name }}/gunicorn.sock			# we will communicte using this unix socket
+DJANGODIR={{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}			    		# Django project directory
+SOCKFILE={{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/gunicorn.sock			# we will communicte using this unix socket
 USER={{ cookiecutter.repo_name }}                                   		# the user to run as
 VENV_USER=vasek														        # Python virtualenv user
 GROUP=webapps                                     			                # the group to run as
