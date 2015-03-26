@@ -3,7 +3,7 @@
   "repo_name": "{{ cookiecutter.project_name|replace(' ', '_')|lower }}",
   "src_dir": "src",
   "main_app": "main",
-  "git_provider": "bitbucket",
+  "git_provider": "bitbucket.org",
   "author_name": "Your Name",
   "author_username": "illagrenan",
   "email": "Your email",
