@@ -19,10 +19,21 @@ $ bower install
 $ cp /var/www/{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/dist/production.py /var/www/{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
 ```
 
+## User&group
+
+```bash
+$ sudo groupadd --system webapps
+$ sudo useradd --system --gid webapps --home /var/www/{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
+$ sudo chown -R {{ cookiecutter.repo_name }}:users /var/www/{{ cookiecutter.repo_name }}
+$ # sudo chmod -R g+w /var/www/{{ cookiecutter.repo_name }}
+$ sudo chmod u+x /var/www/{{ cookiecutter.repo_name }}/bin/gunicorn_start.sh
+```
+
+
 ## Supervisor
 
 ```bash
-$ cp /var/www/{{ cookiecutter.repo_name }}/conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
+$ sudo cp /var/www/{{ cookiecutter.repo_name }}/conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 $ sudo supervisorctl reread
 $ # {{ cookiecutter.repo_name }}: available
 ```
@@ -31,6 +42,16 @@ $ # {{ cookiecutter.repo_name }}: available
 $ sudo supervisorctl update
 # {{ cookiecutter.repo_name }}: added process group
 $ sudo supervisorctl status {{ cookiecutter.repo_name }}
+```
+
+OK if:
+```bash
+{{ cookiecutter.repo_name }}                  RUNNING    pid 1204, uptime 1:44:32
+```
+
+Not OK if:
+```bash
+{{ cookiecutter.repo_name }}                    FATAL      Exited too quickly (process log may have details)
 ```
 
 ## Nginx

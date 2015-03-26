@@ -8,3 +8,4 @@ ipython>=3
 raven
 django-extensions
 django-compressor
+django-nose

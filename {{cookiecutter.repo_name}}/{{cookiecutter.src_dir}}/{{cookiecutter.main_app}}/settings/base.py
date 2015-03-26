@@ -233,7 +233,8 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'django_extensions',
-    'compressor'
+    'compressor',
+    'django_nose'
 )
 
 # Apps specific for this project go here.
@@ -365,7 +366,7 @@ SESSION_COOKIE_HTTPONLY = True
 
 # ########## GRAPELLI CUSTOMIZATIONS
 # http://django-grappelli.readthedocs.org/en/latest/customization.html
-GRAPPELLI_ADMIN_TITLE = "{{ cookiecutter.project_name }} &ndash; administrace"
+GRAPPELLI_ADMIN_TITLE = "{{ cookiecutter.project_name }}"
 ########## END GRAPELLI CUSTOMIZATIONS
 
 
@@ -374,6 +375,8 @@ GRAPPELLI_ADMIN_TITLE = "{{ cookiecutter.project_name }} &ndash; administrace"
 # This allows to pre-compress CSS and JavaScript files and works just
 # like the automatic compression with the {% raw %}{% compress %}{% endraw %} tag.
 COMPRESS_OFFLINE = True
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # noinspection PyUnresolvedReferences
 from app import *
