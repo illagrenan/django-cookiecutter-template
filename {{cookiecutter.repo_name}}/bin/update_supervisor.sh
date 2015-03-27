@@ -12,9 +12,11 @@ if [ "$UID" -ne 0 ]
 fi
 
 
-cp /var/www/robert_riedl_cz/conf/supervisor.conf /etc/supervisor/conf.d/robert_riedl_cz.conf
+cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl status robert_riedl_cz
+
+sudo supervisorctl restart {{ cookiecutter.repo_name }}
+sudo supervisorctl status {{ cookiecutter.repo_name }}
 
 echo "Done."

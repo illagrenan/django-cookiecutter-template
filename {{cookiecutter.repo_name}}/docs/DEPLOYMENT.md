@@ -10,11 +10,11 @@ $ git update-index --chmod=+x .\bin\gunicorn_start.sh
 
 ```bash
 $ cd /var/www
-$ git clone git@{{ cookiecutter.git_provider }}.org:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git
+$ git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git
 $ cd {{ cookiecutter.repo_name }}
 
 $ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-$ virtualenv data/venv
+$ virtualenv data/venv; source activate.sh
 $ easy_install -U pip; pip install ipython setuptools wheel --upgrade
 $ pip install -r requirements/production.txt --upgrade --use-wheel
 $ bower install
