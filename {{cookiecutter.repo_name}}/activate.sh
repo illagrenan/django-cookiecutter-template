@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source data/venv/bin/activate
+source data/.venv/bin/activate
 

@@ -14,7 +14,7 @@ $ git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username 
 $ cd {{ cookiecutter.repo_name }}
 
 $ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-$ virtualenv data/venv; source activate.sh
+$ virtualenv data/.venv; source activate.sh
 $ easy_install -U pip; pip install ipython setuptools wheel --upgrade
 $ pip install -r requirements/production.txt --upgrade --use-wheel
 $ bower install
@@ -32,7 +32,7 @@ $ cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.
 $ sudo groupadd --system webapps
 $ sudo useradd --system --gid webapps --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
 $ sudo chown -R {{ cookiecutter.repo_name }}:webapps {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-$ sudo chmod 777 -R {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/log
+$ sudo chmod g+w -R {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/log/*log
 $ sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/gunicorn_start.sh
 ```
 
@@ -85,4 +85,13 @@ $ sudo service nginx restart
 ```bash
 $ sudo apt-get install -y apache2-utils
 $ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/.htpasswd admin
+```
+
+### Fix permissions
+
+```bash
+$ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
+$ find . -type d -exec chmod 775 {} +
+$ find . -type f -exec chmod 664 {} +
+$ chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/gunicorn_start.sh   
 ```
