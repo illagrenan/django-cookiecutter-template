@@ -9,7 +9,7 @@ $ git update-index --chmod=+x .\bin\gunicorn_start.sh
 ## Source code and requirements
 
 ```bash
-$ cd /var/www
+$ cd {{ cookiecutter.deploy_path }}
 $ git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git
 $ cd {{ cookiecutter.repo_name }}
 
@@ -29,9 +29,9 @@ $ cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.
 ## User&amp;group
 
 ```bash
-$ sudo groupadd --system webapps
-$ sudo useradd --system --gid webapps --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
-$ sudo chown -R {{ cookiecutter.repo_name }}:webapps {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
+$ sudo groupadd --system {{ cookiecutter.group }}
+$ sudo useradd --system --gid {{ cookiecutter.group }} --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
+$ sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 $ sudo chmod g+w -R {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/log/*log
 $ sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/gunicorn_start.sh
 ```
@@ -93,5 +93,6 @@ $ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/.h
 $ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 $ find . -not -path '*/\.*' -type d -exec chmod 775 {} +
 $ find . -not -path '*/\.*' -type f -exec chmod 664 {} +
+$ chmod g+w log/*log
 $ chmod u+x bin/gunicorn_start.sh   
 ```
