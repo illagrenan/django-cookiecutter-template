@@ -3,6 +3,7 @@
 ## Permissions
 
 ```bash
+$ # Run this on localhost
 $ git update-index --chmod=+x .\bin\gunicorn_start.sh
 ```
 
@@ -39,31 +40,40 @@ $ sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/
 
 ## Supervisor
 
+**1) Check if Gunicorn is working**
+
+
+```bash
+$ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}
+$ gunicorn main.wsgi:application --bind 0.0.0.0:8001
+```
+
+**2) Setup Supervisor to start Gunicorn**
+
 ```bash
 $ sudo cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 $ sudo supervisorctl reread
 $ # {{ cookiecutter.repo_name }}: available
-```
-
-```bash
 $ sudo supervisorctl update
 # {{ cookiecutter.repo_name }}: added process group
 $ sudo supervisorctl status {{ cookiecutter.repo_name }}
 ```
 
+**OR** use sh script:
+
+```bash
+$ sudo source bin/update_supervisor.sh
+```
+
 OK if:
 ```bash
-{{ cookiecutter.repo_name }}                  RUNNING    pid 1204, uptime 1:44:32
+{{ cookiecutter.repo_name }}    RUNNING     pid 1204, uptime 1:44:32
 ```
 
 Not OK if:
 ```bash
-{{ cookiecutter.repo_name }}                    FATAL      Exited too quickly (process log may have details)
-```
-
-```bash
-$ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}
-$ gunicorn main.wsgi:application --bind 0.0.0.0:8001
+{{ cookiecutter.repo_name }}    FATAL       Exited too quickly (process log may have details)
+$
 $ # When fixed:
 $ sudo supervisorctl restart {{ cookiecutter.repo_name }}
 ```
@@ -71,9 +81,16 @@ $ sudo supervisorctl restart {{ cookiecutter.repo_name }}
 ## Nginx
 
 ```bash
-$ cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/nginx.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
-$ sudo ln -s /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf /etc/nginx/sites-enabled/{{ cookiecutter.repo_name }}.conf
+$ cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/nginx.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
+$ sudo ln -sf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf /etc/nginx/sites-enabled/{{ cookiecutter.repo_name }}.conf
+$ sudo service nginx configtest 
 $ sudo service nginx restart 
+```
+
+**OR** use sh script:
+
+```bash
+$ sudo source bin/update_nginx.sh
 ```
 
 [How to uninstall project?](UNINSTALL.md)
