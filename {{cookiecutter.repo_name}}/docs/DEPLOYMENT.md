@@ -91,7 +91,7 @@ $ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/.h
 
 ```bash
 $ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-$ find . -type d -exec chmod 775 {} +
-$ find . -type f -exec chmod 664 {} +
-$ chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/gunicorn_start.sh   
+$ find . -not -path '*/\.*' -type d -exec chmod 775 {} +
+$ find . -not -path '*/\.*' -type f -exec chmod 664 {} +
+$ chmod u+x bin/gunicorn_start.sh   
 ```
