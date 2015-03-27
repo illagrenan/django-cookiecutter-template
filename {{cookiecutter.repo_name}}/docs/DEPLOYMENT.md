@@ -1,5 +1,26 @@
 # Deploy `{{ cookiecutter.project_name }}`
 
+## Already deployed?
+
+```bash
+$ # Install updates:
+$ cd {{ cookiecutter.deploy_path }}
+$ source update.sh
+```
+
+This will:
+
+1. Activate virtualenv
+2. Pull repository
+3. Install bower components
+4. Copy `production.py` over `local.py` 
+5. Install Python requirements
+6. Run `manage.py` commands: `collectstatic`, `migrate`, `compress`
+7. Reload supervisor
+
+
+----------
+
 ## Permissions
 
 ```bash
