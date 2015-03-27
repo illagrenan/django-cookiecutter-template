@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# +--------------------------+
+# | Update nginx virtualhost |
+# +--------------------------+
+
 echo "Preparing project {{ cookiecutter.project_name }}."
 
 if [ "$UID" -ne 0 ]

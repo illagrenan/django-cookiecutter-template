@@ -2,7 +2,7 @@
 
 echo "Updating project {{ cookiecutter.repo_name }}."
 
-workon {{ cookiecutter.repo_name }}
+source data/venv/bin/activate
 
 git pull --no-edit
 bower install
