@@ -4,21 +4,28 @@
 # | Gunicorn start script |
 # +-----------------------+
 
-NAME="{{ cookiecutter.repo_name }}"					                        # Name of the application
-DJANGODIR={{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}			    		# Django project directory
-SOCKFILE={{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/gunicorn.sock			# we will communicte using this unix socket
-USER={{ cookiecutter.repo_name }}                                   		# the user to run as
-VENV_USER=vasek														        # Python virtualenv user
-GROUP=webapps                                     			                # the group to run as
-NUM_WORKERS=3                                     			                # how many worker processes should Gunicorn spawn
-DJANGO_SETTINGS_MODULE={{ cookiecutter.main_app }}.settings.base           			                    # which settings file should Django use
-DJANGO_WSGI_MODULE={{ cookiecutter.main_app }}.wsgi			                     	            # WSGI module name
+# Name of the application
+NAME="{{ cookiecutter.repo_name }}"
+# Django project directory
+DJANGODIR={{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}
+# we will communicte using this unix socket
+SOCKFILE={{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/gunicorn.sock
+# the user to run as
+USER={{ cookiecutter.repo_name }}
+# the group to run as
+GROUP=webapps
+# how many worker processes should Gunicorn spawn
+NUM_WORKERS=3
+# which settings file should Django use
+DJANGO_SETTINGS_MODULE={{ cookiecutter.main_app }}.settings.base
+# WSGI module name
+DJANGO_WSGI_MODULE={{ cookiecutter.main_app }}.wsgi
 
 echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
 cd ${DJANGODIR}
-source /home/${VENV_USER}/.virtualenvs/${NAME}/bin/activate
+source ../data/venv/bin/activate
 export DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
 export PYTHONPATH=${DJANGODIR}:${PYTHONPATH}
 
