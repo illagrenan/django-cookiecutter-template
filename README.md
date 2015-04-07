@@ -6,40 +6,43 @@
 
 Install cookiecutter:
 ```bash
-$ pip install cookiecutter --upgrade
+pip install cookiecutter --upgrade
 ```
 
 Download and run template:
 ```bash
-$ cookiecutter https://github.com/illagrenan/django-cookiecutter-template.git
+cookiecutter https://github.com/illagrenan/django-cookiecutter-template.git
 ```
 
 ## Setup Django project ##
 
-Setup virtualenv:
+1) Setup virtualenv:
 ```bash
-$ cd ...
-$ mkvirtualenv project_name
-$ pip install setuptools ipython wheel --upgrade
+cd ...
+mkvirtualenv project_name
+pip install setuptools ipython wheel --upgrade
 ```
-Install all requirements:
+
+2) Install all requirements:
 ```bash
-$ pip install setuptools ipython wheel --upgrade
+pip install setuptools ipython wheel --upgrade
 # Windows specific:
 #     1) it's not possible to upgrade pip with pip on Windows;
 #     2) easy_install will download *.exe for MySQL
-$ easy_install -U mysql-python pip
-$ npm install -g bower
-$ pip install -r requirements/local.txt --upgrade
-$ bower install
+easy_install -U mysql-python pip
+npm install -g bower
+pip install -r requirements/local.txt --upgrade
+bower install
 ```
 
-Migrate and run:
+3) Create database
+
+4) Migrate and run:
 ```bash
-$ cd src
-$ python manage.py check
-$ python manage.py migrate
-$ python manage.py runserver
+cd src
+python manage.py check
+python manage.py migrate
+python manage.py runserver
 ```
 
 # Other #
