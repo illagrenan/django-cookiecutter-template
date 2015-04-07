@@ -9,4 +9,3 @@ Fabric
 # See: https://github.com/paramiko/paramiko/issues/461
 paramiko==1.14.2
 django-debug-toolbar
-django-nose>=1.3
