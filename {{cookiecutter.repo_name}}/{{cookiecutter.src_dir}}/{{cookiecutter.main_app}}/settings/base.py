@@ -94,7 +94,7 @@ LANGUAGES = (
 
 
 LOCALE_PATHS = (
-    normpath(join(SITE_ROOT, 'locale')),  # Assuming SITE_ROOT is where your manage.py file is
+    normpath(join(SITE_ROOT, '../data/locale')),  # Assuming SITE_ROOT is where your manage.py file is
 )
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = LANGUAGE_CODE

@@ -13,4 +13,5 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^', include('web.urls', namespace='web')),
+    url(r'^i18n/', include('django.conf.urls.i18n', namespace='i18n')),
 ]
