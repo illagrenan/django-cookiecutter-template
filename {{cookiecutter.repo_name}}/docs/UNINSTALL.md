@@ -15,4 +15,7 @@ rm -r  data/.venv
 
 # 4) Remove source code:
 rm -r {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
+
+# 5) Remove user:
+sudo userdel {{ cookiecutter.repo_name }}
 ```
