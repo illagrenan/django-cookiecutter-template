@@ -25,17 +25,24 @@ This will:
 
 ```bash
 # Run this on localhost
-git update-index --chmod=+x .\bin\gunicorn_start.sh
+git update-index --chmod=+x bin/gunicorn_start.sh
+git commit -am "Added `x` flag to sh script."
+git push
 ```
+
+## Deployment keys
+
+
+cat ~/.ssh/id_rsa.pub
 
 ## Source code and requirements
 
 ```bash
+# Connect to remote server
 cd {{ cookiecutter.deploy_path }}
 git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git
 cd {{ cookiecutter.repo_name }}
 
-cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 virtualenv data/.venv; source activate.sh
 easy_install -U pip; pip install ipython setuptools wheel --upgrade
 pip install -r requirements/production.txt --upgrade --use-wheel
@@ -48,13 +55,13 @@ bower install
 cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/dist/production.py {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
 ```
 
-## User&amp;group
+## User&group
 
 ```bash
 sudo groupadd --system {{ cookiecutter.group }}
 sudo useradd --system --gid {{ cookiecutter.group }} --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
 sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-sudo chmod g+w -R {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/log/*log
+sudo chmod g+w -R {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/log/
 sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/gunicorn_start.sh
 ```
 
@@ -117,4 +124,4 @@ sudo source bin/update_nginx.sh
 ```
 
 * [How to uninstall project?](UNINSTALL.md)
-* [Tips&amp;tricks](MISC.md)
+* [Tips&tricks](MISC.md)

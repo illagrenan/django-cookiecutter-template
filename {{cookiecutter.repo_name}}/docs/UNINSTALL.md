@@ -4,6 +4,10 @@
 # 1) Remove Gunicorn configuration:
 sudo supervisorctl stop {{ cookiecutter.repo_name }}
 sudo rm /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
+sudo supervisorctl reread
+# {{ cookiecutter.repo_name }}: disappeared
+sudo supervisorctl update
+# {{ cookiecutter.repo_name }}: removed process group
 
 # 2) Remove Nginx configuration:
 sudo rm /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf

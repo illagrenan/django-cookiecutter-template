@@ -41,6 +41,7 @@ bower install
 ```bash
 cd src
 python manage.py check
+# System check identified no issues (0 silenced).
 python manage.py migrate
 python manage.py runserver
 ```
