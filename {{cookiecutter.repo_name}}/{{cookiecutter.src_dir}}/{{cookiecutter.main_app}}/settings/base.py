@@ -388,6 +388,11 @@ COMPRESS_OFFLINE = True
 
 # ########## DJANGO-NOSE CONFIGURATION
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--nocapture',
+    '--nologcapture'
+]
 # ########## END DJANGO-NOSE CONFIGURATION
 
 # +------------------------------------+

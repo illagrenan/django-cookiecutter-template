@@ -14,7 +14,7 @@ python src/manage.py collectstatic --noinput
 python src/manage.py migrate
 python src/manage.py compress
 
-supervisorctl reload {{ cookiecutter.repo_name }}
+supervisorctl restart {{ cookiecutter.repo_name }}
 
 
 echo "Done."

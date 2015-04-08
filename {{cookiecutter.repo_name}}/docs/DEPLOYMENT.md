@@ -13,10 +13,10 @@ This will:
 1. Activate virtualenv
 2. Pull repository
 3. Install bower components
-4. Copy `production.py` over `local.py` 
+4. Copy `production.py` over `local.py`
 5. Install Python requirements
 6. Run `manage.py` commands: `collectstatic`, `migrate`, `compress`
-7. Reload supervisor
+7. Restart supervisor process
 
 
 ----------
@@ -113,8 +113,8 @@ sudo supervisorctl restart {{ cookiecutter.repo_name }}
 ```bash
 cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/nginx.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
 sudo ln -sf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf /etc/nginx/sites-enabled/{{ cookiecutter.repo_name }}.conf
-sudo service nginx configtest 
-sudo service nginx restart 
+sudo service nginx configtest
+sudo service nginx restart
 ```
 
 **OR** use sh script:
