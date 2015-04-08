@@ -8,10 +8,10 @@ from __future__ import absolute_import
 from .base import *
 
 # ######### DEBUG CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#debug
 DEBUG = True
 THUMBNAIL_DEBUG = False
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
@@ -42,13 +42,13 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 
 ########## EMAIL CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#email-backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 ########## END EMAIL CONFIGURATION
 
 
 ########## DATABASE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -65,7 +65,7 @@ DATABASES = {
 
 
 ########## CACHE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#caches
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',

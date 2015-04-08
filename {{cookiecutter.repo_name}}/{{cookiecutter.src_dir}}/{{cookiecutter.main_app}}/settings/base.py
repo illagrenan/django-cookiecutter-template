@@ -5,13 +5,10 @@ from __future__ import unicode_literals
 from __future__ import print_function
 
 import os
-
-from os.path import abspath, dirname, join, normpath
-from sys import path
-
-# noinspection PyUnresolvedReferences
 import sys
 
+from os.path import abspath, dirname, normpath
+from sys import path
 
 
 # ######### PATH CONFIGURATION
@@ -32,27 +29,27 @@ path.append(DJANGO_ROOT)
 
 
 # ######### DEBUG CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#debug
 DEBUG = False
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
 # ######### END DEBUG CONFIGURATION
 
 
 # ######### MANAGER CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#admins
 ADMINS = (
     ('{{ cookiecutter.author_name }}', '{{ cookiecutter.email }}'),
 )
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#managers
 MANAGERS = ADMINS
 # ######### END MANAGER CONFIGURATION
 
 
 # ######### DATABASE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -63,34 +60,34 @@ DATABASES = {
 
 
 ########## GENERAL CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#time-zone
 TIME_ZONE = 'Europe/Prague'
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#language-code
 LANGUAGE_CODE = 'cs'
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#site-id
 SITE_ID = 1
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#use-i18n
 USE_I18N = True
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#use-l10n
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#use-l10n
 USE_L10N = True
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#use-tz
 USE_TZ = False
 
 ugettext = lambda s: s  # dummy ugettext function, as django's docs say
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#languages
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#languages
 LANGUAGES = (
     ('cs', ugettext('Czech')),
 )
 
 
 LOCALE_PATHS = (
-    normpath(join(SITE_ROOT, '../data/locale')),  # Assuming SITE_ROOT is where your manage.py file is
+    os.path.join(SITE_ROOT, '../data/locale'),  # Assuming SITE_ROOT is where your manage.py file is
 )
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = LANGUAGE_CODE
@@ -99,27 +96,27 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = LANGUAGE_CODE
 
 
 ########## MEDIA CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = normpath(join(SITE_ROOT, '../data/media'))
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#media-root
+MEDIA_ROOT = os.path.join(SITE_ROOT, '../data/media')
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#media-url
 MEDIA_URL = '/media/'
 ########## END MEDIA CONFIGURATION
 
 
 ########## STATIC FILE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = normpath(join(SITE_ROOT, '../data/static'))
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#static-root
+STATIC_ROOT = os.path.join(SITE_ROOT, '../data/static')
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#static-url
 STATIC_URL = '/static/'
 
-# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    normpath(join(SITE_ROOT, 'static')),
+    os.path.join(SITE_ROOT, 'static'),
 )
 
-# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -129,7 +126,7 @@ STATICFILES_FINDERS = (
 
 
 ########## SECRET CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#secret-key
 # Note: This key only used for development and testing.
 # TODO Generate unique SECRET_KEY
 SECRET_KEY = r"!!! CHANGEME !!!"
@@ -144,15 +141,13 @@ ALLOWED_HOSTS = []
 
 
 ########## FIXTURE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
-FIXTURE_DIRS = (
-    normpath(join(SITE_ROOT, 'fixtures')),
-)
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#std:setting-FIXTURE_DIRS
+FIXTURE_DIRS = ()
 ########## END FIXTURE CONFIGURATION
 
 
 ########## TEMPLATE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
+# See:  https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-context-processors
 DEFAULT_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
@@ -179,21 +174,21 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 )
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-loaders
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-dirs
 TEMPLATE_DIRS = (
-    normpath(join(SITE_ROOT, 'templates')),
+    normpath(os.path.join(SITE_ROOT, 'templates')),
 )
 ########## END TEMPLATE CONFIGURATION
 
 
 ########## MIDDLEWARE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#middleware-classes
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#middleware-classes
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -207,7 +202,7 @@ MIDDLEWARE_CLASSES = (
 
 
 ########## URL CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#root-urlconf
 ROOT_URLCONF = '{{ cookiecutter.main_app }}.urls'
 ########## END URL CONFIGURATION
 
@@ -239,17 +234,17 @@ LOCAL_APPS = (
     'web',
 )
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
 
 
 ########## LOGGING CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#logging
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
+# See http://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/topics/logging for
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
@@ -275,7 +270,7 @@ LOGGING = {
         'development_debug': {
             'formatter': 'verbose',
             'filters': ['require_debug_true'],
-            'filename': os.path.join(DJANGO_ROOT, '../../log/django-dev-debug.log'),
+            'filename': os.path.os.path.join(DJANGO_ROOT, '../../log/django-dev-debug.log'),
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
@@ -288,7 +283,7 @@ LOGGING = {
         'production_errors': {
             'formatter': 'verbose',
             'filters': ['require_debug_false'],
-            'filename': os.path.join(DJANGO_ROOT, '../../log/django-error.log'),
+            'filename': os.path.os.path.join(DJANGO_ROOT, '../../log/django-error.log'),
             'level': 'ERROR',
             'class': 'logging.handlers.RotatingFileHandler',
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
@@ -337,13 +332,13 @@ LOGGING = {
 
 
 ########## WSGI CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'wsgi.application'
 ########## END WSGI CONFIGURATION
 
 
 # ########## SESSION CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#sessions
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#sessions
 CACHE_MIDDLEWARE_KEY_PREFIX = SITE_NAME
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 ########## END SESSION CONFIGURATION

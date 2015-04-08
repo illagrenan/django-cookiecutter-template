@@ -11,6 +11,7 @@
   "email": "Your email",
   "description": "A short description of the project.",
   "domain_name": "example.com",
+  "django_version": "1.8",
   "version": "0.1.0",
   "timezone": "UTC",
   "now": "2015/03/25",
