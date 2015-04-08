@@ -1,4 +1,11 @@
 language: python
+python:
+  - "2.7"
+  - "3.3"
+  - "3.2"
+  - "3.4"
+  - "pypy"
+  - "nightly"
 
 before_install:
   - pip install cookiecutter
