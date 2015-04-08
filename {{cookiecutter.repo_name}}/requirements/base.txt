@@ -3,7 +3,7 @@
 # (please see installation instruction for MySQL-python on Windows below)
 # =======================================================================================================================
 
-Django>=1.7.0,<1.8
+Django>1.7.0,<1.9
 ipython>=3
 raven
 django-extensions
