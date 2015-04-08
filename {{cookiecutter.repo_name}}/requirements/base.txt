@@ -5,6 +5,7 @@
 
 Django>1.7.0,<1.9
 ipython>=3
+pyreadline>=2
 raven
 django-extensions
 django-compressor
