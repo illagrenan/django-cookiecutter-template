@@ -55,12 +55,8 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '{{ cookiecutter.repo_name }}',
     }
 }
 # ######### END DATABASE CONFIGURATION
@@ -353,12 +349,6 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 ########## END SESSION CONFIGURATION
 
 
-# ######### DJANGO-MARKUPMIRROR
-MARKUPMIRROR_DEFAULT_MARKUP_TYPE = 'markdown'
-# https://pythonhosted.org/Markdown/extensions/#officially-supported-extensions
-MARKUPMIRROR_MARKDOWN_EXTENSIONS = ['tables', 'smart_strong', 'smarty', 'attr_list', 'headerid(level=2)']
-# ######### END DJANGO-MARKUPMIRROR
-
 # ########## SECURITY CONFIGURATION
 # http://django-secure.readthedocs.org/en/v0.1.2/
 SESSION_COOKIE_SECURE = False
@@ -367,19 +357,47 @@ SECURE_BROWSER_XSS_FILTER = False
 SESSION_COOKIE_HTTPONLY = True
 ########## END SECURITY CONFIGURATION
 
+# +-----------------------------------+
+# |-----------------------------------|
+# || THIRD PARTY APPS CONFIGURATION  ||
+# |-----------------------------------|
+# +-----------------------------------+
+
+# ######### DJANGO-MARKUPMIRROR
+MARKUPMIRROR_DEFAULT_MARKUP_TYPE = 'markdown'
+# https://pythonhosted.org/Markdown/extensions/#officially-supported-extensions
+MARKUPMIRROR_MARKDOWN_EXTENSIONS = ['tables', 'smart_strong', 'smarty', 'attr_list', 'headerid(level=2)']
+# ######### END DJANGO-MARKUPMIRROR
+
+
 # ########## GRAPELLI CUSTOMIZATIONS
 # http://django-grappelli.readthedocs.org/en/latest/customization.html
 GRAPPELLI_ADMIN_TITLE = "{{ cookiecutter.project_name }}"
 ########## END GRAPELLI CUSTOMIZATIONS
 
+# ########## DJANGO SUIT CONFIGURATION
+# https://django-suit.readthedocs.org/en/develop/configuration.html#header
+SUIT_CONFIG = {
+    'ADMIN_NAME': '{{ cookiecutter.project_name }}'
+}
+########## END DJANGO SUIT CONFIGURATION
 
+# ########## DJANGO COMPRESSOR CONFIGURATION
 # Boolean that decides if compression should also be done outside of the
 # request/response loop – independent from user requests.
 # This allows to pre-compress CSS and JavaScript files and works just
 # like the automatic compression with the {% raw %}{% compress %}{% endraw %} tag.
+# https://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
 COMPRESS_OFFLINE = True
+# ########## END DJANGO COMPRESSOR CONFIGURATION
 
+# ########## DJANGO-NOSE CONFIGURATION
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# ########## END DJANGO-NOSE CONFIGURATION
+
+# +------------------------------------+
+# | END THIRD PARTY APPS CONFIGURATION |
+# +------------------------------------+
 
 # noinspection PyUnresolvedReferences
 from app import *
