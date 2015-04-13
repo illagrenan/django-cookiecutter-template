@@ -32,8 +32,10 @@ git push
 
 ## Deployment keys
 
-
+```bash
+# Copy your public key and register it on {{ cookiecutter.git_provider }}.
 cat ~/.ssh/id_rsa.pub
+```
 
 ## Source code and requirements
 
