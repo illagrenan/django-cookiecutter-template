@@ -4,6 +4,8 @@
 # | Gunicorn start script |
 # +-----------------------+
 
+# TODO Add this directrly to supervisor.conf
+
 # Name of the application
 NAME="{{ cookiecutter.repo_name }}"
 # Django project directory

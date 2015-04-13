@@ -21,7 +21,14 @@ This will:
 
 ----------
 
-## Permissions
+## 0) Prerequisites
+
+* [nginx](http://nginx.org/) - reverse proxy to Gunicorn, serve staticfiles
+* [Supervisor](http://supervisord.org/) - manage (autorun, restart, ...) processes (Gunicorn, Celery)
+* [MySQL](https://www.mysql.com/) or [PostgreSQL](http://www.postgresql.org/) database
+
+
+## 1) Permissions
 
 ```bash
 # Run this on localhost
@@ -30,14 +37,14 @@ git commit -am "Added `x` flag to sh script."
 git push
 ```
 
-## Deployment keys
+## 2) Deployment keys
 
 ```bash
 # Copy your public key and register it on {{ cookiecutter.git_provider }}.
 cat ~/.ssh/id_rsa.pub
 ```
 
-## Source code and requirements
+## 3) Source code and requirements
 
 ```bash
 # Connect to remote server
@@ -51,13 +58,13 @@ pip install -r requirements/production.txt --upgrade --use-wheel
 bower install
 ```
 
-## Configure Django
+## 4) Configure Django
 
 ```bash
 cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/dist/production.py {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
 ```
 
-## User&group
+## 5) User&group
 
 ```bash
 sudo groupadd --system {{ cookiecutter.group }}
@@ -68,7 +75,7 @@ sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/gu
 ```
 
 
-## Supervisor
+## 6) Supervisor
 
 **1) Check if Gunicorn is working**
 
@@ -110,7 +117,7 @@ Not OK if:
 sudo supervisorctl restart {{ cookiecutter.repo_name }}
 ```
 
-## Nginx
+## 7) Nginx
 
 ```bash
 cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/nginx.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
