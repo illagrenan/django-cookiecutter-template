@@ -1,32 +1,7 @@
 # Deploy `{{ cookiecutter.project_name }}`
 
-## Already deployed?
-
-```bash
-# Install updates:
-cd {{ cookiecutter.deploy_path }}
-source update.sh
-```
-
-This will:
-
-1. Activate virtualenv
-2. Pull repository
-3. Install bower components
-4. Copy `production.py` over `local.py`
-5. Install Python requirements
-6. Run `manage.py` commands: `collectstatic`, `migrate`, `compress`
-7. Restart supervisor process
-
-
-----------
-
-## 0) Prerequisites
-
-* [nginx](http://nginx.org/) - reverse proxy to Gunicorn, serve staticfiles
-* [Supervisor](http://supervisord.org/) - manage (autorun, restart, ...) processes (Gunicorn, Celery)
-* [MySQL](https://www.mysql.com/) or [PostgreSQL](http://www.postgresql.org/) database
-
+- **Project already deployed? Check [Update guide](UPDATES.md)**.
+- **New server? First install all required software, check [Server setup](SERVER_SETUP.md)**
 
 ## 1) Permissions
 
