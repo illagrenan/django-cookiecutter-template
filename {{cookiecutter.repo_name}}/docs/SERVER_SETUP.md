@@ -20,19 +20,31 @@ sudo apt-get upgrade
 
 ## 2) Python tools ##
 
-Install virtualenvs:
-
-```bash
-sudo apt-get install python-virtualenv
-```
-
-- More information about virtualenv: [The Hitchhiker’s Guide to Python: Virtual Environments](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
-
-Install Python header files:
+**Install Python header files:**
 
 ```bash
 sudo apt-get install python-dev
 ```
+
+**Install pip:**
+
+```bash
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+rm get-pip.py
+
+# Upgrade after installation
+pip install --upgrade pip setuptools
+```
+
+**Install virtualenvs:**
+
+```bash
+[sudo] pip install virtualenv
+```
+
+- More information about virtualenv: [The Hitchhiker’s Guide to Python: Virtual Environments](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+- Official installation instruction: [https://virtualenv.pypa.io/en/latest/installation.html](https://virtualenv.pypa.io/en/latest/installation.html)
 
 
 ## 3) Database ##
@@ -101,9 +113,44 @@ And now install Bower globally:
 
 ```bash
 npm -g install bower
-``` 
+```
 
 - Tutorial: [DigitalOcean.com: How To Install Node.js on an Ubuntu 14.04 server](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server)
+
+## 8) Useful software (optional) ##
+
+**Glances**
+
+> Glances an Eye on your system, see: [https://nicolargo.github.io/glances/](https://nicolargo.github.io/glances/)
+
+*Optional dependencies (more features):*
+```bash
+sudo apt-get install lm-sensors
+pip install bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces pymdstat influxdb statsd pystache
+pip install --upgrade Glances
+```
+
+*Required:*
+```bash
+pip install --upgrade Glances
+```
+
+
+**Midnight Commander**
+
+> GNU Midnight Commander is a visual file manager, see: [https://www.midnight-commander.org/](https://www.midnight-commander.org/)
+
+```bash
+sudo apt-get install mc
+```
+
+**Mutt**
+
+> The Mutt E-Mail Client, see: [http://www.mutt.org/](http://www.mutt.org/)
+
+```bash
+sudo apt-get install mutt
+```
 
 ----------
 
