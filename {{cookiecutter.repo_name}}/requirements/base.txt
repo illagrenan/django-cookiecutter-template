@@ -3,9 +3,45 @@
 # =======================================================================================================================
 
 Django>1.7.0,<1.9
+
+# ========================================================
+# Powerful interactive shells
+# See: http://ipython.org/
+# ========================================================
 ipython>=3
+
+# ========================================================
+# PyReadline: a ctypes-based readline for Windows
+# See: http://ipython.org/pyreadline.html
+# ========================================================
 pyreadline>=2
+
+# ========================================================
+# Raven is a standalone (and the official) Python client for Sentry.
+# See: https://raven.readthedocs.org/en/latest/index.html
+# ========================================================
 raven
+
+# ========================================================
+# Django Extensions is a collection of custom extensions for the Django Framework.
+# See: http://django-extensions.readthedocs.org/en/latest/
+# ========================================================
 django-extensions
-django-compressor
+
+# ========================================================
+# Compresses linked and inline JavaScript or CSS into a single cached file.
+# See: http://django-compressor.readthedocs.org/en/latest/
+# ========================================================
+django_compressor
+
+# ========================================================
+# Django test runner using nose
+# See: https://github.com/django-nose/django-nose
+# ========================================================
 django-nose>=1.3
+
+# ========================================================
+# A django application that tries to eliminate annoying things in the Django framework.
+# See: https://github.com/skorokithakis/django-annoying
+# ========================================================
+django-annoying

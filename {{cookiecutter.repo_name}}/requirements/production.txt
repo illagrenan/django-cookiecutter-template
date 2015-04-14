@@ -5,4 +5,9 @@
 -r base.txt
 
 MySQL-python==1.2.5
+
+# ========================================================
+# Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. 
+# See: http://gunicorn.org/
+# ========================================================
 gunicorn>19,<20

@@ -189,7 +189,7 @@ TEMPLATE_DIRS = (
 
 ########## MIDDLEWARE CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#middleware-classes
-MIDDLEWARE_CLASSES = (
+DEFAULT_MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -198,6 +198,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+THIRD_PARTY_MIDDLEWWARE_CLASSES = (
+    'annoying.middlewares.StaticServe',
+)
+
+MIDDLEWARE_CLASSES = DEFAULT_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES
 ########## END MIDDLEWARE CONFIGURATION
 
 
@@ -226,7 +232,9 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'django_extensions',
     'compressor',
-    'django_nose'
+    # TODO Not working with Django 1.8
+    'django_nose',
+    'annoying'
 )
 
 # Apps specific for this project go here.
@@ -387,7 +395,9 @@ COMPRESS_OFFLINE = True
 # ########## END DJANGO COMPRESSOR CONFIGURATION
 
 # ########## DJANGO-NOSE CONFIGURATION
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# TODO Not working with Django 1.8
+# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 NOSE_ARGS = [
     '--nocapture',
