@@ -180,6 +180,30 @@ and then:
 pip install Pillow
 ```
 
+## 9) Memcached (optional) ##
+
+```bash
+sudo apt-get update
+sudo apt-get install memcached libmemcached-tools
+```
+
+Check if Memcache is running by:
+
+```bash
+echo stats | nc 127.0.0.1 11211
+```
+
+To use Memcached from Python/Django, install:
+
+```bash
+pip install pylibmc
+```
+
+For more information check:
+
+- [https://docs.djangoproject.com/en/1.8/topics/cache/#memcached](https://docs.djangoproject.com/en/1.8/topics/cache/#memcached)
+- [https://github.com/lericson/pylibmc](https://github.com/lericson/pylibmc)
+
 ----------
 
 **You have now all required software installed!** Continue to [Deployment guide](DEPLOYMENT.md).
