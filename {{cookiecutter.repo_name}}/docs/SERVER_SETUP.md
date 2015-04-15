@@ -18,6 +18,12 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
+Install required libraries:
+
+```bash
+sudo apt-get install libxml2-dev libxslt1-dev libffi-dev
+```
+
 ## 2) Python tools ##
 
 **Install Python header files:**
@@ -53,6 +59,7 @@ A) Install MySQL:
 
 ```bash
 sudo apt-get install mysql-server
+sudo apt-get install python-mysqldb libmysqlclient-dev
 ```
 
 - Check official documentation:[ https://dev.mysql.com/doc/refman/5.6/en/index.html]( https://dev.mysql.com/doc/refman/5.6/en/index.html)
@@ -107,6 +114,14 @@ Install `node.js` only if you use Bower package manager for managing assets. See
 ```bash
 sudo apt-get install nodejs
 sudo apt-get install npm
+
+# ########################################  
+# Try run "node"
+# if /usr/bin/env: node: No such file or directory
+#  
+# Fix this by:
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+# ########################################  
 ```
 
 And now install Bower globally:
