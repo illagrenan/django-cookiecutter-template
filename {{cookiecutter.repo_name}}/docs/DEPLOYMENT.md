@@ -24,7 +24,7 @@ cat ~/.ssh/id_rsa.pub
 ```bash
 # Connect to remote server
 cd {{ cookiecutter.deploy_path }}
-git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git
+git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git {{ cookiecutter.repo_name }}
 cd {{ cookiecutter.repo_name }}
 
 virtualenv data/.venv; source activate.sh
