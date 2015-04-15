@@ -21,7 +21,7 @@ sudo apt-get upgrade
 Install required libraries:
 
 ```bash
-sudo apt-get install libxml2-dev libxslt1-dev libffi-dev
+sudo apt-get install libxml2-dev libxslt1-dev libffi-dev python-lxml
 ```
 
 ## 2) Python tools ##
@@ -165,6 +165,20 @@ sudo apt-get install mc
 
 ```bash
 sudo apt-get install mutt
+```
+
+## 9) Pillow (optional) ##
+
+Install external libraries (see: [pillow.readthedocs.org/en/latest/installation.html#external-libraries](https://pillow.readthedocs.org/en/latest/installation.html#external-libraries)):
+
+```bash
+sudo apt-get install libjpeg libjpeg-dev libtiff libtiff-dev libfreetype6 libfreetype6-dev zlib1g-dev
+```
+
+and then:
+
+```bash
+pip install Pillow
 ```
 
 ----------

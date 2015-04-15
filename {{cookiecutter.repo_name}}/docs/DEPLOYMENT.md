@@ -28,7 +28,7 @@ git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}
 cd {{ cookiecutter.repo_name }}
 
 virtualenv data/.venv; source activate.sh
-easy_install -U pip; pip install ipython setuptools wheel --upgrade
+pip install --upgrade pip ipython setuptools wheel
 pip install -r requirements/production.txt --upgrade --use-wheel
 bower install
 ```
