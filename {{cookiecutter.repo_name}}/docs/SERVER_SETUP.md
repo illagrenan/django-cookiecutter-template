@@ -138,11 +138,10 @@ npm -g install bower
 
 > Glances an Eye on your system, see: [https://nicolargo.github.io/glances/](https://nicolargo.github.io/glances/)
 
-*Optional dependencies (more features):*
+*Optional dependencies (only if you want more features e.g. sensors):*
 ```bash
 sudo apt-get install lm-sensors
 pip install bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces pymdstat influxdb statsd pystache
-pip install --upgrade Glances
 ```
 
 *Required:*
