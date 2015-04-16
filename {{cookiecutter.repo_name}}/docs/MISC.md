@@ -1,6 +1,6 @@
 # Tips&tricks for `{{ cookiecutter.project_name }}`
 
-## Protect web with hpasswd
+## Protect web with Basic auth
 
 ```bash
 $ sudo apt-get install -y apache2-utils

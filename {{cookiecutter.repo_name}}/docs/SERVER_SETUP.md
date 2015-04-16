@@ -166,6 +166,19 @@ sudo apt-get install mc
 sudo apt-get install mutt
 ```
 
+**GoAccess**
+
+> GoAccess is an open source real-time web log analyzer and interactive viewer that runs in a terminal in \*nix systems. It provides fast and valuable HTTP statistics for system administrators that require a visual server report on the fly. See: [http://goaccess.io/](http://goaccess.io/).
+
+```bash
+# See: http://goaccess.io/download#official-repo
+echo "deb http://deb.goaccess.io $(lsb_release -cs) main" | tee -a /etc/apt/sources.list
+wget -O - http://deb.goaccess.io/gnugpg.key | apt-key add -
+apt-get update
+apt-get install goaccess
+```
+
+
 ## 9) Pillow (optional) ##
 
 Install external libraries (see: [pillow.readthedocs.org/en/latest/installation.html#external-libraries](https://pillow.readthedocs.org/en/latest/installation.html#external-libraries)):
