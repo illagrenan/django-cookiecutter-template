@@ -8,14 +8,98 @@ This guide is based on:
 
 ## 0) Prerequisites ##
 
-Create new Ubuntu LTS (current version is `14.04 x64`) server. For more information check Official Server Guide: [https://help.ubuntu.com/lts/serverguide/index.html](https://help.ubuntu.com/lts/serverguide/index.html).
+Create new Ubuntu LTS (current LTS version is `14.04 x64` (**`trusty`**)) server. For more information check Official Server Guide: [https://help.ubuntu.com/lts/serverguide/index.html](https://help.ubuntu.com/lts/serverguide/index.html).
 
 
-## 1) Update packages ##
+## 1) Swap ##
+
+
+Check already configured swap:
+
+```bash
+sudo swapon -s
+# OR
+free -m
+```
+
+Check available space:
+
+```bash
+df -h
+```
+
+
+Create 4GB swapfile:
+
+```bash
+sudo fallocate -l 4G /swapfile
+ls -lh /swapfile
+```
+
+Enable swapfile:
+
+```bash
+sudo chmod 600 /swapfile
+ls -lh /swapfile
+-rw------- 1 root root 4.0G Apr 22 07:39 /swapfile
+
+sudo mkswap /swapfile
+Setting up swapspace version 1, size = 4194300 KiB
+no label, UUID=9a23f475-2d54-4589-a03e-e499b5142986
+
+sudo swapon /swapfile
+sudo swapon -s
+free -m
+```
+
+Make the swap file permanent:
+
+```bash
+sudo nano /etc/fstab
+```
+
+Add to last line:
+
+```
+/swapfile   none    swap    sw    0   0
+```
+
+**Swappiness (optional)**
+
+```bash
+sudo sysctl vm.swappiness=10
+sudo sysctl vm.vfs_cache_pressure=50
+```
+
+Open:
+
+```bash
+sudo nano /etc/sysctl.conf
+```
+
+And add at the bottom:
+
+```
+vm.swappiness=10
+vm.vfs_cache_pressure = 50
+```
+
+More info:
+
+- [https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04)
+
+
+## 2) Update packages ##
 
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
+```
+
+It is recomended to reboot computer after first upgrade:
+
+```bash
+reboot
 ```
 
 Install required libraries:
@@ -24,7 +108,7 @@ Install required libraries:
 sudo apt-get install libxml2-dev libxslt1-dev libffi-dev python-lxml
 ```
 
-## 2) Python tools ##
+## 3) Python tools ##
 
 **Install Python header files:**
 
@@ -53,7 +137,7 @@ pip install --upgrade pip setuptools
 - Official installation instruction: [https://virtualenv.pypa.io/en/latest/installation.html](https://virtualenv.pypa.io/en/latest/installation.html)
 
 
-## 3) Database ##
+## 4) Database ##
 
 A) Install MySQL:
 
@@ -74,15 +158,51 @@ sudo apt-get install libpq-dev
 - Check official documentation: [http://www.postgresql.org/docs/9.4/static/index.html](http://www.postgresql.org/docs/9.4/static/index.html)
 
 
-## 4) nginx ##
+## 5) nginx ##
 
 ```bash
 sudo apt-get install nginx
 ```
 
+To get latest releases append these lines to `/etc/apt/sources.list`:
+
+```bash
+echo "deb http://nginx.org/packages/ubuntu/ $(lsb_release -cs) nginx" | tee -a /etc/apt/sources.list
+echo "deb-src http://nginx.org/packages/ubuntu/ $(lsb_release -cs) nginx" | tee -a /etc/apt/sources.list
+```
+
+And install signing key:
+
+```bash
+wget -O - http://nginx.org/keys/nginx_signing.key | apt-key add -
+```
+
+And run:
+
+```bash
+apt-get update
+apt-get install nginx
+```
+
+Check if nginx is installed:
+
+```bash
+nginx -v
+nginx version: nginx/1.8.0
+```
+
+**Note:**
+
+If you previously installed nginx from Ubuntu sources, uninstall package by:
+
+```bash
+sudo apt-get purge nginx
+sudo apt-get autoremove
+```
+
 - Homepage: [http://nginx.org/](http://nginx.org/)
 
-## 5) Supervisor ##
+## 6) Supervisor ##
 
 > Supervisor is a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems. In this dev-stack will Supervisor monitor Gunicorn process.
 
@@ -95,7 +215,7 @@ sudo apt-get install supervisor
 - Homepage: [http://supervisord.org/](http://supervisord.org/)
 - Tutorial: [DigitalOcean.com: How To Install and Manage Supervisor on Ubuntu and Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps)
 
-## 6) Git ##
+## 7) Git ##
 
 Install Git:
 
@@ -105,7 +225,7 @@ sudo apt-get install git-core
 
 - Homepage: [https://git-scm.herokuapp.com/](https://git-scm.herokuapp.com/)
 
-## 7) node.js: node&npm&bower (optional) ##
+## 8) node.js: node&npm&bower (optional) ##
 
 > Web sites are made of lots of things — frameworks, libraries, assets, utilities, and rainbows. Bower manages all these things for you.
 
@@ -132,7 +252,7 @@ npm -g install bower
 
 - Tutorial: [DigitalOcean.com: How To Install Node.js on an Ubuntu 14.04 server](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server)
 
-## 8) Useful software (optional) ##
+## 9) Useful software (optional) ##
 
 **Glances**
 
@@ -164,6 +284,7 @@ sudo apt-get install mc
 
 ```bash
 sudo apt-get install mutt
+/etc/init.d/postfix reload
 ```
 
 **GoAccess**
@@ -178,13 +299,22 @@ apt-get update
 apt-get install goaccess
 ```
 
+**Links2**
 
-## 9) Pillow (optional) ##
+> Links is a graphics and text mode WWW browser, similar to Lynx.
+
+```bash
+apt-get install links2
+```
+
+
+
+## 10) Pillow (optional) ##
 
 Install external libraries (see: [pillow.readthedocs.org/en/latest/installation.html#external-libraries](https://pillow.readthedocs.org/en/latest/installation.html#external-libraries)):
 
 ```bash
-sudo apt-get install libjpeg libjpeg-dev libtiff libtiff-dev libfreetype6 libfreetype6-dev zlib1g-dev
+sudo apt-get install libjpeg-dev libtiff-dev libfreetype6 libfreetype6-dev zlib1g-dev
 ```
 
 and then:
@@ -193,11 +323,10 @@ and then:
 pip install Pillow
 ```
 
-## 9) Memcached (optional) ##
+## 11) Memcached (optional) ##
 
 ```bash
-sudo apt-get update
-sudo apt-get install memcached libmemcached-tools
+sudo apt-get install memcached libmemcached-dev libmemcached-tools
 ```
 
 Check if Memcache is running by:
@@ -216,6 +345,91 @@ For more information check:
 
 - [https://docs.djangoproject.com/en/1.8/topics/cache/#memcached](https://docs.djangoproject.com/en/1.8/topics/cache/#memcached)
 - [https://github.com/lericson/pylibmc](https://github.com/lericson/pylibmc)
+
+## 12) Webmin (optional) ##
+
+Update and upgrade packages:
+
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+```
+
+Download Webmin:
+
+```bash
+wget http://prdownloads.sourceforge.net/webadmin/webmin_1.740_all.deb
+dpkg --install webmin_1.740_all.deb
+```
+
+To install missing dependencies, install them with:
+
+```bash
+apt-get -f install
+```
+
+Now open `https://IP_ADDRESS:10000`.
+
+Finally remove downloaded package:
+
+```bash
+rm webmin_1.740_all.deb
+```
+
+For more information check:
+
+- [http://www.webmin.com/deb.html](http://www.webmin.com/deb.html)
+
+## 13) Users and groups ##
+
+Create new non-sudo user:
+
+```bash
+adduser <username>
+mkdir -p /var/www/
+sudo chown -R <username>:root /var/www
+```
+
+Switch to newly created user:
+
+```bash
+su <username>
+```
+
+And create new ssh-keypair:
+
+```bash
+ssh-keygen -t rsa -C "your_email@example.com"
+touch ~/.ssh/authorized_keys
+
+# Copy your public key
+nano ~/.ssh/authorized_keys
+```
+
+Create new group:
+
+```bash
+sudo groupadd --system webapps
+# Add newly created user:
+usermod -a -G webapps <username>
+```
+
+If you're logged-in as non-sudo user, reload profile:
+
+```bash
+. ~/.profile
+```
+
+## 14) Celery ##
+
+
+```bash
+echo "deb http://www.rabbitmq.com/debian/ testing main" | tee -a /etc/apt/sources.list
+wget -O - https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | apt-key add -
+
+apt-get update
+sudo apt-get install rabbitmq-server
+```
 
 ----------
 

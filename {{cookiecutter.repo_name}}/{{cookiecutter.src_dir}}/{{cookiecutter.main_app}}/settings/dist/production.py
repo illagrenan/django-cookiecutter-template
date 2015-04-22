@@ -8,14 +8,12 @@ from __future__ import absolute_import
 
 from os import environ
 
-from .base import *
-
 ########## DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#debug
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-PREPEND_WWW = True
+PREPEND_WWW = False
 ########## END DEBUG CONFIGURATION
 
 

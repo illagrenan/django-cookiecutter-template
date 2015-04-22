@@ -234,7 +234,8 @@ THIRD_PARTY_APPS = (
     'compressor',
     # TODO Not working with Django 1.8
     'django_nose',
-    'annoying'
+    'annoying',
+    'django_custom_500'
 )
 
 # Apps specific for this project go here.
@@ -280,7 +281,7 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'filename': os.path.os.path.join(DJANGO_ROOT, '../../log/django-dev-debug.log'),
             'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': '{{ cookiecutter.main_app }}.settings.log.handlers.GroupWriteRotatingFileHandler',
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
             'backupCount': 5,
         },
@@ -293,7 +294,7 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'filename': os.path.os.path.join(DJANGO_ROOT, '../../log/django-error.log'),
             'level': 'ERROR',
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': '{{ cookiecutter.main_app }}.settings.log.handlers.GroupWriteRotatingFileHandler',
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
             'backupCount': 5,
         },
@@ -365,6 +366,11 @@ SESSION_COOKIE_HTTPONLY = True
 # || THIRD PARTY APPS CONFIGURATION  ||
 # |-----------------------------------|
 # +-----------------------------------+
+
+
+# ######### django-custom-500
+CUSTOM_500_TEMPLATE = "500.html"
+# ######### END django-custom-500
 
 # ######### DJANGO-MARKUPMIRROR
 MARKUPMIRROR_DEFAULT_MARKUP_TYPE = 'markdown'

@@ -22,7 +22,10 @@ cat ~/.ssh/id_rsa.pub
 ## 3) Source code and requirements
 
 ```bash
-# Connect to remote server
+# #######################################
+# Connect to *REMOTE* server
+# #######################################
+mkdir -p {{ cookiecutter.deploy_path }}
 cd {{ cookiecutter.deploy_path }}
 git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git {{ cookiecutter.repo_name }}
 cd {{ cookiecutter.repo_name }}
@@ -30,6 +33,8 @@ cd {{ cookiecutter.repo_name }}
 virtualenv data/.venv; source activate.sh
 pip install --upgrade pip ipython setuptools wheel
 pip install -r requirements/production.txt --upgrade --use-wheel
+
+# Optional step
 bower install
 ```
 

@@ -45,3 +45,27 @@ django-nose>=1.3
 # See: https://github.com/skorokithakis/django-annoying
 # ========================================================
 django-annoying
+
+# ========================================================
+# Wrapper around colorama.
+# See: https://github.com/illagrenan/color-printer
+# ========================================================
+-e git+git://github.com/illagrenan/color-printer.git#egg=color-printer
+
+# ========================================================
+# Custom Error 500 template.
+# See: https://github.com/illagrenan/django-custom-500
+# ========================================================
+-e git+git://github.com/illagrenan/django-custom-500.git#egg=django-custom-500
+
+# ========================================================
+# Fabric deployment endpoint
+# See: https://github.com/illagrenan/django-custom-500
+# ========================================================
+-e git+git://github.com/illagrenan/fab-django-deploy.git#egg=fab-django-deploy
+
+# ========================================================
+# Python package for providing Mozilla's CA Bundle.
+# See: https://pypi.python.org/pypi/certifi, http://docs.python-requests.org/en/latest/
+# ========================================================
+certifi
