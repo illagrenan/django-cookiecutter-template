@@ -52,3 +52,7 @@ file=/var/run/supervisor.sock   ; (the path to the socket file)
 chmod=0770                      ; socket file mode (default 0700)
 chown=root:supervisor
 ```
+
+```bash
+service supervisor restart
+```

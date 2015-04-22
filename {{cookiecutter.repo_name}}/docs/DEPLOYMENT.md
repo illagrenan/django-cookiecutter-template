@@ -33,8 +33,17 @@ cd {{ cookiecutter.repo_name }}
 virtualenv data/.venv; source activate.sh
 pip install --upgrade pip ipython setuptools wheel
 pip install -r requirements/production.txt --upgrade --use-wheel
+```
+
+Configure `autoenv`:
+
+```bash
+source /usr/local/bin/activate.sh
+echo 'source /usr/local/opt/autoenv/activate.sh' >> ~/.bash_profile
+```
 
 # Optional step
+```bash
 bower install
 ```
 
