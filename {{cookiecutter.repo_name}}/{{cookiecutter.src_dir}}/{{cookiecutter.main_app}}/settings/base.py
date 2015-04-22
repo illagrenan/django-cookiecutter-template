@@ -6,18 +6,21 @@ from __future__ import print_function
 
 import os
 import sys
-
 from os.path import abspath, dirname, normpath
 from sys import path
+
+import environ
+
+
+env = environ.Env(DEBUG=(bool, False), )
 
 
 # ######### PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
-DJANGO_ROOT = dirname(dirname(abspath(__file__)))
-BASE_DIR = DJANGO_ROOT
+DJANGO_ROOT = BASE_DIR = dirname(dirname(abspath(__file__)))  # .../src/main/
 
 # Absolute filesystem path to the top-level project folder: (where manage.py is)
-SITE_ROOT = dirname(DJANGO_ROOT)
+SITE_ROOT = dirname(DJANGO_ROOT)  # .../src/{manage.py}
 
 # Site name:
 SITE_NAME = "{{ cookiecutter.name }}"
@@ -28,14 +31,17 @@ path.append(DJANGO_ROOT)
 # ######### END PATH CONFIGURATION
 
 
+env.read_env(os.path.join(SITE_ROOT, "..", ".env"))
+
+
 # ######### DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#debug
-DEBUG = False
+DEBUG = env('DEBUG')  # False if not in os.environ
 
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
+PREPEND_WWW = env('PREPEND_WWW', default=False)
 # ######### END DEBUG CONFIGURATION
-
 
 # ######### MANAGER CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#admins
@@ -51,10 +57,7 @@ MANAGERS = ADMINS
 # ######### DATABASE CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '{{ cookiecutter.repo_name }}',
-    }
+    'default': env.db(),  # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
 }
 # ######### END DATABASE CONFIGURATION
 
@@ -129,14 +132,14 @@ STATICFILES_FINDERS = (
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#secret-key
 # Note: This key only used for development and testing.
 # TODO Generate unique SECRET_KEY
-SECRET_KEY = r"!!! CHANGEME !!!"
+SECRET_KEY = env('SECRET_KEY')  # Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
 ########## END SECRET CONFIGURATION
 
 
 ########## SITE CONFIGURATION
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 ########## END SITE CONFIGURATION
 
 
@@ -238,6 +241,25 @@ THIRD_PARTY_APPS = (
     'django_custom_500'
 )
 
+if env('SENTRY_DSN', default=False):
+    import raven
+
+    THIRD_PARTY_APPS += (
+        'raven.contrib.django',
+    )
+
+    ########## RAVEN CONFIGURATION
+    # See: https://raven.readthedocs.org/en/latest/integrations/django.html
+    RAVEN_CONFIG = {
+        'dsn': env('SENTRY_DSN')
+    }
+    ########## END RAVEN CONFIGURATION
+
+if env('DEBUG_TOOLBAR', default=False):
+    THIRD_PARTY_APPS += (
+        'debug_toolbar',
+    )
+
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'web',
@@ -246,6 +268,13 @@ LOCAL_APPS = (
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
+
+########## CACHES CONFIGURATION
+# See: https://docs.djangoproject.com/en/1.8/ref/settings/#caches
+CACHES = {
+    'default': env.cache(default="dummycache://"),
+}
+########## END CACHES CONFIGURATION
 
 
 ########## LOGGING CONFIGURATION
@@ -360,6 +389,31 @@ SECURE_FRAME_DENY = False
 SECURE_BROWSER_XSS_FILTER = False
 SESSION_COOKIE_HTTPONLY = True
 ########## END SECURITY CONFIGURATION
+
+########## EMAIL CONFIGURATION
+# {
+# u'EMAIL_HOST_PASSWORD': None,
+# u'EMAIL_BACKEND': u'django.core.mail.backends.dummy.EmailBackend',
+# u'EMAIL_HOST_USER': None,
+#     u'EMAIL_USE_TLS': False,
+#     u'EMAIL_PORT': None,
+#     u'EMAIL_FILE_PATH': u'',
+#     u'EMAIL_HOST': None
+# }
+
+
+EMAIL_URL = env.email_url('EMAIL_URL', default='dummymail://')
+EMAIL_BACKEND = EMAIL_URL['EMAIL_BACKEND']
+EMAIL_HOST = EMAIL_URL['EMAIL_HOST']
+EMAIL_PORT = EMAIL_URL['EMAIL_PORT']
+EMAIL_FILE_PATH = EMAIL_URL['EMAIL_FILE_PATH']
+EMAIL_HOST_USER = EMAIL_URL['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = EMAIL_URL['EMAIL_HOST_PASSWORD']
+EMAIL_USE_TLS = EMAIL_URL['EMAIL_USE_TLS']
+
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default="no-reply@example.com")
+EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
+########## END EMAIL CONFIGURATION
 
 # +-----------------------------------+
 # |-----------------------------------|

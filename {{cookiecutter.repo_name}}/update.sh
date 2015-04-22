@@ -7,14 +7,13 @@ source data/.venv/bin/activate
 git pull --no-edit
 bower install
 
-cp -fr {{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/dist/production.py src/main/settings/local.py
-
 pip install -r requirements/production.txt --use-wheel
 python src/manage.py collectstatic --noinput
 python src/manage.py migrate
 python src/manage.py compress
 
-supervisorctl restart {{ cookiecutter.repo_name }}
+supervisorctl restart {{ cookiecutter.repo_name }}:*
+sudo supervisorctl status | grep "{{ cookiecutter.repo_name }}"
 
 
 echo "Done."

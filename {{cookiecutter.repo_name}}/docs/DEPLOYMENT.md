@@ -40,8 +40,18 @@ bower install
 
 ## 4) Configure Django
 
+To automatically export ENV_VARS, create this file:
+
 ```bash
-cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/dist/production.py {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
+touch {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/.env
+```
+
+Example of minimal configuration:
+
+```config
+DATABASE_URL=mysql://USER:PASSWORD@127.0.0.1:3306/DATABASE_NAME
+SECRET_KEY=SOME_SECRET_KEY
+ALLOWED_HOSTS=www.{{ cookiecutter.domain_name }},{{ cookiecutter.domain_name }},127.0.0.1,localhost,0.0.0.0
 ```
 
 ## 5) User&group
@@ -62,7 +72,7 @@ sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/gu
 
 ```bash
 cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.src_dir }}
-gunicorn main.wsgi:application --bind 0.0.0.0:8001
+gunicorn main.wsgi:application --bind 0.0.0.0:8001 --access-logfile -
 ```
 
 **2) Setup Supervisor to start Gunicorn**
@@ -70,12 +80,15 @@ gunicorn main.wsgi:application --bind 0.0.0.0:8001
 ```bash
 sudo cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 sudo supervisorctl reread
-# {{ cookiecutter.repo_name }}: available
+# {{ cookiecutter.repo_name }}_gunicorn: available
+# {{ cookiecutter.repo_name }}_celerybeat: available
+# {{ cookiecutter.repo_name }}_celeryd: available
 
 sudo supervisorctl update
 # {{ cookiecutter.repo_name }}: added process group
+# ...
 
-sudo supervisorctl status {{ cookiecutter.repo_name }}
+sudo supervisorctl status | grep "{{ cookiecutter.repo_name }}"
 ```
 
 **OR** use sh script:
@@ -94,7 +107,7 @@ Not OK if:
 {{ cookiecutter.repo_name }}    FATAL       Exited too quickly (process log may have details)
 
 # When fixed:
-sudo supervisorctl restart {{ cookiecutter.repo_name }}
+sudo supervisorctl restart {{ cookiecutter.repo_name }}:*
 ```
 
 ## 7) Nginx

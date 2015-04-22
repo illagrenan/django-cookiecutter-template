@@ -16,7 +16,7 @@ cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/supervisor.co
 sudo supervisorctl reread
 sudo supervisorctl update
 
-sudo supervisorctl restart {{ cookiecutter.repo_name }}
-sudo supervisorctl status {{ cookiecutter.repo_name }}
+sudo supervisorctl restart {{ cookiecutter.repo_name }}:*
+sudo supervisorctl status | grep "{{ cookiecutter.repo_name }}"
 
 echo "Done."

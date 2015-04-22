@@ -69,3 +69,9 @@ django-annoying
 # See: https://pypi.python.org/pypi/certifi, http://docs.python-requests.org/en/latest/
 # ========================================================
 certifi
+
+# ========================================================
+# Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application.
+# See: https://github.com/joke2k/django-environ
+# ========================================================
+django-environ
