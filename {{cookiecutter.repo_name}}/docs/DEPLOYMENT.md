@@ -3,23 +3,14 @@
 - **Project already deployed? Check [Update guide](UPDATES.md)**.
 - **New server? First install all required software, check [Server setup](SERVER_SETUP.md)**
 
-## 1) Permissions
-
-```bash
-# Run this on localhost
-git update-index --chmod=+x bin/gunicorn_start.sh
-git commit -am "Added `x` flag to sh script."
-git push
-```
-
-## 2) Deployment keys
+## 1) Deployment keys
 
 ```bash
 # Copy your public key and register it on {{ cookiecutter.git_provider }}.
 cat ~/.ssh/id_rsa.pub
 ```
 
-## 3) Source code and requirements
+## 2) Source code and requirements
 
 ```bash
 # #######################################
@@ -47,7 +38,7 @@ echo 'source /usr/local/opt/autoenv/activate.sh' >> ~/.bash_profile
 bower install
 ```
 
-## 4) Configure Django
+## 3) Configure Django
 
 To automatically export ENV_VARS, create this file:
 
@@ -63,7 +54,7 @@ SECRET_KEY=SOME_SECRET_KEY
 ALLOWED_HOSTS=www.{{ cookiecutter.domain_name }},{{ cookiecutter.domain_name }},127.0.0.1,localhost,0.0.0.0
 ```
 
-## 5) User&group
+## 4) User&group
 
 ```bash
 sudo groupadd --system {{ cookiecutter.group }}
@@ -74,7 +65,7 @@ sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/gu
 ```
 
 
-## 6) Supervisor
+## 5) Supervisor
 
 **1) Check if Gunicorn is working**
 
@@ -119,7 +110,7 @@ Not OK if:
 sudo supervisorctl restart {{ cookiecutter.repo_name }}:*
 ```
 
-## 7) Nginx
+## 6) Nginx
 
 ```bash
 cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/nginx.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf

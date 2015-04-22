@@ -15,7 +15,6 @@ sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecut
 find . -not -path '*/\.*' -type d -exec chmod 775 {} +
 find . -not -path '*/\.*' -type f -exec chmod 664 {} +
 chmod g+w log/*log
-chmod u+x bin/gunicorn_start.sh
 ```
 
 ## Flush ngx_pagespeed cache
