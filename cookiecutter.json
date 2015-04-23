@@ -4,6 +4,8 @@
   "src_dir": "src",
   "main_app": "main",
   "deploy_path": "/var/www/",
+  "deploy_host_ip": "8.8.8.8",
+  "private_key_path": "~/.ssh/id_rsa.private-ssh",
   "group": "webapps",
   "git_provider": "bitbucket.org",
   "author_name": "Your Name",
