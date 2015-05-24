@@ -26,7 +26,6 @@ DATABASES['default'] = {
     'NAME': ':memory:'
 }
 
-SOUTH_TESTS_MIGRATE = False
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 CACHES = {
