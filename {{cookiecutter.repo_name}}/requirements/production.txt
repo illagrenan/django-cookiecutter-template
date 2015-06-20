@@ -20,3 +20,9 @@ gunicorn>19,<20
 # See: https://github.com/kennethreitz/autoenv
 # ========================================================
 autoenv
+
+# ========================================================
+# A Python wrapper around the libmemcached interface.
+# See: https://github.com/lericson/pylibmc
+# ========================================================
+pylibmc
