@@ -22,7 +22,7 @@ gunicorn>19,<20
 autoenv
 
 # ========================================================
-# A Python wrapper around the libmemcached interface.
-# See: https://github.com/lericson/pylibmc
+# Pure python memcached client.
+# See: https://pypi.python.org/pypi/python-memcached
 # ========================================================
-pylibmc
+python-memcached
