@@ -326,7 +326,7 @@ pip install Pillow
 ## 11) Memcached (optional) ##
 
 ```bash
-sudo apt-get install memcached libmemcached-dev libmemcached-tools
+sudo apt-get install -y memcached libmemcached-dev libmemcached-tools
 ```
 
 Check if Memcache is running by:
@@ -338,7 +338,7 @@ echo stats | nc 127.0.0.1 11211
 To use Memcached from Python/Django, install:
 
 ```bash
-pip install pylibmc
+pip install --upgrade python-memcached
 ```
 
 For more information check:
