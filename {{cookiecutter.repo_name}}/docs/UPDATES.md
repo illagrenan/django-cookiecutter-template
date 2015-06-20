@@ -25,5 +25,5 @@ This will:
 
 ```bash
 # Go to project root
-fab production deploy
+djdeploy {TARGET} deploy
 ```
