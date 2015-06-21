@@ -235,7 +235,6 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'django_extensions',
     'compressor',
-    # TODO Not working with Django 1.8
     'django_nose',
     'annoying',
     'django_custom_500'
@@ -455,9 +454,8 @@ COMPRESS_OFFLINE = True
 # ########## END DJANGO COMPRESSOR CONFIGURATION
 
 # ########## DJANGO-NOSE CONFIGURATION
-# TODO Not working with Django 1.8
-# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 NOSE_ARGS = [
     '--nocapture',
