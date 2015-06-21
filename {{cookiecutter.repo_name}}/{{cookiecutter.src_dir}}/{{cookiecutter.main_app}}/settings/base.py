@@ -40,7 +40,7 @@ DEBUG = env('DEBUG')  # False if not in os.environ
 
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
-PREPEND_WWW = env('PREPEND_WWW', default=False)
+PREPEND_WWW = env.bool('PREPEND_WWW', default=False)
 # ######### END DEBUG CONFIGURATION
 
 # ######### MANAGER CONFIGURATION
@@ -240,7 +240,7 @@ THIRD_PARTY_APPS = (
     'django_custom_500'
 )
 
-if env('SENTRY_DSN', default=False):
+if env.bool('SENTRY_DSN', default=False):
     import raven
 
     THIRD_PARTY_APPS += (
