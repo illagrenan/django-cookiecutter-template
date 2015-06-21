@@ -27,11 +27,8 @@ pip install setuptools ipython wheel --upgrade
 
 2) Install all requirements:
 ```bash
-pip install setuptools ipython wheel --upgrade
-# Windows specific: easy_install will download *.exe for MySQL
-easy_install -U mysql-python
 npm install -g bower
-pip install -r requirements/local.txt --upgrade
+pip install -r requirements/local.txt --upgrade --use-wheel
 bower install
 ```
 
