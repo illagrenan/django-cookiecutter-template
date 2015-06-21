@@ -40,6 +40,10 @@ DEBUG = env('DEBUG')  # False if not in os.environ
 
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = DEBUG
+
+TEMPLATE_STRING_IF_INVALID = env('TEMPLATE_STRING_IF_INVALID', default="")
+
 PREPEND_WWW = env.bool('PREPEND_WWW', default=False)
 # ######### END DEBUG CONFIGURATION
 
@@ -254,7 +258,7 @@ if env.bool('SENTRY_DSN', default=False):
     }
     ########## END RAVEN CONFIGURATION
 
-if env('DEBUG_TOOLBAR', default=False):
+if env.bool('DEBUG_TOOLBAR', default=False):
     THIRD_PARTY_APPS += (
         'debug_toolbar',
     )
@@ -455,7 +459,6 @@ COMPRESS_OFFLINE = True
 
 # ########## DJANGO-NOSE CONFIGURATION
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-# TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 NOSE_ARGS = [
     '--nocapture',
