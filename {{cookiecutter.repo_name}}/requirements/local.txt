@@ -4,5 +4,7 @@
 
 -r base.txt
 
+Fabric
 django-debug-toolbar
+paramiko==1.15.1
 django_fab_deployer
