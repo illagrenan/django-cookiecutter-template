@@ -254,6 +254,12 @@ npm -g install bower
 
 ## 9) Useful software (optional) ##
 
+**Gettext**
+
+```bash
+apt-get install -y gettext
+```
+
 **Glances**
 
 > Glances an Eye on your system, see: [https://nicolargo.github.io/glances/](https://nicolargo.github.io/glances/)
