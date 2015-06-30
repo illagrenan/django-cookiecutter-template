@@ -7,4 +7,4 @@
 Fabric
 django-debug-toolbar
 paramiko==1.15.1
-django_fab_deployer
+django_fab_deployer>=0.0.7
