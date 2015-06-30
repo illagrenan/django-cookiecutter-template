@@ -17,6 +17,7 @@ Django>=1.8.2,<1.9.0
 # See: http://ipython.org/
 # ========================================================
 ipython>=3
+pyreadline
 
 # ========================================================
 # PyReadline: a ctypes-based readline for Windows
