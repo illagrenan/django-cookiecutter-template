@@ -16,7 +16,7 @@ cat ~/.ssh/id_rsa.pub
 # #######################################
 # Connect to *REMOTE* server
 # #######################################
-mkdir -p {{ cookiecutter.deploy_path }}
+mkdir -p {{ cookiecutter.deploy_path }}/{{ cookiecutter.repo_name }}
 cd {{ cookiecutter.deploy_path }}
 git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git {{ cookiecutter.repo_name }}
 cd {{ cookiecutter.repo_name }}
