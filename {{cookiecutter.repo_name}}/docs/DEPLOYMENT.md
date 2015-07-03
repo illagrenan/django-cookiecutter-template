@@ -60,8 +60,6 @@ ALLOWED_HOSTS=www.{{ cookiecutter.domain_name }},{{ cookiecutter.domain_name }},
 sudo groupadd --system {{ cookiecutter.group }}
 sudo useradd --system --gid {{ cookiecutter.group }} --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
 sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-sudo chmod g+w -R {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/log/
-sudo chmod u+x {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/bin/gunicorn_start.sh
 ```
 
 
