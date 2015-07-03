@@ -114,3 +114,4 @@ crashlytics-build.properties
 {{ cookiecutter.this_variable_does_not_exist_but_will_be_replaced }}{{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
 /.env
 /deploy.json
+/.ssh
