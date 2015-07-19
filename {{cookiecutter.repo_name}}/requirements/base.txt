@@ -68,12 +68,6 @@ django-annoying
 -e git+git://github.com/illagrenan/django-custom-500.git#egg=django-custom-500
 
 # ========================================================
-# Fabric deployment endpoint
-# See: https://github.com/illagrenan/django-custom-500
-# ========================================================
--e git+git://github.com/illagrenan/fab-django-deploy.git#egg=fab-django-deploy
-
-# ========================================================
 # Python package for providing Mozilla's CA Bundle.
 # See: https://pypi.python.org/pypi/certifi, http://docs.python-requests.org/en/latest/
 # ========================================================
