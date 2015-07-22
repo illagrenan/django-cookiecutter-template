@@ -23,7 +23,7 @@ DJANGO_ROOT = BASE_DIR = dirname(dirname(abspath(__file__)))  # .../src/main/
 SITE_ROOT = dirname(DJANGO_ROOT)  # .../src/{manage.py}
 
 # Site name:
-SITE_NAME = "{{ cookiecutter.name }}"
+SITE_NAME = "{{ cookiecutter.project_name }}"
 
 # Add our project to our pythonpath, this way we don't need to type our project
 # name in our dotted import paths:
