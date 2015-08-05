@@ -4,6 +4,8 @@
 # | Update nginx virtualhost |
 # +--------------------------+
 
+set -e
+
 echo "Preparing project {{ cookiecutter.project_name }}."
 
 if [ "$UID" -ne 0 ]
@@ -11,7 +13,7 @@ if [ "$UID" -ne 0 ]
   exit
 fi
 
-cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/nginx.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
+cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/site.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
 sudo ln -sf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf /etc/nginx/sites-enabled/{{ cookiecutter.repo_name }}.conf
 
 sudo service nginx configtest

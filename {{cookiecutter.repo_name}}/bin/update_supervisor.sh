@@ -4,6 +4,8 @@
 # | Update Supervisor configuration |
 # +---------------------------------+
 
+set -e
+
 echo "Updating supervisor for project {{ cookiecutter.project_name }}."
 
 if [ "$UID" -ne 0 ]
