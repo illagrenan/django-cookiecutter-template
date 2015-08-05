@@ -7,7 +7,7 @@ You can update your project from localhost or on remote server.
 ```bash
 # Install updates:
 cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-source update.sh
+bash update.sh
 ```
 
 This will:

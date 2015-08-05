@@ -1,10 +1,10 @@
 #!/bin/bash
 
+set -e
+
 # +--------------------------+
 # | Update nginx virtualhost |
 # +--------------------------+
-
-set -e
 
 echo "Preparing project {{ cookiecutter.project_name }}."
 
@@ -16,7 +16,7 @@ fi
 cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/conf/site.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
 sudo ln -sf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf /etc/nginx/sites-enabled/{{ cookiecutter.repo_name }}.conf
 
-sudo service nginx configtest
+nginx -t -v
 sudo service nginx restart
 
 echo "Done."

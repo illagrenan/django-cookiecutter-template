@@ -1,10 +1,10 @@
 #!/bin/bash
 
+set -e
+
 # +---------------------------------+
 # | Update Supervisor configuration |
 # +---------------------------------+
-
-set -e
 
 echo "Updating supervisor for project {{ cookiecutter.project_name }}."
 

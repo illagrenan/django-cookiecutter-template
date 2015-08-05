@@ -92,7 +92,7 @@ sudo supervisorctl status | grep "{{ cookiecutter.repo_name }}"
 **OR** use sh script:
 
 ```bash
-sudo source bin/update_supervisor.sh
+sudo bash bin/update_supervisor.sh
 ```
 
 OK if:
@@ -120,7 +120,7 @@ sudo service nginx restart
 **OR** use sh script:
 
 ```bash
-sudo source bin/update_nginx.sh
+sudo bash bin/update_nginx.sh
 ```
 
 * [How to uninstall project?](UNINSTALL.md)
