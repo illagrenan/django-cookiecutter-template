@@ -478,7 +478,7 @@ try:
 except ImportError:
     pass
 
-if 'test' in sys.argv:
+if 'test' in sys.argv or 'jenkins' in sys.argv:
     try:
         from test import *
     except ImportError:
