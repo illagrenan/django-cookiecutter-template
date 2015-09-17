@@ -7,7 +7,7 @@ echo "Updating project {{ cookiecutter.repo_name }}."
 source data/.venv/bin/activate
 
 git reset --hard
-git pull --no-edit origin master
+git pull --no-edit origin
 
 bower install
 pip install --no-input --exists-action=i -r requirements/production.txt --use-wheel
