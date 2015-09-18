@@ -244,7 +244,7 @@ THIRD_PARTY_APPS = (
     'django_custom_500'
 )
 
-if env.str('SENTRY_DSN', default=False):
+if env.bool('SENTRY_DSN', default=False):
     import raven
 
     THIRD_PARTY_APPS += (
@@ -254,7 +254,7 @@ if env.str('SENTRY_DSN', default=False):
     ########## RAVEN CONFIGURATION
     # See: https://raven.readthedocs.org/en/latest/integrations/django.html
     RAVEN_CONFIG = {
-        'dsn': env('SENTRY_DSN')
+        'dsn': env.str('SENTRY_DSN')
     }
     ########## END RAVEN CONFIGURATION
 
