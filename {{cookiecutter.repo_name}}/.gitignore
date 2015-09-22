@@ -115,3 +115,4 @@ crashlytics-build.properties
 /.env
 deploy.json
 /.ssh
+/src/reports/*
