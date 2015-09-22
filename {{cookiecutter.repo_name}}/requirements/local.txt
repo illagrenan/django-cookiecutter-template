@@ -7,9 +7,4 @@
 Fabric
 django-debug-toolbar
 paramiko==1.15.1
-
-# ========================================================
-# Fabric deployment endpoint
-# See: https://github.com/illagrenan/django-fab-deployer
-# ========================================================
-django_fab_deployer>=0.0.7
+-e git+git://github.com/illagrenan/django-fab-deployer.git#egg=django_fab_deployer

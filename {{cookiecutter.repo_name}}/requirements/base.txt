@@ -2,7 +2,7 @@
 # PIP requirements for [{{cookiecutter.repo_name}}]
 # ==========================================================================================================
 
-Django>=1.8.2,<1.9.0
+Django>=1.8.4,<1.9.0
 
 # ========================================================
 # # TODO Choose your database
@@ -16,8 +16,7 @@ Django>=1.8.2,<1.9.0
 # Powerful interactive shells
 # See: http://ipython.org/
 # ========================================================
-ipython>=3
-pyreadline
+ipython>=4.0.0
 
 # ========================================================
 # PyReadline: a ctypes-based readline for Windows
@@ -29,7 +28,7 @@ pyreadline>=2
 # Raven is a standalone (and the official) Python client for Sentry.
 # See: https://raven.readthedocs.org/en/latest/index.html
 # ========================================================
-raven
+raven>=5.4.4,<5.5.0
 
 # ========================================================
 # Django Extensions is a collection of custom extensions for the Django Framework.
