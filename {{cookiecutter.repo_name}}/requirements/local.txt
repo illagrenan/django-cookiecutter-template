@@ -8,3 +8,4 @@ Fabric
 django-debug-toolbar
 paramiko==1.15.1
 -e git+git://github.com/illagrenan/django-fab-deployer.git#egg=django_fab_deployer
+-e git+git://github.com/illagrenan/color_printer.git#egg=color_printer
