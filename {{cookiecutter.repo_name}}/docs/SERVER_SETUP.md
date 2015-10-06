@@ -406,6 +406,8 @@ And create new ssh-keypair:
 
 ```bash
 ssh-keygen -t rsa -C "your_email@example.com"
+# Or simply: 
+ssh-keygen -t rsa
 touch ~/.ssh/authorized_keys
 
 # Copy your public key
@@ -417,13 +419,22 @@ Create new group:
 ```bash
 sudo groupadd --system webapps
 # Add newly created user:
-usermod -a -G webapps <username>
+usermod -a -G {{ cookiecutter.group }} <username>
+usermod -a -G supervisor <username>
 ```
 
 If you're logged-in as non-sudo user, reload profile:
 
 ```bash
 . ~/.profile
+```
+
+Fix `~/.ssh` permissions:
+
+```bash
+chmod go-w ~/
+chmod 700 ~/.ssh
+chmod 600 -R  ~/.ssh/*
 ```
 
 ## 14) Celery ##
@@ -436,6 +447,14 @@ wget -O - https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | apt-key add
 apt-get update
 sudo apt-get install rabbitmq-server
 ```
+
+## 15) Install global npm packages ##
+
+
+```bash
+npm install -g gulp coffee-script less jshint imagemin-pngquant node-gyp
+```
+
 
 ----------
 

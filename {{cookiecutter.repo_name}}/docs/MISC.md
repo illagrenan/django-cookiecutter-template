@@ -4,7 +4,7 @@
 
 ```bash
 $ sudo apt-get install -y apache2-utils
-$ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/.htpasswd admin
+$ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}{{ cookiecutter.app_subdirectory_in_deploy_path }}/.htpasswd admin
 ```
 
 ## Fix permissions
@@ -12,8 +12,8 @@ $ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/.h
 ```bash
 cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-find . -not -path '*/\.*' -type d -exec chmod 775 {} +
-find . -not -path '*/\.*' -type f -exec chmod 664 {} +
+find . -not -path '*/\.*' -type d -exec chmod 775 {} + # Better: 755
+find . -not -path '*/\.*' -type f -exec chmod 664 {} + # Better: 644
 chmod g+w log/*log
 ```
 
@@ -26,7 +26,7 @@ touch /tmp/ngx_pagespeed_cache/{{ cookiecutter.repo_name }}/cache.flush
 ## Generate CSR request
 
 ```bash
-cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/data/certs
+cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}{{ cookiecutter.app_subdirectory_in_deploy_path }}/data/certs
 openssl req -new -newkey rsa:4096 -days 365 -nodes -keyout {{ cookiecutter.repo_name }}.key -out {{ cookiecutter.repo_name }}.csr
 ```
 

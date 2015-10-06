@@ -1,0 +1,33 @@
+{
+  "name": "{{ cookiecutter.repo_name }}",
+  "private": true,
+  "version": "1.0.0",
+  "description": "N/A",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "python src/manage.py test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "beepbeep": "*",
+    "coffeelint-stylish": "*",
+    "del": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-coffee": "*",
+    "gulp-coffeelint": "*",
+    "gulp-if": "*",
+    "gulp-jshint": "*",
+    "gulp-less": "*",
+    "gulp-minify-css": "*",
+    "gulp-plumber": "*",
+    "gulp-postcss": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-uglifycss": "*",
+    "gulp-util": "*",
+    "jshint-stylish": "*",
+    "yargs": "*"
+  },
+  "author": "{{ cookiecutter.author_name }}"
+}

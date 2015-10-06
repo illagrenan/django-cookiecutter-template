@@ -1,14 +1,4 @@
 {
-  "dev": {
-    "celery_enabled": true,
-    "deploy_path": "{{ cookiecutter.deploy_path }}",
-    "hosts": "{{ cookiecutter.deploy_host_ip }}",
-    "key_filename": "{{ cookiecutter.private_key_path }}",
-    "project_name": "{{ cookiecutter.repo_name }}",
-    "user": "{{ cookiecutter.repo_name }}",
-    "venv_path": "data/.venv/bin/activate", 
-    "warn_on_deploy": false
-  },
   "production": {
     "celery_enabled": true,
     "deploy_path": "{{ cookiecutter.deploy_path }}",
@@ -16,17 +6,25 @@
     "key_filename": "{{ cookiecutter.private_key_path }}",
     "project_name": "{{ cookiecutter.repo_name }}",
     "user": "{{ cookiecutter.repo_name }}",
-    "venv_path": "data/.venv/bin/activate", 
-    "warn_on_deploy": true
+    "venv_path": "data/.venv/bin/activate",
+    "warn_on_deploy": true,
+    "urls_to_check": [
+      "http://www.{{ cookiecutter.domain_name }}/",
+      "http://www.{{ cookiecutter.domain_name }}/admin"
+    ]
   },
-  "jenkins": {
+  "dev": {
     "celery_enabled": true,
     "deploy_path": "{{ cookiecutter.deploy_path }}",
     "hosts": "{{ cookiecutter.deploy_host_ip }}",
     "key_filename": "{{ cookiecutter.private_key_path }}",
     "project_name": "{{ cookiecutter.repo_name }}",
     "user": "{{ cookiecutter.repo_name }}",
-    "venv_path": "data/.venv/bin/activate", 
-    "warn_on_deploy": true
+    "venv_path": "data/.venv/bin/activate",
+    "warn_on_deploy": false,
+    "urls_to_check": [
+      "http://dev.{{ cookiecutter.domain_name }}/",
+      "http://dev.{{ cookiecutter.domain_name }}/admin"
+    ]
   }
 }
