@@ -154,43 +154,48 @@ FIXTURE_DIRS = ()
 
 
 ########## TEMPLATE CONFIGURATION
-# See:  https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-context-processors
-DEFAULT_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.request',
-)
+# See: https://docs.djangoproject.com/en/1.8/ref/settings/#std:setting-TEMPLATES
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            normpath(os.path.join(SITE_ROOT, 'templates'))
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug': DEBUG,
+            'context_processors': [
+                # Custom context processors:
+                'utils.context_processors.is_debug',
+                'web.context_processors.music_autoplay',
 
-THIRD_PARTY_CONTEXT_PROCESSORS = (
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request',
+            ],
+            # 'loaders': [
+            #     _TEMPLATE_LOADERS
+            # ]
+        },
+    },
+]
 
-)
-
-LOCAL_CONTEXT_PROCESSORS = (
-
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_CONTEXT_PROCESSORS + THIRD_PARTY_CONTEXT_PROCESSORS + LOCAL_CONTEXT_PROCESSORS
-
-AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth`
-    "django.contrib.auth.backends.ModelBackend",
-)
-
-# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-loaders
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-
-# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-dirs
-TEMPLATE_DIRS = (
-    normpath(os.path.join(SITE_ROOT, 'templates')),
-)
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+if not DEBUG:
+    TEMPLATES[0]['APP_DIRS'] = False
+    TEMPLATES[0]['OPTIONS']['loaders'] = [
+        ('django.template.loaders.cached.Loader', (
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        )),
+    ]
 ########## END TEMPLATE CONFIGURATION
 
 
@@ -269,6 +274,13 @@ LOCAL_APPS = (
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
+
+########## AUTHENTICATION CONFIGURATION
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+)
+########## END AUTHENTICATION CONFIGURATION
 
 ########## CACHES CONFIGURATION
 # See: https://docs.djangoproject.com/en/1.8/ref/settings/#caches
