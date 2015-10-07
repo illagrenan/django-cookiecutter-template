@@ -19,10 +19,10 @@ cookiecutter https://github.com/illagrenan/django-cookiecutter-template.git
 1) Setup virtualenv:
 ```bash
 cd ...
-mkvirtualenv project_name
-# Windows specific: it's not possible to upgrade pip with pip on Windows;
-easy_install -U pip
-pip install setuptools ipython wheel --upgrade
+virtualenv data/.venv
+.\activate.ps1
+python -m pip install -U pip
+pip install setuptools ipython pyreadline wheel --upgrade
 ```
 
 2) Install all requirements:
