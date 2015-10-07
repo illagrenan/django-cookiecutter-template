@@ -1,7 +1,7 @@
 {
   "production": {
     "celery_enabled": true,
-    "deploy_path": "{{ cookiecutter.deploy_path }}",
+    "deploy_path": "{{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}{{ cookiecutter.app_subdirectory_in_deploy_path }}",
     "hosts": "{{ cookiecutter.deploy_host_ip }}",
     "key_filename": "{{ cookiecutter.private_key_path }}",
     "project_name": "{{ cookiecutter.repo_name }}",
@@ -11,20 +11,22 @@
     "urls_to_check": [
       "http://www.{{ cookiecutter.domain_name }}/",
       "http://www.{{ cookiecutter.domain_name }}/admin"
-    ]
+    ],
+    "graceful_restart": true
   },
   "dev": {
     "celery_enabled": true,
-    "deploy_path": "{{ cookiecutter.deploy_path }}",
+    "deploy_path": "{{ cookiecutter.deploy_path }}dev_{{ cookiecutter.repo_name }}{{ cookiecutter.app_subdirectory_in_deploy_path }}",
     "hosts": "{{ cookiecutter.deploy_host_ip }}",
-    "key_filename": "{{ cookiecutter.private_key_path }}",
-    "project_name": "{{ cookiecutter.repo_name }}",
-    "user": "{{ cookiecutter.repo_name }}",
+    "key_filename": "dev_{{ cookiecutter.private_key_path }}",
+    "project_name": "dev_{{ cookiecutter.repo_name }}",
+    "user": "dev_{{ cookiecutter.repo_name }}",
     "venv_path": "data/.venv/bin/activate",
     "warn_on_deploy": false,
     "urls_to_check": [
       "http://dev.{{ cookiecutter.domain_name }}/",
       "http://dev.{{ cookiecutter.domain_name }}/admin"
-    ]
+    ],
+    "graceful_restart": true
   }
 }
