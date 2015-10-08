@@ -166,9 +166,7 @@ TEMPLATES = [
             'debug': DEBUG,
             'context_processors': [
                 # Custom context processors:
-                'utils.context_processors.is_debug',
-                'web.context_processors.music_autoplay',
-
+                
                 # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
                 # list if you haven't customized them:
                 'django.contrib.auth.context_processors.auth',
