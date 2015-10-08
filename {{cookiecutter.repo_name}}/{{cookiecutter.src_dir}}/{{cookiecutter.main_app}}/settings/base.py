@@ -42,8 +42,6 @@ DEBUG = env('DEBUG')  # False if not in os.environ
 TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = DEBUG
 
-TEMPLATE_STRING_IF_INVALID = env('TEMPLATE_STRING_IF_INVALID', default="")
-
 PREPEND_WWW = env.bool('PREPEND_WWW', default=False)
 # ######### END DEBUG CONFIGURATION
 
@@ -164,6 +162,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'debug': DEBUG,
+            'template_string_if_invalid': env('TEMPLATE_STRING_IF_INVALID', default=""),
             'context_processors': [
                 # Custom context processors:
 
