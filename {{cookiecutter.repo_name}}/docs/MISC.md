@@ -4,7 +4,7 @@
 
 ```bash
 $ sudo apt-get install -y apache2-utils
-$ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}{{ cookiecutter.app_subdirectory_in_deploy_path }}/.htpasswd admin
+$ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}.htpasswd admin
 ```
 
 ## Fix permissions
@@ -26,7 +26,7 @@ touch /tmp/ngx_pagespeed_cache/{{ cookiecutter.repo_name }}/cache.flush
 ## Generate CSR request
 
 ```bash
-cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}{{ cookiecutter.app_subdirectory_in_deploy_path }}/data/certs
+cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}data/certs
 openssl req -new -newkey rsa:4096 -days 365 -nodes -keyout {{ cookiecutter.repo_name }}.key -out {{ cookiecutter.repo_name }}.csr
 ```
 

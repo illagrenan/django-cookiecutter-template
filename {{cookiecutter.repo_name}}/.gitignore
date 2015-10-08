@@ -116,3 +116,4 @@ crashlytics-build.properties
 deploy.json
 /.ssh
 /src/reports/*
+/node_modules
