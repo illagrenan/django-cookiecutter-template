@@ -162,7 +162,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'debug': DEBUG,
-            'template_string_if_invalid': env('TEMPLATE_STRING_IF_INVALID', default=""),
+            'string_if_invalid': env('TEMPLATE_STRING_IF_INVALID', default=""),
             'context_processors': [
                 # Custom context processors:
 
