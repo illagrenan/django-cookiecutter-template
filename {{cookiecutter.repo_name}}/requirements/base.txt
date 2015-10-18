@@ -77,3 +77,15 @@ certifi
 # See: https://github.com/joke2k/django-environ
 # ========================================================
 django-environ
+
+# ========================================================
+# Django model mixins and utilities.
+# See: https://django-model-utils.readthedocs.org/en/latest/
+# ========================================================
+django-model-utils
+
+# ========================================================
+# Modern theme for Django admin interface.
+# See: https://github.com/darklow/django-suit
+# ========================================================
+django-suit<0.3.0

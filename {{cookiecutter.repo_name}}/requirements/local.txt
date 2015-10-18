@@ -4,6 +4,7 @@
 
 -r base.txt
 
+ptpython
 Fabric
 django-debug-toolbar
 paramiko==1.15.3

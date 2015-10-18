@@ -118,7 +118,9 @@ STATIC_URL = '/static/'
 
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, '../data/build'),
     os.path.join(SITE_ROOT, 'static'),
+    os.path.join(SITE_ROOT, 'static_misc'),
 )
 
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/contrib/staticfiles/#staticfiles-finders
@@ -234,6 +236,7 @@ DJANGO_APPS = (
     'django.contrib.humanize',
 
     # Admin panel and documentation:
+    'suit',
     'django.contrib.admin',
     # 'django.contrib.admindocs',
 )
