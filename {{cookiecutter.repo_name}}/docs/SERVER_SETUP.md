@@ -452,7 +452,7 @@ sudo apt-get install rabbitmq-server
 
 
 ```bash
-npm install -g gulp coffee-script less jshint imagemin-pngquant node-gyp
+npm install -g gulp less jshint imagemin-pngquant node-gyp
 ```
 
 
