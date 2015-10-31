@@ -96,7 +96,7 @@ django-suit<0.3.0
 # See: https://github.com/mher/flower
 # ========================================================
 # TODO Uncomment if you need Celery
-flower
+# flower
 
 # ==========================================================================================================
 # Requirements for {{cookiecutter.repo_name}}
