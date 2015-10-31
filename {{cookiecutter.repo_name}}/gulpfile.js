@@ -23,7 +23,7 @@ gulp.task('runserver', function () {
     var isWindows = /^win/.test(process.platform);
     var cmdToRun = 'data/.venv/bin/activate';
 
-    if (isWindows) { //for Windows
+    if (isWindows) { // for Windows
         cmdToRun = 'data\\.venv\\Scripts\\activate';
     }
 
@@ -76,23 +76,6 @@ gulp.task('less', function () {
         .pipe(gulp.dest('data/build/css'));
 });
 
-gulp.task('coffee', function () {
-    gulp.src('{{ cookiecutter.src_dir }}/static/coffee/**/**.coffee')
-        .pipe(plugins.plumber())
-        .pipe(plugins.if(!production, plugins.sourcemaps.init()))
-        .pipe(plugins.coffeelint())
-        .pipe(plugins.coffeelint.reporter('coffeelint-stylish'))
-        .pipe(plugins.coffee({bare: true}))
-        .pipe(plugins.ngAnnotate())
-        .pipe(plugins.if(production, plugins.uglify()))
-        .pipe(plugins.if(!production, plugins.sourcemaps.write('.', {
-            'includeContent': true,
-            'sourceRoot': '.'
-        })))
-        .pipe(plugins.plumber.stop())
-        .pipe(gulp.dest('data/build/js'));
-});
-
 gulp.task('js', function () {
     gulp.src('{{ cookiecutter.src_dir }}/static/js/**/**.js')
         .pipe(plugins.plumber())
@@ -139,11 +122,11 @@ gulp.task('clean', function () {
 });
 
 gulp.task('build', function () {
-    gulp.start(['less', 'coffee', 'js', 'images']);
+    gulp.start(['less', 'js', 'images']);
 });
 
 gulp.task('default', function () {
-    var prompt = ['less', 'coffee', 'js', 'images', 'browser-sync'];
+    var prompt = ['less', 'js', 'images', 'browser-sync'];
 
     if (runserver_arg) {
         prompt.push('runserver');
@@ -152,7 +135,6 @@ gulp.task('default', function () {
     gulp.start(prompt);
 
     gulp.watch('{{ cookiecutter.src_dir }}/static/less/**/*.less', ['less', 'browser-reload']);
-    gulp.watch('{{ cookiecutter.src_dir }}/static/coffee/**/*.coffee', ['coffee', 'browser-reload']);
     gulp.watch('{{ cookiecutter.src_dir }}/static/js/**/*.js', ['js', 'browser-reload']);
     gulp.watch('{{ cookiecutter.src_dir }}/static/images/**', ['images', 'browser-reload']);
 
