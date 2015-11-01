@@ -246,7 +246,8 @@ THIRD_PARTY_APPS = (
     'compressor',
     'django_nose',
     'annoying',
-    'django_custom_500'
+    'django_custom_500',
+    'dbdump'
 )
 
 if env.str('SENTRY_DSN', default=False):

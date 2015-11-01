@@ -117,3 +117,5 @@ crashlytics-build.properties
 /{{ cookiecutter.src_dir }}/reports/*
 /node_modules
 /{{ cookiecutter.src_dir }}/celerybeat-schedule
+/{{ cookiecutter.src_dir }}/backups
+/data/backups
