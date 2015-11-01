@@ -1,4 +1,6 @@
-#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# ! python2
+
 import os
 import sys
 

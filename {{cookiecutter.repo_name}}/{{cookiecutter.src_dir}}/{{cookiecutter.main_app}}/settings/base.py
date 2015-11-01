@@ -39,7 +39,6 @@ env.read_env(os.path.join(SITE_ROOT, "..", ".env"))
 DEBUG = env('DEBUG')  # False if not in os.environ
 
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-debug
-TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = DEBUG
 
 PREPEND_WWW = env.bool('PREPEND_WWW', default=False)
@@ -179,9 +178,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.request',
             ],
-            # 'loaders': [
-            #     _TEMPLATE_LOADERS
-            # ]
         },
     },
 ]
