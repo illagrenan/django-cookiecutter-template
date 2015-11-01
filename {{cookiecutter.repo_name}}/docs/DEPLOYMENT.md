@@ -114,7 +114,7 @@ sudo supervisorctl restart {{ cookiecutter.repo_name }}:*
 ## 6) Nginx
 
 ```bash
-cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}conf/nginx.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
+cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}conf/site.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
 sudo ln -sf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf /etc/nginx/sites-enabled/{{ cookiecutter.repo_name }}.conf
 sudo service nginx configtest
 nginx -t
