@@ -119,3 +119,5 @@ crashlytics-build.properties
 /{{ cookiecutter.src_dir }}/celerybeat-schedule
 /{{ cookiecutter.src_dir }}/backups
 /data/backups
+/.pgpass
+/.my.cnf
