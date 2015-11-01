@@ -16,6 +16,7 @@
   },
   "dev": {
     "celery_enabled": false,
+    "source_branch": "dev",
     "deploy_path": "{{ cookiecutter.deploy_path }}dev_{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}",
     "hosts": "{{ cookiecutter.deploy_host_ip }}",
     "key_filename": "{{ cookiecutter.private_key_path }}",
