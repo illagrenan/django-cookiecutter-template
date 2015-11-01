@@ -23,9 +23,3 @@ gunicorn>=19.3.0,<20
 # See: https://pypi.python.org/pypi/python-memcached
 # ========================================================
 python-memcached
-
-# ========================================================
-# Raven is a standalone (and the official) Python client for Sentry.
-# See: https://raven.readthedocs.org/en/latest/index.html
-# ========================================================
-raven>=5.8.1,<6.0.0

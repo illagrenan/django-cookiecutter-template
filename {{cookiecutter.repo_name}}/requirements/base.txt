@@ -23,6 +23,12 @@ pyreadline>=2
 django-extensions
 
 # ========================================================
+# Raven is a standalone (and the official) Python client for Sentry.
+# See: https://raven.readthedocs.org/en/latest/index.html
+# ========================================================
+raven>=5.8.1,<6.0.0
+
+# ========================================================
 # Compresses linked and inline JavaScript or CSS into a single cached file.
 # See: http://django-compressor.readthedocs.org/en/latest/
 # ========================================================
