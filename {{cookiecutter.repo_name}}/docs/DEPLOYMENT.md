@@ -19,7 +19,7 @@ cat ~/.ssh/id_rsa.pub
 mkdir -p {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git {{ cookiecutter.app_subdirectory_in_deploy_path }}
-cd {{ cookiecutter.repo_name }}
+cd {{ cookiecutter.app_subdirectory_in_deploy_path }}
 
 virtualenv data/.venv; source activate.sh
 pip install --upgrade pip ipython setuptools wheel
