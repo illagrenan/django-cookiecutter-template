@@ -1,5 +1,7 @@
 'use strict';
 
+require('es6-promise').polyfill();
+
 var gulp = require('gulp');
 
 var gulpLoadPlugins = require('gulp-load-plugins');

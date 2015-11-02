@@ -9,6 +9,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "es6-promise": "^3.0.2",
     "browser-sync": "^2.9.10",
     "gulp-eslint": "^1.0.0",
     "gulp-exec": "^2.1.2",
