@@ -5,6 +5,16 @@
 Django>=1.8.5,<1.9.0
 
 # ========================================================
+# # TODO Choose your database tools
+# See: https://github.com/dbcli/mycli or https://github.com/dbcli/pgcli
+# ========================================================
+# mycli
+# django-mycli
+# ~ OR ~
+# pgcli
+# django-pgcli
+
+# ========================================================
 # Powerful interactive shells
 # See: http://ipython.org/
 # ========================================================
