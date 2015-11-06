@@ -2,7 +2,7 @@
 # Common PIP requirements
 # ==========================================================================================================
 
-Django==1.8.5
+Django>=1.8.6,<1.9.0
 
 # ========================================================
 # # TODO Choose your database tools
@@ -30,7 +30,7 @@ pyreadline>=2
 # Django Extensions is a collection of custom extensions for the Django Framework.
 # See: http://django-extensions.readthedocs.org/en/latest/
 # ========================================================
-django-extensions
+django-extensions>=1.5.9,<2.0.0
 
 # ========================================================
 # Raven is a standalone (and the official) Python client for Sentry.
