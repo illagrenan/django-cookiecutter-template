@@ -9,7 +9,7 @@ Django>=1.8.6,<1.9.0
 # See: https://github.com/dbcli/mycli or https://github.com/dbcli/pgcli
 # ========================================================
 # mycli
-# django-mycli
+# django-myclic
 # ~ OR ~
 # pgcli
 # django-pgcli
@@ -104,6 +104,7 @@ django-dbdump
 # ========================================================
 # TODO Uncomment if you need Celery
 # celery
+# librabbitmq
 
 # ========================================================
 # Real-time monitor and web admin for Celery distributed task queue
