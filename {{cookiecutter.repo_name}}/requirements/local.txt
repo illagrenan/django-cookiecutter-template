@@ -15,6 +15,7 @@ ipdb
 # See: http://www.fabfile.org/
 # ========================================================
 Fabric
+paramiko<1.16.0
 
 # ========================================================
 # A configurable set of panels that display various debug information about the current request/response.
