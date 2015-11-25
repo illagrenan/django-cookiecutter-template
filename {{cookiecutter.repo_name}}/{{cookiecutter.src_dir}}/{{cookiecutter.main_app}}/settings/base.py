@@ -268,6 +268,7 @@ if env.bool('DEBUG_TOOLBAR', default=False):
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    '{{ cookiecutter.main_app }}',
     'web',
 )
 
