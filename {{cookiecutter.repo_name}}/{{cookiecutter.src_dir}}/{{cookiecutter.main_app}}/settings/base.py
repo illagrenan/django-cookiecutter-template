@@ -139,7 +139,7 @@ SECRET_KEY = env('SECRET_KEY')  # Raises ImproperlyConfigured exception if SECRE
 ########## END SECRET CONFIGURATION
 
 
-########## SITE CONFIGURATION
+########## PASSWORD VALIDATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -155,7 +155,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-########## SITE CONFIGURATION
+########## END PASSWORD VALIDATION
 
 
 ########## SITE CONFIGURATION
