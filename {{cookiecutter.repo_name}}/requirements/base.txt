@@ -9,7 +9,7 @@ Django>=1.9.0,<2.0.0
 # See: https://github.com/dbcli/mycli or https://github.com/dbcli/pgcli
 # ========================================================
 # mycli
-# django-mycli
+# django-myclic
 # ~ OR ~
 # pgcli
 # django-pgcli
@@ -30,7 +30,7 @@ pyreadline>=2
 # Django Extensions is a collection of custom extensions for the Django Framework.
 # See: http://django-extensions.readthedocs.org/en/latest/
 # ========================================================
-django-extensions
+django-extensions>=1.5.9,<2.0.0
 
 # ========================================================
 # Raven is a standalone (and the official) Python client for Sentry.
@@ -104,6 +104,7 @@ django-dbdump
 # ========================================================
 # TODO Uncomment if you need Celery
 # celery
+# librabbitmq
 
 # ========================================================
 # Real-time monitor and web admin for Celery distributed task queue
