@@ -140,6 +140,25 @@ SECRET_KEY = env('SECRET_KEY')  # Raises ImproperlyConfigured exception if SECRE
 
 
 ########## SITE CONFIGURATION
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#auth-password-validators
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+########## SITE CONFIGURATION
+
+
+########## SITE CONFIGURATION
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
@@ -268,6 +287,7 @@ if env.bool('DEBUG_TOOLBAR', default=False):
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    '{{ cookiecutter.main_app }}',
     'web',
 )
 
