@@ -244,6 +244,16 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 # ########################################  
 ```
 
+Update node and npm:
+
+```
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+sudo ln -sf /usr/local/n/versions/node/<VERSION>/bin/node /usr/bin/node 
+```
+
 And now install Bower globally:
 
 ```bash
