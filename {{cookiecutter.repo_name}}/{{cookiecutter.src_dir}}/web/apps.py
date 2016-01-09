@@ -6,9 +6,7 @@ Django application configuration introduced in `1.7`.
 For more info see: https://docs.djangoproject.com/en/1.7/ref/applications/#application-configuration.
 """
 
-from __future__ import unicode_literals
-from __future__ import print_function
-from __future__ import absolute_import
+from __future__ import (absolute_import, division, print_function, unicode_literals)
 
 from django.apps import AppConfig
 
