@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 # ! python2
 
-from __future__ import (absolute_import, division, print_function, unicode_literals)
+from __future__ import (division, print_function, unicode_literals)
 
 import os
 import sys
@@ -138,25 +138,6 @@ SECRET_KEY = env('SECRET_KEY')  # Raises ImproperlyConfigured exception if SECRE
 ########## END SECRET CONFIGURATION
 
 
-########## PASSWORD VALIDATION
-# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#auth-password-validators
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
-########## END PASSWORD VALIDATION
-
-
 ########## SITE CONFIGURATION
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -256,6 +237,9 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django_extensions',
     'compressor',
     'django_nose',
@@ -298,8 +282,42 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
+    
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 ########## END AUTHENTICATION CONFIGURATION
+
+########## PASSWORD HASHERS
+# See: https://docs.djangoproject.com/es/{{ cookiecutter.django_version }}/ref/settings/#std:setting-PASSWORD_HASHERS
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+]
+########## END PASSWORD HASHERS
+
+########## PASSWORD VALIDATION
+# See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#auth-password-validators
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+########## END PASSWORD VALIDATION
 
 ########## CACHES CONFIGURATION
 # See: https://docs.djangoproject.com/en/1.8/ref/settings/#caches
@@ -442,7 +460,6 @@ EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
 # |-----------------------------------|
 # +-----------------------------------+
 
-
 # ######### django-custom-500
 CUSTOM_500_TEMPLATE = "500.html"
 # ######### END django-custom-500
@@ -452,7 +469,6 @@ MARKUPMIRROR_DEFAULT_MARKUP_TYPE = 'markdown'
 # https://pythonhosted.org/Markdown/extensions/#officially-supported-extensions
 MARKUPMIRROR_MARKDOWN_EXTENSIONS = ['tables', 'smart_strong', 'smarty', 'attr_list', 'headerid(level=2)']
 # ######### END DJANGO-MARKUPMIRROR
-
 
 # ########## GRAPELLI CUSTOMIZATIONS
 # http://django-grappelli.readthedocs.org/en/latest/customization.html
@@ -483,6 +499,19 @@ NOSE_ARGS = [
     '--nologcapture'
 ]
 # ########## END DJANGO-NOSE CONFIGURATION
+
+# ######### ALL-AUTH
+# See: https://django-allauth.readthedocs.org/en/latest/advanced.html#custom-user-models
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = False
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+# ######### END ALL-AUTH
 
 # +------------------------------------+
 # | END THIRD PARTY APPS CONFIGURATION |

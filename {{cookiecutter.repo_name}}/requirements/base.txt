@@ -2,7 +2,7 @@
 # Common PIP requirements
 # ==========================================================================================================
 
-Django>=1.9.1,<1.10.0
+Django[bcrypt]>=1.9.1,<1.10.0
 
 # ========================================================
 # # TODO Choose your database tools
@@ -25,6 +25,12 @@ ipython>=4.0.0
 # See: http://ipython.org/pyreadline.html
 # ========================================================
 pyreadline>=2
+
+# ========================================================
+# Integrated set of Django applications addressing authentication
+# See: https://github.com/pennersr/django-allauth
+# ========================================================
+django-allauth>=0.24.1
 
 # ========================================================
 # Django Extensions is a collection of custom extensions for the Django Framework.
