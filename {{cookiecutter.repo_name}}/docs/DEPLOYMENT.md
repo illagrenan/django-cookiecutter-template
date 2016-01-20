@@ -56,6 +56,28 @@ sudo useradd --system --gid {{ cookiecutter.group }} --home {{ cookiecutter.depl
 sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 ```
 
+Copy bashrc profile:
+
+```bash
+cp /etc/skel/.bashrc ~/.bashrc
+touch ~/.profile
+```
+
+Content of `.profile`:
+
+```
+# ~/.profile: executed by Bourne-compatible login shells.
+
+if [ "$BASH" ]; then
+  if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+  fi
+fi
+
+mesg n
+```
+
+
 Add GIT server to `authorized_keys`:
 
 ```bash
