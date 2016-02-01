@@ -361,7 +361,7 @@ LOGGING = {
             'filename': os.path.os.path.join(DJANGO_ROOT, '../../log/django-dev-debug.log'),
             'level': 'DEBUG',
             'class': '{{ cookiecutter.main_app }}.settings.log.handlers.GroupWriteRotatingFileHandler',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'maxBytes': 1024 * 1024 * 10,  # 10 MB
             'backupCount': 5,
         },
         'null': {
@@ -374,7 +374,7 @@ LOGGING = {
             'filename': os.path.os.path.join(DJANGO_ROOT, '../../log/django-error.log'),
             'level': 'ERROR',
             'class': '{{ cookiecutter.main_app }}.settings.log.handlers.GroupWriteRotatingFileHandler',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'maxBytes': 1024 * 1024 * 10,  # 10 MB
             'backupCount': 5,
         },
         'sentry': {
@@ -418,19 +418,16 @@ LOGGING = {
 }
 ########## END LOGGING CONFIGURATION
 
-
 ########## WSGI CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'wsgi.application'
 ########## END WSGI CONFIGURATION
-
 
 # ########## SESSION CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#sessions
 CACHE_MIDDLEWARE_KEY_PREFIX = SITE_NAME
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 ########## END SESSION CONFIGURATION
-
 
 # ########## SECURITY CONFIGURATION
 # http://django-secure.readthedocs.org/en/v0.1.2/

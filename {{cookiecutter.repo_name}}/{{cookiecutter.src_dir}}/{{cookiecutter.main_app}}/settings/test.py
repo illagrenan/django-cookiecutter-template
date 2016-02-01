@@ -23,6 +23,8 @@ DATABASES = {
     }
 }
 
+SOUTH_TESTS_MIGRATE = False
+COMPRESS_OFFLINE = False
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 CACHES = {
