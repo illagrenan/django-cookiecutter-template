@@ -513,6 +513,11 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # ######### END ALL-AUTH
 
+# ######### DJANGO-CRISPY-FORMS
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_FAIL_SILENTLY = not DEBUG
+# ######### END DJANGO-CRISPY-FORMS
+
 # +------------------------------------+
 # | END THIRD PARTY APPS CONFIGURATION |
 # +------------------------------------+
