@@ -478,7 +478,9 @@ GRAPPELLI_ADMIN_TITLE = "{{ cookiecutter.project_name }}"
 # ########## DJANGO SUIT CONFIGURATION
 # https://django-suit.readthedocs.org/en/develop/configuration.html#header
 SUIT_CONFIG = {
-    'ADMIN_NAME': '{{ cookiecutter.project_name }}'
+    'ADMIN_NAME': '{{ cookiecutter.project_name }}',
+    # Set to empty string if you want to hide search from menu
+    'SEARCH_URL': '',
 }
 ########## END DJANGO SUIT CONFIGURATION
 
