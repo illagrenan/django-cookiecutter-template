@@ -6,10 +6,10 @@
 
 # ========================================================
 # # TODO Choose your production database
-# Note: this reuqirement cannot be in base.txt because Jenkins uses by defaul SQLite
+# Note: this cannot be in base.txt because Jenkins uses by default SQLite
 # See: https://pypi.python.org/pypi/mysqlclient or https://pypi.python.org/pypi/psycopg2
 # ========================================================
-# mysqlclient>=1.3.6,<2.0.0
+# mysqlclient>=1.3.7,<2.0.0
 # ~ OR ~
 # On Windows run:
 # easy_install http://www.stickpeople.com/projects/python/win-psycopg/2.6.1/psycopg2-2.6.1.win32-py2.7-pg9.4.4-release.exe
@@ -19,7 +19,7 @@
 # Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX.
 # See: http://gunicorn.org/
 # ========================================================
-gunicorn>=19.3.0,<20
+gunicorn>=19.4.5,<20.0.0
 
 # ========================================================
 # Pure python memcached client.
