@@ -10,9 +10,7 @@ from sys import path
 
 import environ
 
-
 env = environ.Env(DEBUG=(bool, False), )
-
 
 # ######### PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
@@ -31,7 +29,6 @@ path.append(DJANGO_ROOT)
 
 
 env.read_env(os.path.join(SITE_ROOT, "..", ".env"))
-
 
 # ######### DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#debug
@@ -87,7 +84,6 @@ ugettext = lambda s: s  # dummy ugettext function, as django's docs say
 LANGUAGES = (
     ('cs', ugettext('Czech')),
 )
-
 
 LOCALE_PATHS = (
     os.path.join(SITE_ROOT, '../data/locale'),  # Assuming SITE_ROOT is where your manage.py file is
@@ -195,19 +191,24 @@ if not DEBUG:
 
 ########## MIDDLEWARE CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#middleware-classes
-DEFAULT_MIDDLEWARE_CLASSES = (
+DEFAULT_MIDDLEWARE_CLASSES = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
-THIRD_PARTY_MIDDLEWWARE_CLASSES = (
+LOCAL_MIDDLEWARE_CLASSES = [
+
+]
+
+THIRD_PARTY_MIDDLEWWARE_CLASSES = [
     'annoying.middlewares.StaticServe',
-)
+]
 
 MIDDLEWARE_CLASSES = DEFAULT_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES
 ########## END MIDDLEWARE CONFIGURATION
@@ -282,7 +283,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
-    
+
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
