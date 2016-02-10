@@ -18,13 +18,13 @@ Django[bcrypt]>=1.9.2,<1.10.0
 # Powerful interactive shells
 # See: http://ipython.org/
 # ========================================================
-ipython>=4.0.0
+ipython>=4.1.0
 
 # ========================================================
 # PyReadline: a ctypes-based readline for Windows
 # See: http://ipython.org/pyreadline.html
 # ========================================================
-pyreadline>=2
+pyreadline>=21.0
 
 # ========================================================
 # Integrated set of Django applications addressing authentication
@@ -36,13 +36,13 @@ django-allauth>=0.24.1
 # Django Extensions is a collection of custom extensions for the Django Framework.
 # See: http://django-extensions.readthedocs.org/en/latest/
 # ========================================================
-django-extensions>=1.5.9,<2.0.0
+django-extensions>=1.6.1,<2.0.0
 
 # ========================================================
 # Raven is a standalone (and the official) Python client for Sentry.
 # See: https://raven.readthedocs.org/en/latest/index.html
 # ========================================================
-raven>=5.8.1,<6.0.0
+raven>=5.10.2,<6.0.0
 
 # ========================================================
 # Compresses linked and inline JavaScript or CSS into a single cached file.
