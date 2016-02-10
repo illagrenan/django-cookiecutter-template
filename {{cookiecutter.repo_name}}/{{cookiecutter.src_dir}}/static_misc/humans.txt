@@ -13,4 +13,4 @@
 
     /* SITE */
     Created: {{ cookiecutter.now }}
-    Software: Django, MySQL, Python
+    Software: Django, Postgres, Python, Docker, Node

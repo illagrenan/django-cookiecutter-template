@@ -55,6 +55,8 @@ django_compressor
 # See: https://github.com/django-nose/django-nose
 # ========================================================
 django-nose>=1.4
+factory_boy
+fake-factory
 
 # ========================================================
 # A django application that tries to eliminate annoying things in the Django framework.
