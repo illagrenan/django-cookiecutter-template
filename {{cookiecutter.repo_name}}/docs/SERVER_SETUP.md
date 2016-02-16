@@ -339,7 +339,17 @@ and then:
 pip install Pillow
 ```
 
-## 11) Memcached (optional) ##
+## 11) Caching ##
+
+A) Redis (optional, preferred)
+
+```bash
+sudo apt-get install redis-server
+```
+
+See: https://github.com/niwinz/django-redis and http://michal.karzynski.pl/blog/2013/07/14/using-redis-as-django-session-store-and-cache-backend/
+
+B) Memcached (optional)
 
 ```bash
 sudo apt-get install -y memcached libmemcached-dev libmemcached-tools
