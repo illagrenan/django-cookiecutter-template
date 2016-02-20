@@ -101,12 +101,6 @@ django-model-utils
 django-suit<0.3.0
 
 # ========================================================
-#  Django management command to run mysqldump or pg_dump.
-# See: https://github.com/vitaliyf/django-dbdump/
-# ========================================================
-django-dbdump
-
-# ========================================================
 # Celery: Distributed Task Queue
 # See: http://www.celeryproject.org/
 # ========================================================

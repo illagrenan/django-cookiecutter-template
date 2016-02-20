@@ -246,7 +246,6 @@ THIRD_PARTY_APPS = (
     'django_nose',
     'annoying',
     'django_custom_500',
-    'dbdump',
     # TODO Nice dbshell based on your database engine
     # 'django_mycli',
     # 'django_pgcli'
