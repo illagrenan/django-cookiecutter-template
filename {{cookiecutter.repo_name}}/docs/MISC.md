@@ -48,3 +48,9 @@ chown=root:supervisor
 ```bash
 service supervisor restart
 ```
+
+## Load database dump
+
+```bash
+psql -U postgres -d {{ cookiecutter.repo_name }} -f .\{{ cookiecutter.repo_name }}_2016-xxx.sql
+```
