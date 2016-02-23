@@ -112,8 +112,14 @@ django-suit<0.3.0
 # Real-time monitor and web admin for Celery distributed task queue
 # See: https://github.com/mher/flower
 # ========================================================
-# TODO Uncomment if you need Celery
+# TODO Uncomment if you are using Celery
 # flower
+
+# ========================================================
+# Redis Python Client
+# See: https://github.com/andymccurdy/redis-py
+# ========================================================
+redis
 
 # ==========================================================================================================
 # Requirements for {{cookiecutter.repo_name}}

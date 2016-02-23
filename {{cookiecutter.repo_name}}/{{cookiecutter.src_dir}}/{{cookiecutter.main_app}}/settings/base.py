@@ -458,6 +458,29 @@ EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
 # |-----------------------------------|
 # +-----------------------------------+
 
+# ########## DEBUG_TOOLBAR CONFIGURATION
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+    'debug_toolbar.panels.profiling.ProfilingPanel'
+]
+# ########## END DEBUG_TOOLBAR CONFIGURATION
+
+# ########## SORL CONFIGURATION
+THUMBNAIL_FORMAT = 'PNG'
+THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
+# ########## END SORL CONFIGURATION
+
 # ######### django-custom-500
 CUSTOM_500_TEMPLATE = "500.html"
 # ######### END django-custom-500
