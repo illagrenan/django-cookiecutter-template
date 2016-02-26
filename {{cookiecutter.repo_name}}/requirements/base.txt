@@ -9,10 +9,8 @@ Django[bcrypt]>=1.9.2,<1.10.0
 # See: https://github.com/dbcli/mycli or https://github.com/dbcli/pgcli
 # ========================================================
 # mycli
-# django-mycli
 # ~ OR ~
 # pgcli
-# django-pgcli
 
 # ========================================================
 # Powerful interactive shells
