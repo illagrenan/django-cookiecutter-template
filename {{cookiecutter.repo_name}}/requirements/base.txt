@@ -2,7 +2,7 @@
 # Common PIP requirements
 # ==========================================================================================================
 
-Django[bcrypt]>=1.9.2,<1.10.0
+Django[bcrypt]>=1.9.4,<1.10.0
 
 # ========================================================
 # # TODO Choose your database tools
@@ -22,7 +22,7 @@ ipython>=4.1.0
 # PyReadline: a ctypes-based readline for Windows
 # See: http://ipython.org/pyreadline.html
 # ========================================================
-pyreadline>=21.0
+pyreadline>=2.1.0
 
 # ========================================================
 # Integrated set of Django applications addressing authentication
