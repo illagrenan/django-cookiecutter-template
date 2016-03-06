@@ -75,12 +75,6 @@ django-annoying
 -e git+git://github.com/illagrenan/django-custom-500.git#egg=django-custom-500
 
 # ========================================================
-# Python package for providing Mozilla's CA Bundle.
-# See: https://pypi.python.org/pypi/certifi, http://docs.python-requests.org/en/latest/
-# ========================================================
-certifi
-
-# ========================================================
 # Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application.
 # See: https://github.com/joke2k/django-environ
 # ========================================================
