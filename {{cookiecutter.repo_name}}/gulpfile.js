@@ -14,6 +14,7 @@ plugins.argv = require('yargs').argv;
 
 var production = !!plugins.argv.production;
 var runserver_arg = !!plugins.argv.runserver;
+var watch_argv = !!plugins.argv.watch;
 
 
 /**
@@ -79,7 +80,7 @@ gulp.task('less', function () {
 });
 
 gulp.task('js', function () {
-    gulp.src('{{ cookiecutter.src_dir }}/static/js/**/**.js')
+    gulp.src('src/static/js/**/**.js')
         .pipe(plugins.plumber())
         .pipe(plugins.if(!production, plugins.sourcemaps.init()))
         .pipe(plugins.jshint('.jshintrc'))
@@ -98,7 +99,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src('{{ cookiecutter.src_dir }}/static/images/**')
+    return gulp.src('src/static/images/**')
         .pipe(plugins.imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
@@ -125,6 +126,13 @@ gulp.task('clean', function () {
 
 gulp.task('build', function () {
     gulp.start(['less', 'js', 'images']);
+
+    if (watch_argv) {
+        gulp.watch('src/static/less/**/*.less', ['less']);
+        gulp.watch('src/static/js/**/*.js', ['js']);
+        gulp.watch('src/static/images/**', ['images']);
+    }
+
 });
 
 gulp.task('default', function () {
@@ -136,9 +144,9 @@ gulp.task('default', function () {
 
     gulp.start(prompt);
 
-    gulp.watch('{{ cookiecutter.src_dir }}/static/less/**/*.less', ['less', 'browser-reload']);
-    gulp.watch('{{ cookiecutter.src_dir }}/static/js/**/*.js', ['js', 'browser-reload']);
-    gulp.watch('{{ cookiecutter.src_dir }}/static/images/**', ['images', 'browser-reload']);
+    gulp.watch('src/static/less/**/*.less', ['less', 'browser-reload']);
+    gulp.watch('src/static/js/**/*.js', ['js', 'browser-reload']);
+    gulp.watch('src/static/images/**', ['images', 'browser-reload']);
 
     plugins.util.log(plugins.util.colors.bgGreen('Watching for changes...'));
 });
