@@ -2,3 +2,7 @@
 
 User-agent: *
 Disallow: /admin/
+
+# Google adsbot ignores robots.txt unless specifically named!
+User-agent: adsbot-google
+Disallow: /
