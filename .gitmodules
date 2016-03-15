@@ -1,0 +1,3 @@
+[submodule "{{cookiecutter.repo_name}}/conf/server-configs-nginx"]
+	path = {{cookiecutter.repo_name}}/conf/server-configs-nginx
+	url = https://github.com/h5bp/server-configs-nginx.git
