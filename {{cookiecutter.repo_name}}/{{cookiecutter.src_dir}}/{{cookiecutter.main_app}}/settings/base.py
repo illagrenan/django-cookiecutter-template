@@ -430,7 +430,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-SECURE_HSTS_SECONDS = env('SECURE_HSTS_SECONDS', default=False)  # Disable if SSL is not configured
+SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=False)  # Disable if SSL is not configured
 
 SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=False)  # Disable if SSL is not configured
 SESSION_COOKIE_HTTPONLY = True
