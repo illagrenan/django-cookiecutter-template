@@ -8,6 +8,7 @@ var gulpLoadPlugins = require('gulp-load-plugins');
 var plugins = gulpLoadPlugins();
 
 plugins.pngquant = require('imagemin-pngquant');
+plugins.cleancss = require('gulp-clean-css');
 plugins.browserSync = require('browser-sync').create();
 plugins.del = require('del');
 plugins.argv = require('yargs').argv;
@@ -66,7 +67,7 @@ gulp.task('less', function () {
         .pipe(plugins.if(production, plugins.uglifycss({
             "max-line-len": 80
         })))
-        .pipe(plugins.if(production, plugins.minifyCss()))
+        .pipe(plugins.if(production, plugins.cleancss({compatibility: 'ie8'})))
         .pipe(plugins.autoprefixer({
             browsers: ['last 4 versions'],
             cascade: false
