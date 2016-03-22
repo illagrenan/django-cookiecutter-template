@@ -87,9 +87,9 @@ gulp.task('js', function () {
         .pipe(plugins.jshint('.jshintrc'))
         .pipe(plugins.jshint.reporter('jshint-stylish'))
         .pipe(plugins.eslint())
-        .pipe(plugins.eslint.format())
-        .pipe(plugins.ngAnnotate())
+        .pipe(plugins.eslint.format())        
         .pipe(plugins.babel({presets: ['es2015']}))
+        .pipe(plugins.ngAnnotate())
         .pipe(plugins.if(production, plugins.uglify()))
         .pipe(plugins.if(!production, plugins.sourcemaps.write('.', {
             'includeContent': true,
