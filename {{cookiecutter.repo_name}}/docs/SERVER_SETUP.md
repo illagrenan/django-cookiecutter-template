@@ -340,7 +340,10 @@ pip install Pillow
 A) Redis (optional, preferred)
 
 ```bash
-sudo apt-get install redis-server
+sudo apt-get -y install python-software-properties
+sudo add-apt-repository -y ppa:chris-lea/redis-server
+sudo apt-get -y update
+sudo apt-get -y install redis-server
 ```
 
 See: https://github.com/niwinz/django-redis and http://michal.karzynski.pl/blog/2013/07/14/using-redis-as-django-session-store-and-cache-backend/
@@ -479,6 +482,13 @@ rabbitmqctl set_permissions -p <VHOST_NAME> <USERNAME> ".*" ".*" ".*"
 npm install -g gulp less jshint imagemin-pngquant node-gyp
 ```
 
+## 16) Install fail2ban ##
+
+
+```bash
+sudo apt-get install fail2ban
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
 
 ----------
 
