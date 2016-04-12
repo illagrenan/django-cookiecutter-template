@@ -3,29 +3,29 @@
 # ==========================================================================================================
 
 Django[bcrypt]>=1.9.4,<1.10.0
-redis
+psycopg2==2.6.1
+redis==2.10.5
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Debugging
+# Better shell
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ipython>=4.1.0
 pyreadline>=2.1.0
-raven>=5.10.2,<6.0.0
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Django extras
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-django-allauth>=0.24.1
+django-allauth>=0.25.2
 django-extensions>=1.6.1,<2.0.0
 django_compressor
 django-annoying
 django-environ
 django-model-utils
 django-suit<0.3.0
--e git+git://github.com/illagrenan/django-custom-500.git#egg=django-custom-500==0.0.1
+-e git+git://github.com/illagrenan/django-custom-500.git#egg=django-custom-500
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Celery
+# Celery (TODO Uncomment if needed)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # celery
 # flower

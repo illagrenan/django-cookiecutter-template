@@ -33,6 +33,7 @@ env.read_env(os.path.join(SITE_ROOT, "..", ".env"))
 # ######### DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#debug
 DEBUG = env('DEBUG')  # False if not in os.environ
+SENTRY_ENABLED = env.str('SENTRY_DSN', default=False)
 
 # See: https://docs.djangoproject.com/en/{{ cookiecutter.django_version }}/ref/settings/#template-debug
 THUMBNAIL_DEBUG = DEBUG
@@ -210,6 +211,9 @@ THIRD_PARTY_MIDDLEWWARE_CLASSES = [
     'annoying.middlewares.StaticServe',
 ]
 
+if SENTRY_ENABLED:
+    DEFAULT_MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE_CLASSES
+
 MIDDLEWARE_CLASSES = DEFAULT_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES
 ########## END MIDDLEWARE CONFIGURATION
 
@@ -248,7 +252,7 @@ THIRD_PARTY_APPS = (
     'django_custom_500',
 )
 
-if env.str('SENTRY_DSN', default=False):
+if SENTRY_ENABLED:
     THIRD_PARTY_APPS += (
         'raven.contrib.django.raven_compat',
     )
@@ -377,7 +381,7 @@ LOGGING = {
         'sentry': {
             'level': 'WARNING',
             'filters': ['require_debug_false'],
-            'class': 'raven.contrib.django.handlers.SentryHandler',
+            'class': 'raven.contrib.django.handlers.SentryHandler' if SENTRY_ENABLED else "logging.NullHandler",
         },
         'console': {
             'level': 'DEBUG',

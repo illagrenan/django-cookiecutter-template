@@ -17,7 +17,7 @@ ipdb
 django-debug-toolbar
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Deployment
+# Deployment (TODO Uncomment if needed)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Fabric
 # -e git+git://github.com/illagrenan/django-fab-deployer.git#egg=django_fab_deployer
