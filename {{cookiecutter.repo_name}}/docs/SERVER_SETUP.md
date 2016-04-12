@@ -235,13 +235,13 @@ Install `node.js` only if you use Bower package manager for managing assets. See
 sudo apt-get install nodejs
 sudo apt-get install npm
 
-# ########################################  
+# ########################################
 # Try run "node"
 # if /usr/bin/env: node: No such file or directory
-#  
+#
 # Fix this by:
 sudo ln -s /usr/bin/nodejs /usr/bin/node
-# ########################################  
+# ########################################
 ```
 
 Update node and npm:
@@ -251,7 +251,7 @@ sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
 
-sudo ln -sf /usr/local/n/versions/node/<VERSION>/bin/node /usr/bin/node 
+sudo ln -sf /usr/local/n/versions/node/<VERSION>/bin/node /usr/bin/node
 ```
 
 And now install Bower globally:
@@ -384,8 +384,8 @@ sudo apt-get upgrade
 Download Webmin:
 
 ```bash
-wget http://prdownloads.sourceforge.net/webadmin/webmin_1.740_all.deb
-dpkg --install webmin_1.740_all.deb
+wget http://prdownloads.sourceforge.net/webadmin/webmin_1.791_all.deb
+dpkg --install webmin_1.791_all.deb
 ```
 
 To install missing dependencies, install them with:
@@ -399,7 +399,7 @@ Now open `https://IP_ADDRESS:10000`.
 Finally remove downloaded package:
 
 ```bash
-rm webmin_1.740_all.deb
+rm webmin_1.791_all.deb
 ```
 
 For more information check:
@@ -426,7 +426,7 @@ And create new ssh-keypair:
 
 ```bash
 ssh-keygen -t rsa -C "your_email@example.com"
-# Or simply: 
+# Or simply:
 ssh-keygen -t rsa
 touch ~/.ssh/authorized_keys
 
@@ -466,6 +466,14 @@ wget -O - https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | apt-key add
 
 apt-get update
 sudo apt-get install rabbitmq-server
+```
+
+Add new rabbitmq user and vhost:
+
+```bash
+rabbitmqctl add_user <USERNAME> <PASSWORD>
+rabbitmqctl add_vhost <VHOST_NAME>
+rabbitmqctl set_permissions -p <VHOST_NAME> <USERNAME> ".*" ".*" ".*"
 ```
 
 ## 15) Install global npm packages ##
