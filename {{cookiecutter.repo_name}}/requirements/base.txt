@@ -3,117 +3,41 @@
 # ==========================================================================================================
 
 Django[bcrypt]>=1.9.4,<1.10.0
-
-# ========================================================
-# # TODO Choose your database tools
-# See: https://github.com/dbcli/mycli or https://github.com/dbcli/pgcli
-# ========================================================
-# mycli
-# ~ OR ~
-# pgcli
-
-# ========================================================
-# Powerful interactive shells
-# See: http://ipython.org/
-# ========================================================
-ipython>=4.1.0
-
-# ========================================================
-# PyReadline: a ctypes-based readline for Windows
-# See: http://ipython.org/pyreadline.html
-# ========================================================
-pyreadline>=2.1.0
-
-# ========================================================
-# Integrated set of Django applications addressing authentication
-# See: https://github.com/pennersr/django-allauth
-# ========================================================
-django-allauth>=0.24.1
-
-# ========================================================
-# Django Extensions is a collection of custom extensions for the Django Framework.
-# See: http://django-extensions.readthedocs.org/en/latest/
-# ========================================================
-django-extensions>=1.6.1,<2.0.0
-
-# ========================================================
-# Raven is a standalone (and the official) Python client for Sentry.
-# See: https://raven.readthedocs.org/en/latest/index.html
-# ========================================================
-raven>=5.10.2,<6.0.0
-
-# ========================================================
-# Compresses linked and inline JavaScript or CSS into a single cached file.
-# See: http://django-compressor.readthedocs.org/en/latest/
-# ========================================================
-django_compressor
-
-# ========================================================
-# Django test runner using nose
-# See: https://github.com/django-nose/django-nose
-# ========================================================
-django-nose>=1.4
-factory_boy
-fake-factory
-
-# ========================================================
-# A django application that tries to eliminate annoying things in the Django framework.
-# See: https://github.com/skorokithakis/django-annoying
-# ========================================================
-django-annoying
-
-# ========================================================
-# Wrapper around colorama.
-# See: https://github.com/illagrenan/color-printer
-# ========================================================
--e git+git://github.com/illagrenan/color-printer.git#egg=color-printer
-
-# ========================================================
-# Custom Error 500 template.
-# See: https://github.com/illagrenan/django-custom-500
-# ========================================================
--e git+git://github.com/illagrenan/django-custom-500.git#egg=django-custom-500
-
-# ========================================================
-# Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application.
-# See: https://github.com/joke2k/django-environ
-# ========================================================
-django-environ
-
-# ========================================================
-# Django model mixins and utilities.
-# See: https://django-model-utils.readthedocs.org/en/latest/
-# ========================================================
-django-model-utils
-
-# ========================================================
-# Modern theme for Django admin interface.
-# See: https://github.com/darklow/django-suit
-# ========================================================
-django-suit<0.3.0
-
-# ========================================================
-# Celery: Distributed Task Queue
-# See: http://www.celeryproject.org/
-# ========================================================
-# TODO Uncomment if you need Celery
-# celery
-# librabbitmq
-
-# ========================================================
-# Real-time monitor and web admin for Celery distributed task queue
-# See: https://github.com/mher/flower
-# ========================================================
-# TODO Uncomment if you are using Celery
-# flower
-
-# ========================================================
-# Redis Python Client
-# See: https://github.com/andymccurdy/redis-py
-# ========================================================
 redis
 
-# ==========================================================================================================
-# Requirements for {{cookiecutter.repo_name}}
-# ==========================================================================================================
-# TODO Add your requirements:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Debugging
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ipython>=4.1.0
+pyreadline>=2.1.0
+raven>=5.10.2,<6.0.0
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Django extras
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+django-allauth>=0.24.1
+django-extensions>=1.6.1,<2.0.0
+django_compressor
+django-annoying
+django-environ
+django-model-utils
+django-suit<0.3.0
+-e git+git://github.com/illagrenan/django-custom-500.git#egg=django-custom-500==0.0.1
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Celery
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# celery
+# flower
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Testing
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+django-nose>=1.4
+factory_boy>=2.6.1
+fake-factory>=0.5.6
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Custom requirements
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ...

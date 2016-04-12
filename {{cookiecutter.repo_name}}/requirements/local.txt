@@ -4,28 +4,20 @@
 
 -r base.txt
 
-# ========================================================
-# Extras for django-extensions
-# ========================================================
-Werkzeug
-watchdog
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Better dev server
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Werkzeug
+# watchdog
 
-# ========================================================
-# IPython-enabled pdb
-# See: https://github.com/gotcha/ipdb
-# ========================================================
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Debugging
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ipdb
-
-# ========================================================
-# Application deployment or systems administration tasks
-# See: http://www.fabfile.org/
-# ========================================================
-Fabric
-
-# ========================================================
-# A configurable set of panels that display various debug information about the current request/response.
-# See: https://github.com/django-debug-toolbar/django-debug-toolbar
-# ========================================================
 django-debug-toolbar
 
--e git+git://github.com/illagrenan/django-fab-deployer.git#egg=django_fab_deployer
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Deployment
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Fabric
+# -e git+git://github.com/illagrenan/django-fab-deployer.git#egg=django_fab_deployer
