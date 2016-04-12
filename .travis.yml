@@ -11,6 +11,8 @@ before_install:
 
 script:
   - cookiecutter . --no-input
+  - cd human_readable_project_name
+  - pip install --no-input --exists-action=i -r requirements/local.txt --use-wheel
 
 notifications:
   email:
