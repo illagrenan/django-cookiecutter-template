@@ -442,6 +442,8 @@ SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=False)  # Disable if SSL is not configured
 CSRF_COOKIE_HTTPONLY = True
 
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=False)  # Disable if SSL is not configured
+
 X_FRAME_OPTIONS = env('X_FRAME_OPTIONS', default="DENY")
 ########## END SECURITY CONFIGURATION
 
