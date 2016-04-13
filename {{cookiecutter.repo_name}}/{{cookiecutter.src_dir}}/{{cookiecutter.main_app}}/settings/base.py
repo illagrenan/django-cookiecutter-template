@@ -236,15 +236,15 @@ DJANGO_APPS = (
     'django.contrib.humanize',
 
     # Admin panel and documentation:
-    'suit',
+    # 'suit',
     'django.contrib.admin',
     # 'django.contrib.admindocs',
 )
 
 THIRD_PARTY_APPS = (
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
     'django_extensions',
     'compressor',
     'django_nose',
@@ -285,7 +285,7 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 
     # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
 )
 ########## END AUTHENTICATION CONFIGURATION
 
