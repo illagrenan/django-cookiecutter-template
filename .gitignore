@@ -116,3 +116,5 @@ crashlytics-build.properties
 .bash_history
 src/celerybeat-schedule
 .htpasswd
+/django_fab_deployer
+/data/backup

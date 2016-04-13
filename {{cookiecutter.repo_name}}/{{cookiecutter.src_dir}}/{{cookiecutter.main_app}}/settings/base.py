@@ -492,17 +492,6 @@ THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
 CUSTOM_500_TEMPLATE = "500.html"
 # ######### END django-custom-500
 
-# ######### DJANGO-MARKUPMIRROR
-MARKUPMIRROR_DEFAULT_MARKUP_TYPE = 'markdown'
-# https://pythonhosted.org/Markdown/extensions/#officially-supported-extensions
-MARKUPMIRROR_MARKDOWN_EXTENSIONS = ['tables', 'smart_strong', 'smarty', 'attr_list', 'headerid(level=2)']
-# ######### END DJANGO-MARKUPMIRROR
-
-# ########## GRAPELLI CUSTOMIZATIONS
-# http://django-grappelli.readthedocs.org/en/latest/customization.html
-GRAPPELLI_ADMIN_TITLE = "{{ cookiecutter.project_name }}"
-########## END GRAPELLI CUSTOMIZATIONS
-
 # ########## DJANGO SUIT CONFIGURATION
 # https://django-suit.readthedocs.org/en/develop/configuration.html#header
 SUIT_CONFIG = {

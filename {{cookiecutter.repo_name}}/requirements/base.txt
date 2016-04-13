@@ -11,17 +11,18 @@ redis==2.10.5
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ipython>=4.1.0
 pyreadline>=2.1.0
+colorama
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Django extras
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 django-allauth>=0.25.2
 django-extensions>=1.6.1,<2.0.0
-django_compressor
-django-annoying
-django-environ
-django-model-utils
-django-suit<0.3.0
+django_compressor==2.0.0
+django-annoying>=0.8.7,<0.9.0
+django-environ==0.4.0
+django-model-utils==2.4.0
+django-suit==0.2.18
 -e git+git://github.com/illagrenan/django-custom-500.git#egg=django-custom-500
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
