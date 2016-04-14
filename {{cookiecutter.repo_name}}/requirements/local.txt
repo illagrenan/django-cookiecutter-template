@@ -15,6 +15,7 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ipdb
 django-debug-toolbar
+# django-cprofile-middleware
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Deployment (TODO Uncomment if needed)
