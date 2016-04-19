@@ -64,9 +64,6 @@ gulp.task('less', function () {
         .pipe(plugins.if(!production, plugins.sourcemaps.init()))
         .pipe(plugins.less())
         .pipe(plugins.addSrc('src/static/css/**/*.css'))
-        .pipe(plugins.if(production, plugins.uglifycss({
-            "max-line-len": 80
-        })))
         .pipe(plugins.if(production, plugins.cleancss({compatibility: 'ie8'})))
         .pipe(plugins.autoprefixer({
             browsers: ['last 4 versions'],
