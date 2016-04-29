@@ -54,7 +54,7 @@ python manage.py runserver
 
 The MIT License (MIT)
 
-Copyright (c) 2015 illagrenan
+Copyright (c) 2015&ndash;2016 illagrenan
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
