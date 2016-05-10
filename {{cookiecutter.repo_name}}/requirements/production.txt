@@ -5,4 +5,4 @@
 -r base.txt
 
 gunicorn==19.4.5
-raven>=5.10.2,<6.0.0
+raven>=5.16.0,<6.0.0
