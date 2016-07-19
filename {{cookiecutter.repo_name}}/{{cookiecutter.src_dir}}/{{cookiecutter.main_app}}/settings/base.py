@@ -195,6 +195,7 @@ if not DEBUG:
 DEFAULT_MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -214,7 +215,7 @@ THIRD_PARTY_MIDDLEWWARE_CLASSES = [
 if SENTRY_ENABLED:
     DEFAULT_MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE_CLASSES
 
-MIDDLEWARE_CLASSES = DEFAULT_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES
+MIDDLEWARE_CLASSES = DEFAULT_MIDDLEWARE_CLASSES + LOCAL_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES
 ########## END MIDDLEWARE CONFIGURATION
 
 
