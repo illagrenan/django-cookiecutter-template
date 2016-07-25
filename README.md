@@ -49,6 +49,7 @@ python manage.py runserver
 
 - Cookiecutter project: [https://github.com/audreyr/cookiecutter](https://github.com/audreyr/cookiecutter)
 - This template is based on [https://github.com/pydanny/cookiecutter-django](https://github.com/pydanny/cookiecutter-django) and [https://github.com/twoscoops/django-twoscoops-project](https://github.com/twoscoops/django-twoscoops-project)
+- Error pages templates made in Bootstrap: https://github.com/alexphelps/Server-Error-Pages
 
 ## License ##
 
