@@ -383,8 +383,8 @@ sudo apt-get upgrade
 Download Webmin:
 
 ```bash
-wget http://prdownloads.sourceforge.net/webadmin/webmin_1.791_all.deb
-dpkg --install webmin_1.791_all.deb
+wget http://prdownloads.sourceforge.net/webadmin/webmin_1.801_all.deb
+dpkg --install webmin_1.801_all.deb
 ```
 
 To install missing dependencies, install them with:
@@ -398,7 +398,7 @@ Now open `https://IP_ADDRESS:10000`.
 Finally remove downloaded package:
 
 ```bash
-rm webmin_1.791_all.deb
+rm webmin_1.801_all.deb
 ```
 
 For more information check:
