@@ -8,7 +8,7 @@ This guide is based on:
 
 ## 0) Prerequisites ##
 
-Create new Ubuntu LTS (current LTS version is `14.04 x64` (**`trusty`**)) server. For more information check Official Server Guide: [https://help.ubuntu.com/lts/serverguide/index.html](https://help.ubuntu.com/lts/serverguide/index.html).
+Create new Ubuntu LTS (current LTS version is `16.04 x64` (**`xenial`**)) server. For more information check Official Server Guide: [https://help.ubuntu.com/lts/serverguide/index.html](https://help.ubuntu.com/lts/serverguide/index.html).
 
 
 ## 1) Swap ##
@@ -405,58 +405,7 @@ For more information check:
 
 - [http://www.webmin.com/deb.html](http://www.webmin.com/deb.html)
 
-## 13) Users and groups ##
-
-Create new non-sudo user:
-
-```bash
-adduser <username>
-mkdir -p /var/www/
-sudo chown -R <username>:root /var/www
-```
-
-Switch to newly created user:
-
-```bash
-su <username>
-```
-
-And create new ssh-keypair:
-
-```bash
-ssh-keygen -t rsa -C "your_email@example.com"
-# Or simply:
-ssh-keygen -t rsa
-touch ~/.ssh/authorized_keys
-
-# Copy your public key
-nano ~/.ssh/authorized_keys
-```
-
-Create new group:
-
-```bash
-sudo groupadd --system webapps
-# Add newly created user:
-usermod -a -G {{ cookiecutter.group }} <username>
-usermod -a -G supervisor <username>
-```
-
-If you're logged-in as non-sudo user, reload profile:
-
-```bash
-. ~/.profile
-```
-
-Fix `~/.ssh` permissions:
-
-```bash
-chmod go-w ~/
-chmod 700 ~/.ssh
-chmod 600 -R  ~/.ssh/*
-```
-
-## 14) Celery ##
+## 13) RabbitMQ for Celery (deprecated, use Redis) ##
 
 
 ```bash

@@ -7,7 +7,7 @@ $ sudo apt-get install -y apache2-utils
 $ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}.htpasswd admin
 ```
 
-## Fix permissions
+## Fix permissions in project directory
 
 ```bash
 cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
@@ -25,11 +25,11 @@ touch /tmp/ngx_pagespeed_cache/{{ cookiecutter.repo_name }}/cache.flush
 
 ## Supervisor without sudo
 
-Create new group and add ourselves:
+Create new group and add user that can control supervisorctl:
 
 ```bash
 groupadd supervisor
-usermod -a -G supervisor <myusername>
+usermod -a -G supervisor {SOME_USERNAME}
 ```
 
 Edit supervisor config file:
@@ -48,6 +48,8 @@ chown=root:supervisor
 ```bash
 service supervisor restart
 ```
+
+More info here: [https://github.com/illagrenan/ubuntu-supervisor-configuration](https://github.com/illagrenan/ubuntu-supervisor-configuration).
 
 ## Load database dump
 

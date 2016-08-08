@@ -3,56 +3,14 @@
 - **Project already deployed? Check [Update guide](UPDATES.md)**.
 - **New server? First install all required software, check [Server setup](SERVER_SETUP.md)**
 
-## 1) Deployment keys
-
-```bash
-# Copy your public key and register it on {{ cookiecutter.git_provider }}.
-cat ~/.ssh/id_rsa.pub
-```
-
-## 2) Source code and requirements
-
-```bash
-# #######################################
-# Connect to *REMOTE* server
-# #######################################
-mkdir -p {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git {{ cookiecutter.app_subdirectory_in_deploy_path }}
-cd {{ cookiecutter.app_subdirectory_in_deploy_path }}
-
-virtualenv data/.venv; source activate.sh
-pip install --upgrade pip ipython setuptools wheel
-pip install -r requirements/production.txt --upgrade --use-wheel
-```
-
-# Optional step
-```bash
-bower install
-npm install
-```
-
-## 3) Configure Django
-
-To automatically export ENV_VARS, create this file:
-
-```bash
-touch {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}.env
-```
-
-Example of minimal configuration:
-
-```config
-DATABASE_URL=mysql://USER:PASSWORD@127.0.0.1:3306/DATABASE_NAME
-SECRET_KEY=SOME_SECRET_KEY
-ALLOWED_HOSTS=www.{{ cookiecutter.domain_name }},{{ cookiecutter.domain_name }},127.0.0.1,localhost,0.0.0.0
-```
-
-## 4) User&group
+## 1) Create new user and setup SSH
 
 ```bash
 sudo groupadd --system {{ cookiecutter.group }}
-sudo useradd --system --gid {{ cookiecutter.group }} --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
+
+mkdir -p /var/www/
+
+sudo useradd --system --gid {{ cookiecutter.group }} --groups supervisor --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
 sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 ```
 
@@ -60,7 +18,7 @@ Copy bashrc profile:
 
 ```bash
 cp /etc/skel/.bashrc ~/.bashrc
-touch ~/.profile
+touch ~/.profile && nano ~/.profile
 ```
 
 Content of `.profile`:
@@ -88,16 +46,82 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 ```
 
-
-Add GIT server to `authorized_keys`:
+Add {{ cookiecutter.git_provider }} to `authorized_keys`:
 
 ```bash
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts
-ssh-keyscan -t rsa,dsa bitbucket.org 2>&1 | sort -u - ~/.ssh/known_hosts > ~/.ssh/tmp_hosts
+ssh-keyscan -t rsa,dsa {{ cookiecutter.git_provider }} 2>&1 | sort -u - ~/.ssh/known_hosts > ~/.ssh/tmp_hosts
 mv ~/.ssh/tmp_hosts ~/.ssh/known_hosts
 ```
 
+
+And create new ssh-keypair:
+
+```bash
+ssh-keygen -t rsa -C "your_email@example.com"
+# Or simply:
+ssh-keygen -t rsa
+touch ~/.ssh/authorized_keys
+
+# Copy your public key
+nano ~/.ssh/authorized_keys
+```
+
+
+Fix `~/.ssh` and home directory permissions:
+
+```bash
+chmod go-w ~/
+chmod 700 ~/.ssh
+chmod 600 -R  ~/.ssh/*
+```
+
+
+## 2) Deployment keys for git
+
+```bash
+# Copy your public key and register it on {{ cookiecutter.git_provider }}.
+cat ~/.ssh/id_rsa.pub
+```
+
+## 3) Source code and requirements
+
+```bash
+# #######################################
+# Connect to *REMOTE* server
+# #######################################
+mkdir -p {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
+cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
+git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git {{ cookiecutter.app_subdirectory_in_deploy_path }}
+cd {{ cookiecutter.app_subdirectory_in_deploy_path }}
+
+virtualenv data/.venv; source activate.sh
+pip install --upgrade pip ipython setuptools wheel
+pip install -r requirements/production.txt --upgrade --use-wheel
+```
+
+**Optional step**
+```bash
+bower install
+npm install
+```
+
+## 4) Configure Django
+
+To automatically export ENV_VARS, create this file:
+
+```bash
+touch {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}.env
+```
+
+Example of minimal configuration:
+
+```config
+DATABASE_URL=mysql://USER:PASSWORD@127.0.0.1:3306/DATABASE_NAME
+SECRET_KEY=SOME_SECRET_KEY
+ALLOWED_HOSTS=www.{{ cookiecutter.domain_name }},{{ cookiecutter.domain_name }},127.0.0.1,localhost,0.0.0.0
+```
 
 ## 5) Supervisor
 
@@ -160,5 +184,5 @@ sudo service nginx restart
 sudo bash bin/update_nginx.sh
 ```
 
-* [How to uninstall project?](UNINSTALL.md)
+* [How to uninstall project?](UNINSTALL_PROJECT.md)
 * [Tips&tricks](MISC.md)

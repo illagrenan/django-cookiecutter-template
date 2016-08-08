@@ -2,7 +2,7 @@
 
 ```bash
 # 1) Remove Gunicorn configuration:
-sudo supervisorctl stop {{ cookiecutter.repo_name }}
+sudo supervisorctl stop {{ cookiecutter.repo_name }}:*
 sudo rm /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 sudo supervisorctl reread
 # {{ cookiecutter.repo_name }}: disappeared
