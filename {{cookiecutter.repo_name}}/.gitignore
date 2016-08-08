@@ -111,8 +111,12 @@ crashlytics-build.properties
 *.sock
 .bash_history
 .htpasswd
-TODO Uncomment this line!
+
+TODO Uncomment these 2 lines!
+
 # {{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
+# /.vscode
+
 /.env
 /.ssh
 /{{ cookiecutter.src_dir }}/reports/*
