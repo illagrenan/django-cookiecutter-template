@@ -8,8 +8,7 @@
 ```bash
 sudo groupadd --system {{ cookiecutter.group }}
 
-mkdir -p /var/www/
-
+mkdir -p {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 sudo useradd --system --gid {{ cookiecutter.group }} --groups supervisor --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
 sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 ```
@@ -88,15 +87,17 @@ cat ~/.ssh/id_rsa.pub
 ## 3) Source code and requirements
 
 ```bash
-# #######################################
-# Connect to *REMOTE* server
-# #######################################
-mkdir -p {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git {{ cookiecutter.app_subdirectory_in_deploy_path }}
 cd {{ cookiecutter.app_subdirectory_in_deploy_path }}
 
+# On Python2:
 virtualenv data/.venv; source activate.sh
+
+# On Python3 using deadsnakes:
+virtualenv -p /usr/bin/python3.5 data/.venv
+
+
 pip install --upgrade pip ipython setuptools wheel
 pip install -r requirements/production.txt --upgrade --use-wheel
 ```
