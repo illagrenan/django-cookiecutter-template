@@ -199,7 +199,6 @@ DEFAULT_MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -212,8 +211,9 @@ THIRD_PARTY_MIDDLEWWARE_CLASSES = [
     'annoying.middlewares.StaticServe',
 ]
 
-if SENTRY_ENABLED:
-    DEFAULT_MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE_CLASSES
+# TODO SentryResponseErrorIdMiddleware is not compatible with Django 1.10
+#if SENTRY_ENABLED:
+#    DEFAULT_MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE_CLASSES
 
 MIDDLEWARE = DEFAULT_MIDDLEWARE_CLASSES + LOCAL_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES
 ########## END MIDDLEWARE CONFIGURATION
