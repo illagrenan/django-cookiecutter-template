@@ -92,8 +92,8 @@ More info:
 ## 2) Update packages ##
 
 ```bash
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 ```
 
 It is recomended to reboot computer after first upgrade:
@@ -105,7 +105,7 @@ reboot
 Install required libraries:
 
 ```bash
-sudo apt-get install libxml2-dev libxslt1-dev libffi-dev python-lxml
+sudo apt install libxml2-dev libxslt1-dev libffi-dev python-lxml
 ```
 
 ## 3) Python tools ##
@@ -113,7 +113,7 @@ sudo apt-get install libxml2-dev libxslt1-dev libffi-dev python-lxml
 **Install Python header files:**
 
 ```bash
-sudo apt-get install python-dev
+sudo apt install python-dev
 ```
 
 **Install pip:**
@@ -142,8 +142,8 @@ pip install --upgrade pip setuptools
 A) Install MySQL:
 
 ```bash
-sudo apt-get install mysql-server
-sudo apt-get install python-mysqldb libmysqlclient-dev
+sudo apt install mysql-server
+sudo apt install python-mysqldb libmysqlclient-dev
 ```
 
 - Check official documentation:[ https://dev.mysql.com/doc/refman/5.6/en/index.html]( https://dev.mysql.com/doc/refman/5.6/en/index.html)
@@ -151,8 +151,8 @@ sudo apt-get install python-mysqldb libmysqlclient-dev
 B) Install PostgreSQL:
 
 ```bash
-sudo apt-get install postgresql postgresql-contrib
-sudo apt-get install libpq-dev
+sudo apt install postgresql postgresql-contrib
+sudo apt install libpq-dev
 ```
 
 - Check official documentation: [http://www.postgresql.org/docs/9.4/static/index.html](http://www.postgresql.org/docs/9.4/static/index.html)
@@ -161,7 +161,7 @@ sudo apt-get install libpq-dev
 ## 5) nginx ##
 
 ```bash
-sudo apt-get install nginx
+sudo apt install nginx
 ```
 
 To get latest releases append these lines to `/etc/apt/sources.list`:
@@ -180,8 +180,8 @@ wget -O - http://nginx.org/keys/nginx_signing.key | apt-key add -
 And run:
 
 ```bash
-apt-get update
-apt-get install nginx
+apt update
+apt install nginx
 ```
 
 Check if nginx is installed:
@@ -216,7 +216,7 @@ Follow these instructions: https://github.com/illagrenan/ubuntu-supervisor-confi
 Install Git:
 
 ```
-sudo apt-get install git-core
+sudo apt install git-core
 ```
 
 - Homepage: [https://git-scm.herokuapp.com/](https://git-scm.herokuapp.com/)
@@ -228,8 +228,8 @@ sudo apt-get install git-core
 Install `node.js` only if you use Bower package manager for managing assets. See: [http://bower.io/](http://bower.io/).
 
 ```bash
-sudo apt-get install nodejs
-sudo apt-get install npm
+sudo apt install nodejs
+sudo apt install npm
 
 # ########################################
 # Try run "node"
@@ -263,7 +263,7 @@ npm -g install bower
 **Gettext**
 
 ```bash
-apt-get install -y gettext
+apt install -y gettext
 ```
 
 **Glances**
@@ -272,7 +272,7 @@ apt-get install -y gettext
 
 *Optional dependencies (only if you want more features e.g. sensors):*
 ```bash
-sudo apt-get install lm-sensors
+sudo apt install lm-sensors
 pip install bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces pymdstat influxdb statsd pystache
 ```
 
@@ -287,7 +287,7 @@ pip install --upgrade Glances
 > GNU Midnight Commander is a visual file manager, see: [https://www.midnight-commander.org/](https://www.midnight-commander.org/)
 
 ```bash
-sudo apt-get install mc
+sudo apt install mc
 ```
 
 **Mutt**
@@ -295,7 +295,7 @@ sudo apt-get install mc
 > The Mutt E-Mail Client, see: [http://www.mutt.org/](http://www.mutt.org/)
 
 ```bash
-sudo apt-get install mutt
+sudo apt install mutt
 /etc/init.d/postfix reload
 ```
 
@@ -307,8 +307,8 @@ sudo apt-get install mutt
 # See: http://goaccess.io/download#official-repo
 echo "deb http://deb.goaccess.io $(lsb_release -cs) main" | tee -a /etc/apt/sources.list
 wget -O - http://deb.goaccess.io/gnugpg.key | apt-key add -
-apt-get update
-apt-get install goaccess
+apt update
+apt install goaccess
 ```
 
 **Links2**
@@ -316,7 +316,7 @@ apt-get install goaccess
 > Links is a graphics and text mode WWW browser, similar to Lynx.
 
 ```bash
-apt-get install links2
+apt install links2
 ```
 
 
@@ -326,7 +326,7 @@ apt-get install links2
 Install external libraries (see: [pillow.readthedocs.org/en/latest/installation.html#external-libraries](https://pillow.readthedocs.org/en/latest/installation.html#external-libraries)):
 
 ```bash
-sudo apt-get install libjpeg-dev libtiff-dev libfreetype6 libfreetype6-dev zlib1g-dev
+sudo apt install libjpeg-dev libtiff-dev libfreetype6 libfreetype6-dev zlib1g-dev
 ```
 
 and then:
@@ -340,10 +340,10 @@ pip install Pillow
 A) Redis (optional, preferred)
 
 ```bash
-sudo apt-get -y install python-software-properties
+sudo apt -y install python-software-properties
 sudo add-apt-repository -y ppa:chris-lea/redis-server
-sudo apt-get -y update
-sudo apt-get -y install redis-server
+sudo apt -y update
+sudo apt -y install redis-server
 ```
 
 See: https://github.com/niwinz/django-redis and http://michal.karzynski.pl/blog/2013/07/14/using-redis-as-django-session-store-and-cache-backend/
@@ -351,7 +351,7 @@ See: https://github.com/niwinz/django-redis and http://michal.karzynski.pl/blog/
 B) Memcached (optional)
 
 ```bash
-sudo apt-get install -y memcached libmemcached-dev libmemcached-tools
+sudo apt install -y memcached libmemcached-dev libmemcached-tools
 ```
 
 Check if Memcache is running by:
@@ -376,8 +376,8 @@ For more information check:
 Update and upgrade packages:
 
 ```bash
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 ```
 
 Download Webmin:
@@ -412,8 +412,8 @@ For more information check:
 echo "deb http://www.rabbitmq.com/debian/ testing main" | tee -a /etc/apt/sources.list
 wget -O - https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | apt-key add -
 
-apt-get update
-sudo apt-get install rabbitmq-server
+apt update
+sudo apt install rabbitmq-server
 ```
 
 Add new rabbitmq user and vhost:
@@ -435,7 +435,7 @@ npm install -g gulp less jshint imagemin-pngquant node-gyp
 
 
 ```bash
-sudo apt-get install fail2ban
+sudo apt install fail2ban
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ```
 

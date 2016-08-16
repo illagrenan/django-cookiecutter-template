@@ -3,7 +3,7 @@
 ## Protect web with Basic auth
 
 ```bash
-$ sudo apt-get install -y apache2-utils
+$ sudo apt install -y apache2-utils
 $ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}.htpasswd admin
 ```
 
