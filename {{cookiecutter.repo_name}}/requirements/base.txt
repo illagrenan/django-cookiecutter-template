@@ -16,7 +16,7 @@ colorama
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Django extras
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-django-allauth==0.25.2
+django-allauth==0.26.1
 django-extensions==1.7.2
 django_compressor==2.1.0
 django-annoying==0.10.1
