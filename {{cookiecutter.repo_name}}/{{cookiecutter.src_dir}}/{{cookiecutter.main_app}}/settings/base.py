@@ -14,19 +14,18 @@ env = environ.Env(DEBUG=(bool, False), )
 
 # ######### PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
-DJANGO_ROOT = BASE_DIR = dirname(dirname(abspath(__file__)))  # .../src/main/
+DJANGO_ROOT = BASE_DIR = os.path.dirname(os.path.dirname(abspath(__file__)))  # .../src/main/
 
 # Absolute filesystem path to the top-level project folder: (where manage.py is)
-SITE_ROOT = dirname(DJANGO_ROOT)  # .../src/{manage.py}
+SITE_ROOT = os.path.dirname(DJANGO_ROOT)  # .../src/{manage.py}
 
 # Site name:
 SITE_NAME = "{{ cookiecutter.project_name }}"
 
 # Add our project to our pythonpath, this way we don't need to type our project
 # name in our dotted import paths:
-path.append(DJANGO_ROOT)
+sys.path.append(DJANGO_ROOT)
 # ######### END PATH CONFIGURATION
-
 
 env.read_env(os.path.join(SITE_ROOT, "..", ".env"))
 
@@ -212,7 +211,7 @@ THIRD_PARTY_MIDDLEWWARE_CLASSES = [
 ]
 
 # TODO SentryResponseErrorIdMiddleware is not compatible with Django 1.10
-#if SENTRY_ENABLED:
+# if SENTRY_ENABLED:
 #    DEFAULT_MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE_CLASSES
 
 MIDDLEWARE = DEFAULT_MIDDLEWARE_CLASSES + LOCAL_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES

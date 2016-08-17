@@ -118,3 +118,4 @@ src/celerybeat-schedule
 .htpasswd
 /django_fab_deployer
 /data/backup
+/activate.ps1
