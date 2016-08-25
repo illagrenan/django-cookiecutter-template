@@ -1,4 +1,5 @@
-# coding=utf-8
+# -*- encoding: utf-8 -*-
+# ! python3
 
 """
 WSGI config for {{ cookiecutter.project_name }} project.

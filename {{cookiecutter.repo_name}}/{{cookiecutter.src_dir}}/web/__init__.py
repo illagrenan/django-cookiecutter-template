@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-# ! python2
-
-from __future__ import (absolute_import, division, print_function, unicode_literals)
+# ! python3
 
 default_app_config = 'web.apps.WebAppConfig'

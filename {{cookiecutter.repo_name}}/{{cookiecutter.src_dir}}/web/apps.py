@@ -1,12 +1,5 @@
 # -*- encoding: utf-8 -*-
-# ! python2
-
-"""
-Django application configuration introduced in `1.7`.
-For more info see: https://docs.djangoproject.com/en/1.7/ref/applications/#application-configuration.
-"""
-
-from __future__ import (absolute_import, division, print_function, unicode_literals)
+# ! python3
 
 from django.apps import AppConfig
 

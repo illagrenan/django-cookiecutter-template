@@ -1,7 +1,5 @@
 # -*- encoding: utf-8 -*-
-# ! python2
-
-from __future__ import (division, print_function, unicode_literals)
+# ! python3
 
 import os
 import sys
@@ -211,8 +209,8 @@ THIRD_PARTY_MIDDLEWWARE_CLASSES = [
 ]
 
 # TODO SentryResponseErrorIdMiddleware is not compatible with Django 1.10
-# if SENTRY_ENABLED:
-#    DEFAULT_MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE_CLASSES
+if SENTRY_ENABLED:
+    DEFAULT_MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE_CLASSES
 
 MIDDLEWARE = DEFAULT_MIDDLEWARE_CLASSES + LOCAL_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES
 ########## END MIDDLEWARE CONFIGURATION
@@ -260,7 +258,7 @@ if SENTRY_ENABLED:
     ########## RAVEN CONFIGURATION
     # See: https://raven.readthedocs.org/en/latest/integrations/django.html
     RAVEN_CONFIG = {
-        'dsn': b"%s" % env.str('SENTRY_DSN')
+        'dsn': env.str('SENTRY_DSN')
     }
     ########## END RAVEN CONFIGURATION
 
@@ -448,14 +446,21 @@ X_FRAME_OPTIONS = env('X_FRAME_OPTIONS', default="DENY")
 ########## END SECURITY CONFIGURATION
 
 ########## EMAIL CONFIGURATION
-EMAIL_URL = env.email_url('EMAIL_URL', default='dummymail://')
-EMAIL_BACKEND = EMAIL_URL['EMAIL_BACKEND']
-EMAIL_HOST = EMAIL_URL['EMAIL_HOST']
-EMAIL_PORT = EMAIL_URL['EMAIL_PORT']
-EMAIL_FILE_PATH = EMAIL_URL['EMAIL_FILE_PATH']
-EMAIL_HOST_USER = EMAIL_URL['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = EMAIL_URL['EMAIL_HOST_PASSWORD']
-EMAIL_USE_TLS = EMAIL_URL.get('EMAIL_USE_TLS', False)
+if env.bool('USE_ANYMAIL', default=False):
+    ANYMAIL = {
+        "MAILGUN_API_KEY": env.str('MAILGUN_API_KEY'),
+        "MAILGUN_SENDER_DOMAIN": env.str('MAILGUN_SENDER_DOMAIN'),
+    }
+    EMAIL_BACKEND = "anymail.backends.mailgun.MailgunBackend"
+else:
+    EMAIL_URL = env.email_url('EMAIL_URL', default='dummymail://')
+    EMAIL_BACKEND = EMAIL_URL['EMAIL_BACKEND']
+    EMAIL_HOST = EMAIL_URL['EMAIL_HOST']
+    EMAIL_PORT = EMAIL_URL['EMAIL_PORT']
+    EMAIL_FILE_PATH = EMAIL_URL['EMAIL_FILE_PATH']
+    EMAIL_HOST_USER = EMAIL_URL['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = EMAIL_URL['EMAIL_HOST_PASSWORD']
+    EMAIL_USE_TLS = EMAIL_URL.get('EMAIL_USE_TLS', False)
 
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default="no-reply@example.com")
 EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
@@ -535,7 +540,7 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # ######### END ALL-AUTH
 
 # ######### DJANGO-CRISPY-FORMS
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_FAIL_SILENTLY = not DEBUG
 # ######### END DJANGO-CRISPY-FORMS
 
@@ -544,15 +549,17 @@ CRISPY_FAIL_SILENTLY = not DEBUG
 # +------------------------------------+
 
 # noinspection PyUnresolvedReferences
-from app import *
+from main.settings.app import *
 
 try:
+    # TODO Add logging
     from local import *
 except ImportError:
     pass
 
 if 'test' in sys.argv:
     try:
+        # TODO Add logging
         from test import *
     except ImportError:
         pass
