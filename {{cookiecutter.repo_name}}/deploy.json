@@ -1,33 +1,50 @@
 {
   "production": {
     "celery_enabled": false,
+    "compress_enabled": false,
+    "source_branch": "master",
     "deploy_path": "{{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/app/",
     "hosts": "{{ cookiecutter.deploy_host_ip }}",
     "key_filename": "{{ cookiecutter.private_key_path }}",
     "project_name": "{{ cookiecutter.repo_name }}",
+    "supervisor_program": "{{ cookiecutter.repo_name }}",
+    "db_name": "{{ cookiecutter.repo_name }}",
     "user": "{{ cookiecutter.repo_name }}",
     "venv_path": "data/.venv/bin/activate",
     "warn_on_deploy": true,
     "urls_to_check": [
       "http://www.{{ cookiecutter.domain_name }}/",
-      "http://www.{{ cookiecutter.domain_name }}/admin"
+      "http://www.{{ cookiecutter.domain_name }}/admin",
+      "https://www.{{ cookiecutter.domain_name }}/",
+      "https://www.{{ cookiecutter.domain_name }}/admin",
+      "http://{{ cookiecutter.domain_name }}/",
+      "http://{{ cookiecutter.domain_name }}/admin",
+      "https://{{ cookiecutter.domain_name }}/",
+      "https://{{ cookiecutter.domain_name }}/admin"
     ],
-    "graceful_restart": true
+    "graceful_restart": true,
+    "urls_to_check_verify_ssl_certificate": true
   },
   "dev": {
     "celery_enabled": false,
+    "compress_enabled": false,
     "source_branch": "dev",
     "deploy_path": "{{ cookiecutter.deploy_path }}dev_{{ cookiecutter.repo_name }}/app/",
     "hosts": "{{ cookiecutter.deploy_host_ip }}",
     "key_filename": "{{ cookiecutter.private_key_path }}",
-    "project_name": "dev_{{ cookiecutter.repo_name }}",
+    "project_name": "{{ cookiecutter.repo_name }}",
+    "supervisor_program": "dev_{{ cookiecutter.repo_name }}",
+    "db_name": "dev_{{ cookiecutter.repo_name }}",
     "user": "dev_{{ cookiecutter.repo_name }}",
     "venv_path": "data/.venv/bin/activate",
-    "warn_on_deploy": false,
+    "warn_on_deploy": true,
     "urls_to_check": [
+      "http://dev.{{ cookiecutter.domain_name }}/",
+      "http://dev.{{ cookiecutter.domain_name }}/admin",
       "http://dev.{{ cookiecutter.domain_name }}/",
       "http://dev.{{ cookiecutter.domain_name }}/admin"
     ],
-    "graceful_restart": true
-  }
+    "graceful_restart": true,
+    "urls_to_check_verify_ssl_certificate": true
+  },
 }
