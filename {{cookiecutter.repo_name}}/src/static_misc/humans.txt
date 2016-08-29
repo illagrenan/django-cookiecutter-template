@@ -1,0 +1,16 @@
+# humanstxt.org
+# We Are People, Not Machines
+
+    /* TEAM */
+    {{ cookiecutter.author_name }}
+    Site: TODO Contact
+    Twitter: @{{ cookiecutter.author_username }}
+    Location: TODO City/Country
+
+
+    /* THANKS */
+    Name: TODO Thanks
+
+    /* SITE */
+    Created: {{ cookiecutter.now }}
+    Software: Django, Postgres, Python, Docker, Node

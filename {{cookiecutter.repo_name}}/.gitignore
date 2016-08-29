@@ -111,18 +111,14 @@ crashlytics-build.properties
 *.sock
 .bash_history
 .htpasswd
-
-TODO Uncomment these 2 lines!
-
-# {{ cookiecutter.src_dir }}/{{ cookiecutter.main_app }}/settings/local.py
-# /.vscode
-
+/src/main/settings/local.py
+/.vscode
 /.env
 /.ssh
-/{{ cookiecutter.src_dir }}/reports/*
+/src/reports/*
 /node_modules
-/{{ cookiecutter.src_dir }}/celerybeat-schedule
-/{{ cookiecutter.src_dir }}/backups
+/src/celerybeat-schedule
+/src/backups
 /data/backups
 /.pgpass
 /.my.cnf

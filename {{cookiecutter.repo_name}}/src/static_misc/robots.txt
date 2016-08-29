@@ -1,0 +1,10 @@
+# robotstxt.org/
+
+User-agent: *
+Disallow: /admin
+Disallow: /admin/
+
+# Google adsbot ignores robots.txt unless specifically named!
+User-agent: adsbot-google
+Disallow: /admin
+Disallow: /admin/

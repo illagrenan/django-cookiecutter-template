@@ -1,0 +1,30 @@
+{% raw %}
+    {% extends "base.html" %}
+
+    {% load i18n %}
+    {% load static %}
+
+    {% block head_title %}
+        Index
+    {% endblock %}
+
+    {% block content %}
+        <h1>
+            {% trans "Hello from project {% endraw %}{{ cookiecutter.project_name }}{% raw %}" %}
+        </h1>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum esse fugiat id in labore modi nemo numquam
+            qui tenetur? Alias at eos, magnam molestias non praesentium repellendus voluptatibus. Labore, voluptate.
+        </p>
+
+        <h2>
+            Languages
+        </h2>
+
+        <ul>
+            <li>Current language: {{ LANGUAGE_CODE }}</li>
+            <li>Available languages> {{ LANGUAGES }}</li>
+        </ul>
+    {% endblock %}
+{% endraw %}
