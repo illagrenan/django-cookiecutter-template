@@ -1,7 +1,7 @@
 {
   "name": "{{ cookiecutter.repo_name }}",
   "private": true,
-  "version": "1.0.0",
+  "version": "{{ cookiecutter.version }}",
   "description": "N/A",
   "main": "gulpfile.js",
   "scripts": {

@@ -1,5 +1,8 @@
 # Welcome to {{ cookiecutter.project_name }}
 
+> Description of this project: {{ cookiecutter.description_name }}
+
+
 ## Start with this repository ##
 
 1) Setup virtualenv:
@@ -32,3 +35,8 @@ python manage.py runserver
 
 * [Deploy project on Ubuntu](docs/DEPLOYMENT.md)
 * [Uninstall project from Ubuntu](docs/UNINSTALL.md)
+
+
+----------
+
+Copyright (c) {{ cookiecutter.year }} {{ cookiecutter.author_name }} <`{{ cookiecutter.email }}`>
