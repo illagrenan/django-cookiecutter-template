@@ -122,4 +122,6 @@ crashlytics-build.properties
 /data/backups
 /.pgpass
 /.my.cnf
+/env.DEVELOPMENT
+/env.PRODUCTION
 /activate.ps1
