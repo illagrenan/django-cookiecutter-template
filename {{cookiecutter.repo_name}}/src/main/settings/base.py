@@ -40,7 +40,6 @@ ADMINS = (
 MANAGERS = ADMINS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -91,7 +90,6 @@ LOCALE_PATHS = (
 MODELTRANSLATION_DEFAULT_LANGUAGE = LANGUAGE_CODE
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
@@ -100,7 +98,6 @@ MEDIA_ROOT = os.path.join(SITE_ROOT, '../data/media')
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -125,7 +122,6 @@ STATICFILES_FINDERS = (
 )
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
@@ -133,13 +129,11 @@ STATICFILES_FINDERS = (
 SECRET_KEY = env('SECRET_KEY')  # Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
 # FIXTURE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
 FIXTURE_DIRS = ()
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -185,7 +179,6 @@ if not DEBUG:
     ]
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/topics/http/middleware/
@@ -214,13 +207,11 @@ if SENTRY_ENABLED:
 MIDDLEWARE = DEFAULT_MIDDLEWARE + LOCAL_MIDDLEWARE + THIRD_PARTY_MIDDLEWWARE
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
 # URL CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
 ROOT_URLCONF = 'main.urls'
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -329,7 +320,6 @@ CACHES = {
 KEY_PREFIX = REDIS_PREFIX
 CACHE_MIDDLEWARE_KEY_PREFIX = REDIS_PREFIX
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -474,7 +464,6 @@ else:
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default="no-reply@{{ cookiecutter.domain_name }}")
 EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 # DEBUG_TOOLBAR CONFIGURATION
 # ------------------------------------------------------------------------------
