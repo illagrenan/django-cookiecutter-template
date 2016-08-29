@@ -3,7 +3,7 @@
 
 import os
 import sys
-from os.path import abspath, normpath
+from os.path import abspath
 
 import environ
 
@@ -148,7 +148,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            normpath(os.path.join(SITE_ROOT, 'templates'))
+            os.path.join(SITE_ROOT, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -188,8 +188,8 @@ if not DEBUG:
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#middleware-classes
-DEFAULT_MIDDLEWARE_CLASSES = [
+# See: https://docs.djangoproject.com/en/dev/topics/http/middleware/
+DEFAULT_MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -200,19 +200,18 @@ DEFAULT_MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-LOCAL_MIDDLEWARE_CLASSES = [
+LOCAL_MIDDLEWARE = [
 
 ]
 
-THIRD_PARTY_MIDDLEWWARE_CLASSES = [
+THIRD_PARTY_MIDDLEWWARE = [
     'annoying.middlewares.StaticServe',
 ]
 
-# TODO SentryResponseErrorIdMiddleware is not compatible with Django 1.10
 if SENTRY_ENABLED:
-    DEFAULT_MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE_CLASSES
+    DEFAULT_MIDDLEWARE = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE
 
-MIDDLEWARE = MIDDLEWARE_CLASSES = DEFAULT_MIDDLEWARE_CLASSES + LOCAL_MIDDLEWARE_CLASSES + THIRD_PARTY_MIDDLEWWARE_CLASSES
+MIDDLEWARE = DEFAULT_MIDDLEWARE + LOCAL_MIDDLEWARE + THIRD_PARTY_MIDDLEWWARE
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -327,6 +326,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CACHES = {
     'default': env.cache(default="dummycache://"),
 }
+KEY_PREFIX = REDIS_PREFIX
 CACHE_MIDDLEWARE_KEY_PREFIX = REDIS_PREFIX
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -431,7 +431,7 @@ WSGI_APPLICATION = 'wsgi.application'
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#sessions
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-SESSION_CACHE_ALIAS = REDIS_PREFIX
+SESSION_CACHE_ALIAS = "default"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -471,7 +471,7 @@ else:
     EMAIL_HOST_PASSWORD = EMAIL_URL['EMAIL_HOST_PASSWORD']
     EMAIL_USE_TLS = EMAIL_URL.get('EMAIL_USE_TLS', False)
 
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default="no-reply@example.com")
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default="no-reply@{{ cookiecutter.domain_name }}")
 EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
