@@ -499,6 +499,7 @@ DEBUG_TOOLBAR_PANELS = [
 # ------------------------------------------------------------------------------
 THUMBNAIL_FORMAT = 'PNG'
 THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
+THUMBNAIL_KEY_PREFIX = REDIS_PREFIX
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # CUSTOM 500 CONFIGURATION
