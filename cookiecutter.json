@@ -1,10 +1,7 @@
 {
   "project_name": "project_name",
   "repo_name": "{{ cookiecutter.project_name|replace(' ', '_')|lower }}",
-  "src_dir": "src",
-  "main_app": "main",
   "deploy_path": "/var/www/",
-  "app_subdirectory_in_deploy_path": "app/",
   "deploy_host_ip": "1.2.3.4",
   "private_key_path": "~/.ssh/id_rsa",
   "group": "webapps",
@@ -17,7 +14,7 @@
   "django_version": "1.10",
   "version": "0.1.0",
   "timezone": "UTC",
-  "now": "2016/08/26",
+  "now": "2016/08/29",
   "year": "{{ cookiecutter.now[:4] }}",
   "db_user": "{{ cookiecutter.project_name|replace(' ', '_')|lower }}",
   "db_password": "database_password"

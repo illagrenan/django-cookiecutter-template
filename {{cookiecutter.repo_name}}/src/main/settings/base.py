@@ -219,7 +219,7 @@ MIDDLEWARE = MIDDLEWARE_CLASSES = DEFAULT_MIDDLEWARE_CLASSES + LOCAL_MIDDLEWARE_
 # URL CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
-ROOT_URLCONF = '{{ cookiecutter.main_app }}.urls'
+ROOT_URLCONF = 'main.urls'
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -271,7 +271,7 @@ if env.bool('DEBUG_TOOLBAR', default=False):
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    '{{ cookiecutter.main_app }}',
+    'main',
     'web',
 )
 

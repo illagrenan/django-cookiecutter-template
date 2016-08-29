@@ -88,8 +88,8 @@ cat ~/.ssh/id_rsa.pub
 
 ```bash
 cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git {{ cookiecutter.app_subdirectory_in_deploy_path }}
-cd {{ cookiecutter.app_subdirectory_in_deploy_path }}
+git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git app/
+cd app/
 
 # On Python2:
 virtualenv data/.venv; source activate.sh
@@ -113,7 +113,7 @@ npm install
 To automatically export ENV_VARS, create this file:
 
 ```bash
-touch {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}.env
+touch {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/app/.env
 ```
 
 Example of minimal configuration:
@@ -130,14 +130,14 @@ ALLOWED_HOSTS=www.{{ cookiecutter.domain_name }},{{ cookiecutter.domain_name }},
 
 
 ```bash
-cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}{{ cookiecutter.src_dir }}
+cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/app/src/
 gunicorn main.wsgi:application --bind 0.0.0.0:8001 --access-logfile -
 ```
 
 **2) Setup Supervisor to start Gunicorn**
 
 ```bash
-sudo cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
+sudo cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/app/conf/supervisor.conf /etc/supervisor/conf.d/{{ cookiecutter.repo_name }}.conf
 sudo supervisorctl reread
 # {{ cookiecutter.repo_name }}_gunicorn: available
 # {{ cookiecutter.repo_name }}_celerybeat: available
@@ -172,7 +172,7 @@ sudo supervisorctl restart {{ cookiecutter.repo_name }}:*
 ## 6) Nginx
 
 ```bash
-cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}conf/site.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
+cp {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/app/conf/site.conf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf
 sudo ln -sf /etc/nginx/sites-available/{{ cookiecutter.repo_name }}.conf /etc/nginx/sites-enabled/{{ cookiecutter.repo_name }}.conf
 sudo service nginx configtest
 nginx -t

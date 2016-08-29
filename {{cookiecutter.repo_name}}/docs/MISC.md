@@ -4,7 +4,7 @@
 
 ```bash
 $ sudo apt install -y apache2-utils
-$ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/{{ cookiecutter.app_subdirectory_in_deploy_path }}.htpasswd admin
+$ sudo htpasswd -c {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/app/.htpasswd admin
 ```
 
 ## Fix permissions in project directory

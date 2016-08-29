@@ -23,7 +23,7 @@ import os
 # mod_wsgi daemon mode with each site in its own daemon process, or use
 
 # See: https://code.djangoproject.com/ticket/18559
-os.environ["DJANGO_SETTINGS_MODULE"] = "{{ cookiecutter.main_app }}.settings.base"
+os.environ["DJANGO_SETTINGS_MODULE"] = "main.settings.base"
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings.base")
 
 # This application object is used by any WSGI server configured to use this
