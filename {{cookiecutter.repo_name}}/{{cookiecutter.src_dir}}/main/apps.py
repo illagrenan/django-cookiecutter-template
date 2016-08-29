@@ -5,16 +5,12 @@ from django.apps import AppConfig
 
 
 class MainAppsConfig(AppConfig):
-    """
-    Django app config, this will set human readable name in Django admin.
-    """
-
-    name = '{{cookiecutter.main_app}}'
+    name = 'main'
     verbose_name = "Main app"
 
     def ready(self):
         # noinspection PyUnresolvedReferences
         try:
-            import {{cookiecutter.main_app}}.receivers
+            import main.receivers
         except ImportError:
             pass

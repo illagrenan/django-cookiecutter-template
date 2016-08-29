@@ -14,14 +14,21 @@ class Celery(celery.Celery):
     def on_configure(self):
         if hasattr(settings, 'RAVEN_CONFIG') and settings.RAVEN_CONFIG['dsn']:
             import raven
-            from raven.contrib.celery import (register_signal,
-                                              register_logger_signal)
+            from raven.contrib.celery import register_signal, register_logger_signal
 
-            client = raven.Client(settings.RAVEN_CONFIG['dsn'])
+            client = raven.Client(dsn=settings.RAVEN_CONFIG['dsn'])
             register_logger_signal(client)
             register_signal(client)
 
 
-app = Celery('{{ cookiecutter.main_app }}')
+app = Celery('main')
 app.config_from_object('django.conf:settings')
+app.conf.update(
+    CELERY_TASK_SERIALIZER='json',
+    CELERY_IGNORE_RESULT=True,
+    CELERY_RESULT_SERIALIZER='json',
+    CELERY_ACCEPT_CONTENT=['json'],
+    CELERY_ENABLE_UTC=True,
+    CELERY_TIMEZONE=settings.TIME_ZONE
+)
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
