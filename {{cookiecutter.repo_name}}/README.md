@@ -2,21 +2,33 @@
 
 ## Start with this repository ##
 
-**Existing repository?**
-
+1) Setup virtualenv:
 ```bash
-git remote add origin git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git
-git push -u origin --all
-git push -u origin --tags
+py -3 -m venv C:\Users\YourName\.virtualenvs\{{ cookiecutter.project_name }}
+.\activate.ps1
+python -m pip install -U pip
+pip install setuptools ipython pyreadline wheel --upgrade
 ```
 
-**New repository?**
-
+2) Install all requirements:
 ```bash
-git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git
+npm install -g bower
+pip install -r requirements/local.txt --upgrade --use-wheel
+bower install
+```
+
+3) Create database
+
+4) Migrate and run:
+```bash
+cd src
+python manage.py check
+# System check identified no issues (0 silenced).
+python manage.py migrate
+python manage.py runserver
 ```
 
 ## What's next ##
 
-* [Deploy project to Ubuntu](docs/DEPLOYMENT.md)
+* [Deploy project on Ubuntu](docs/DEPLOYMENT.md)
 * [Uninstall project from Ubuntu](docs/UNINSTALL.md)
