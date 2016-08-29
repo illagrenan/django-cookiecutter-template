@@ -294,13 +294,11 @@ AUTHENTICATION_BACKENDS = (
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/es/dev/ref/settings/#std:setting-PASSWORD_HASHERS
 PASSWORD_HASHERS = [
-    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
-    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-    'django.contrib.auth.hashers.SHA1PasswordHasher',
-    'django.contrib.auth.hashers.MD5PasswordHasher',
-    'django.contrib.auth.hashers.CryptPasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
 ]
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -361,27 +359,27 @@ LOGGING = {
         }
     },
     'handlers': {
-        'development_debug': {
+        'debug_file': {
             'formatter': 'verbose',
             'filters': ['require_debug_true'],
-            'filename': os.path.os.path.join(DJANGO_ROOT, '../../log/django-dev-debug.log'),
+            'filename': os.path.join(DJANGO_ROOT, '../../log/django-DEBUG-debug-true.log'),
             'level': 'DEBUG',
-            'class': '{{ cookiecutter.main_app }}.settings.log.handlers.GroupWriteRotatingFileHandler',
+            'class': 'main.settings.log.handlers.GroupWriteRotatingFileHandler',
+            'maxBytes': 1024 * 1024 * 10,  # 10 MB
+            'backupCount': 5,
+        },
+        'production_file': {
+            'formatter': 'verbose',
+            'filters': ['require_debug_false'],
+            'filename': os.path.join(DJANGO_ROOT, '../../log/django-INFO-debug-false.log'),
+            'level': 'INFO',
+            'class': 'main.settings.log.handlers.GroupWriteRotatingFileHandler',
             'maxBytes': 1024 * 1024 * 10,  # 10 MB
             'backupCount': 5,
         },
         'null': {
             'level': 'DEBUG',
             'class': 'logging.NullHandler',
-        },
-        'production_errors': {
-            'formatter': 'verbose',
-            'filters': ['require_debug_false'],
-            'filename': os.path.os.path.join(DJANGO_ROOT, '../../log/django-error.log'),
-            'level': 'ERROR',
-            'class': '{{ cookiecutter.main_app }}.settings.log.handlers.GroupWriteRotatingFileHandler',
-            'maxBytes': 1024 * 1024 * 10,  # 10 MB
-            'backupCount': 5,
         },
         'sentry': {
             'level': 'WARNING',
@@ -391,15 +389,11 @@ LOGGING = {
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'simple'
-        },
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'filters': ['require_debug_false']
+            'formatter': 'verbose'
         }
     },
     'loggers': {
+        # django is the catch-all logger. No messages are posted directly to this logger.
         'django': {
             'handlers': ['console'],
             'propagate': True,
@@ -411,12 +405,13 @@ LOGGING = {
             'level': 'DEBUG',
         },
         'django.request': {
-            'handlers': ['production_errors'],
+            'handlers': ['production_file'],
             'level': 'DEBUG',
-            'propagate': False
+            'propagate': True
         },
+        # Catch-all logger
         '': {
-            'handlers': ['development_debug'],
+            'handlers': ['console', 'production_file', 'debug_file'],
             'propagate': True,
             'level': 'DEBUG',
         },
@@ -557,7 +552,6 @@ CRISPY_FAIL_SILENTLY = not DEBUG
 from main.settings.app import *
 
 try:
-    # TODO Add logging
     from local import *
 except ImportError:
     pass
