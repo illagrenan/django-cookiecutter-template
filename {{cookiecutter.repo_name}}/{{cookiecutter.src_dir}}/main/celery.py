@@ -3,11 +3,12 @@
 
 import os
 
-# set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', '{{ cookiecutter.main_app }}.settings.base')
-
 import celery
 from django.conf import settings
+from kombu import Exchange, Queue
+
+# set the default Django settings module for the 'celery' program.
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '{{ cookiecutter.main_app }}.settings.base')
 
 
 class Celery(celery.Celery):
@@ -21,7 +22,7 @@ class Celery(celery.Celery):
             register_signal(client)
 
 
-app = Celery('main')
+app = Celery('{prefix}_celery_app'.format(prefix=settings.REDIS_PREFIX))
 app.config_from_object('django.conf:settings')
 app.conf.update(
     CELERY_TASK_SERIALIZER='json',
@@ -29,6 +30,15 @@ app.conf.update(
     CELERY_RESULT_SERIALIZER='json',
     CELERY_ACCEPT_CONTENT=['json'],
     CELERY_ENABLE_UTC=True,
-    CELERY_TIMEZONE=settings.TIME_ZONE
+    CELERY_TIMEZONE=settings.TIME_ZONE,
+    BROKER_URL='redis://',
+    ROKER_TRANSPORT_OPTIONS={
+        'fanout_prefix': True,
+        'fanout_patterns': True
+    },
+    CELERY_DEFAULT_QUEUE='{prefix}_default'.format(prefix=settings.REDIS_PREFIX),
+    CELERY_QUEUES=(
+        Queue(name='{prefix}_default'.format(prefix=settings.REDIS_PREFIX), exchange=Exchange('default'), routing_key='default'),
+    )
 )
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)

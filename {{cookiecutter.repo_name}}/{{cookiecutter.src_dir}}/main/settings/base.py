@@ -3,8 +3,7 @@
 
 import os
 import sys
-from os.path import abspath, dirname, normpath
-from sys import path
+from os.path import abspath, normpath
 
 import environ
 
@@ -53,6 +52,7 @@ DATABASES = {
 # SITE CONFIGURATION
 # ------------------------------------------------------------------------------
 SITE_NAME = "{{ cookiecutter.project_name }}"
+REDIS_PREFIX = env('REDIS_PREFIX')  # Keep this unique! This prefix is used for: django-redis and celery
 PREPEND_WWW = env.bool('PREPEND_WWW', default=False)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -327,6 +327,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CACHES = {
     'default': env.cache(default="dummycache://"),
 }
+CACHE_MIDDLEWARE_KEY_PREFIX = REDIS_PREFIX
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
@@ -429,7 +430,8 @@ WSGI_APPLICATION = 'wsgi.application'
 # SESSION CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#sessions
-CACHE_MIDDLEWARE_KEY_PREFIX = SITE_NAME
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = REDIS_PREFIX
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
