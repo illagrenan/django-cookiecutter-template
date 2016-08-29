@@ -1,7 +1,6 @@
 language: python
 python:
   - "3.5"
-  - "3.6"
   - "nightly"
 
 before_install:
@@ -10,7 +9,7 @@ before_install:
 
 script:
   - cookiecutter . --no-input
-  - cd human_readable_project_name
+  - cd project_name
   - pip install --no-input --exists-action=i -r requirements/local.txt --use-wheel
 
 notifications:
