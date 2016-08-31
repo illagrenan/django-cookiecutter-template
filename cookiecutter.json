@@ -1,6 +1,6 @@
 {
-  "project_name": "project_name",
-  "repo_name": "{{ cookiecutter.project_name|replace(' ', '_')|lower }}",
+  "project_slug": "project_slug",
+  "repo_name": "{{ cookiecutter.project_slug|replace(' ', '_')|lower }}",
   "deploy_path": "/var/www/",
   "deploy_host_ip": "1.2.3.4",
   "private_key_path": "~/.ssh/id_rsa",
@@ -8,13 +8,14 @@
   "git_provider": "bitbucket.org",
   "author_name": "Your Name",
   "author_username": "Your username on {{ cookiecutter.git_provider }}",
-  "email": "Your email",
+  "email": "foo@example.com",
   "description": "A short description of the project.",
   "domain_name": "example.com",
   "django_version": "1.10",
   "version": "0.1.0",
-  "now": "2016/08/29",
-  "year": "{{ cookiecutter.now[:4] }}",
-  "db_user": "{{ cookiecutter.project_name|replace(' ', '_')|lower }}",
-  "db_password": "database_password"
+  "now": "{% now 'utc', '%d.%m.%Y' %}",
+  "db_user": "{{ cookiecutter.project_slug|replace(' ', '_')|lower }}",
+  "db_password": "*****",
+  "python_interpreter_dir": "C:\\Users\\{{ cookiecutter.author_name }}\\.virtualenvs\\{{ cookiecutter.project_slug }}\\Scripts\\",
+  "_extensions": ["jinja2_time.TimeExtension"]
 }

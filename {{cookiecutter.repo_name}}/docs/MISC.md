@@ -1,4 +1,4 @@
-# Tips&tricks for `{{ cookiecutter.project_name }}`
+# Tips&tricks for `{{ cookiecutter.project_slug }}`
 
 ## Protect web with Basic auth
 

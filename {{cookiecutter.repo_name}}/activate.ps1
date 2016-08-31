@@ -1,3 +1,3 @@
 # Activate virtualenv from PowerShell
-# Create virtualenv: $ py -3 -m venv ~\.virtualenvs\{{ cookiecutter.repo_name }}
-~\.virtualenvs\{{ cookiecutter.repo_name }}\Scripts\activate.ps1
+# Create virtualenv: $ py -3 -m venv {{ cookiecutter.python_interpreter_dir }}..\
+{{ cookiecutter.python_interpreter_dir }}\activate.ps1

@@ -1,4 +1,4 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "python.pythonPath": "C:\\Users\\TODO_YOUR_LOCAL_NAME_TODO\\.virtualenvs\\{{ cookiecutter.repo_name }}\\Scripts\\python"
+  "python.pythonPath": "{{ cookiecutter.python_interpreter_dir }}\python"
 }

@@ -6,7 +6,7 @@ set -e
 # | Update Supervisor configuration |
 # +---------------------------------+
 
-echo "Updating supervisor for project {{ cookiecutter.project_name }}."
+echo "Updating supervisor for project {{ cookiecutter.project_slug }}."
 
 if [ "$UID" -ne 0 ]
   then echo "Please run as root"

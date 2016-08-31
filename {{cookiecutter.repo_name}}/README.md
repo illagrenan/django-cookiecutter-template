@@ -1,13 +1,13 @@
-# Welcome to {{ cookiecutter.project_name }}
+# Welcome to {{ cookiecutter.project_slug }}
 
-> Description of this project: {{ cookiecutter.description_name }}
+> Description of this project: {{ cookiecutter.description }}
 
 
 ## Start with this repository ##
 
 1) Setup virtualenv:
 ```bash
-py -3 -m venv C:\Users\YourName\.virtualenvs\{{ cookiecutter.project_name }}
+py -3 -m venv C:\Users\YourName\.virtualenvs\{{ cookiecutter.project_slug }}
 .\activate.ps1
 python -m pip install -U pip
 pip install setuptools ipython pyreadline wheel --upgrade
@@ -39,4 +39,4 @@ python manage.py runserver
 
 ----------
 
-Copyright (c) {{ cookiecutter.year }} {{ cookiecutter.author_name }} <`{{ cookiecutter.email }}`>
+Copyright (c) {% now 'utc', '%Y' %} {{ cookiecutter.author_name }} <`{{ cookiecutter.email }}`>

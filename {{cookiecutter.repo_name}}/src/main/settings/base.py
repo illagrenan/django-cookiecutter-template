@@ -50,7 +50,7 @@ DATABASES = {
 
 # SITE CONFIGURATION
 # ------------------------------------------------------------------------------
-SITE_NAME = "{{ cookiecutter.project_name }}"
+SITE_NAME = "{{ cookiecutter.project_slug }}"
 REDIS_PREFIX = env('REDIS_PREFIX')  # Keep this unique! This prefix is used for: django-redis and celery
 PREPEND_WWW = env.bool('PREPEND_WWW', default=False)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
@@ -500,7 +500,7 @@ CUSTOM_500_TEMPLATE = "500.html"
 # ------------------------------------------------------------------------------
 # https://django-suit.readthedocs.org/en/develop/configuration.html#header
 SUIT_CONFIG = {
-    'ADMIN_NAME': '{{ cookiecutter.project_name }}',
+    'ADMIN_NAME': '{{ cookiecutter.project_slug }}',
     # Set to empty string if you want to hide search from menu
     'SEARCH_URL': '',
 }

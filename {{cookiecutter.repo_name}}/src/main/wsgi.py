@@ -2,7 +2,7 @@
 # ! python3
 
 """
-WSGI config for {{ cookiecutter.project_name }} project.
+WSGI config for {{ cookiecutter.project_slug }} project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable

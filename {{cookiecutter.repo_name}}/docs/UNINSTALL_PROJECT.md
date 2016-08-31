@@ -1,4 +1,4 @@
-# Uninstall `{{ cookiecutter.project_name }}`
+# Uninstall `{{ cookiecutter.project_slug }}`
 
 ```bash
 # 1) Remove Gunicorn configuration:

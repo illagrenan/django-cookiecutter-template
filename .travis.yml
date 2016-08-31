@@ -9,7 +9,7 @@ before_install:
 
 script:
   - cookiecutter . --no-input
-  - cd project_name
+  - cd project_slug
   - pip install --no-input --exists-action=i -r requirements/local.txt --use-wheel
 
 notifications:

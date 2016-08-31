@@ -1,4 +1,4 @@
-# Deploy `{{ cookiecutter.project_name }}`
+# Deploy `{{ cookiecutter.project_slug }}`
 
 - **Project already deployed? Check [Update guide](UPDATES.md)**.
 - **New server? First install all required software, check [Server setup](SERVER_SETUP.md)**
