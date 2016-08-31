@@ -1,5 +1,7 @@
 # robotstxt.org/
 
+Sitemap: https://www.{{ cookiecutter.domain_name }}/sitemap.xml
+
 User-agent: *
 Disallow: /admin
 Disallow: /admin/
