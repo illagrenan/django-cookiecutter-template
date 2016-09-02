@@ -91,11 +91,9 @@ cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git app/
 cd app/
 
-# On Python2:
-virtualenv data/.venv; source activate.sh
-
 # On Python3 using deadsnakes:
 virtualenv -p /usr/bin/python3.5 data/.venv
+source activate.sh
 
 
 pip install --upgrade pip ipython setuptools wheel
