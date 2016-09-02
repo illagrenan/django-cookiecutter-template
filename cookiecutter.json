@@ -17,7 +17,7 @@
   "db_user": "{{ cookiecutter.project_slug|replace(' ', '_')|lower }}",
   "db_password": "*****",
   "python_version": "3.5.2",
-  "virtualenv_path": "C:\\Users\\{{ cookiecutter.author_name }}\\.virtualenvs\\{{ cookiecutter.project_slug }}\\",
+  "virtualenv_path": "C:\\Users\\{{ cookiecutter.author_name }}\\.virtualenvs\\{{ cookiecutter.project_slug }}",
   "_extensions": [
     "jinja2_time.TimeExtension"
   ]
