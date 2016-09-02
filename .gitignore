@@ -60,7 +60,7 @@ target/
 #####=== JetBrains ===#####
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
-x*.iml
+*.iml
 
 ## Directory-based project format:
 /.idea/
