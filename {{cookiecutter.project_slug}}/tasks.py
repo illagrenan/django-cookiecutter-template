@@ -23,7 +23,7 @@ def worker():
 @task
 def test():
     """ Test project """
-    run("pytest --verbose --showlocals")
+    run("pytest --verbose --color=yes --showlocals")
 
 
 @task
