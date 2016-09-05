@@ -271,13 +271,13 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
-AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
 
     # `allauth` specific authentication methods, such as login by e-mail
     # 'allauth.account.auth_backends.AuthenticationBackend',
-)
+]
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # PASSWORD HASHERS
