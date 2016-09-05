@@ -11,13 +11,13 @@ logger = logging.getLogger(__name__)
 @task
 def worker():
     """ Run Celery Worker """
-    run("celery worker --workdir=src/ --app=main --concurrency=2 --loglevel=INFO")
+    run("celery worker --pidfile=../data/celery/celery-worker.pid --workdir=src/ --app=main --concurrency=2 --loglevel=INFO")
 
 
 @task
 def beat():
     """ Run Celery Beat """
-    run("celery beat --schedule=../data/celery/celerybeat-schedule --workdir=src/ --app=main --loglevel=INFO")
+    run("celery beat --pidfile=../data/celery/celery-beat.pid --schedule=../data/celery/celerybeat-schedule --workdir=src/ --app=main --loglevel=INFO")
 
 
 @task
