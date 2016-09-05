@@ -17,6 +17,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.vscode" />
       <excludeFolder url="file://$MODULE_DIR$/django_fab_deployer" />
       <excludeFolder url="file://$MODULE_DIR$/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/htmlcov" />
     </content>
     <orderEntry type="jdk" jdkName="Python {{ cookiecutter.python_version }} virtualenv at {{ cookiecutter.virtualenv_path }}" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
