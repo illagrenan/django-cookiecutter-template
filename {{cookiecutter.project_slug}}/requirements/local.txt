@@ -7,8 +7,8 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Better dev server
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Werkzeug
-# watchdog
+Werkzeug==0.11.11
+watchdog==0.8.3
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Debugging

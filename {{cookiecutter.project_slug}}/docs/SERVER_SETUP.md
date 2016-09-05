@@ -119,9 +119,7 @@ sudo apt install python-dev
 **Install pip:**
 
 ```bash
-wget https://bootstrap.pypa.io/get-pip.py
-python get-pip.py
-rm get-pip.py
+wget https://bootstrap.pypa.io/get-pip.py -O - | python
 
 # Upgrade after installation
 pip install --upgrade pip setuptools
