@@ -1,6 +1,6 @@
 # Django project template #
 
-[![Travis CI Badge](https://api.travis-ci.org/illagrenan/django-cookiecutter-template.png)](https://travis-ci.org/illagrenan/django-cookiecutter-template)&nbsp;[![Requirements Status](https://requires.io/github/illagrenan/django-cookiecutter-template/requirements.svg?branch=master)](https://requires.io/github/illagrenan/django-cookiecutter-template/requirements/?branch=master)
+[![Travis CI Badge](https://api.travis-ci.org/illagrenan/django-cookiecutter-template.png)](https://travis-ci.org/illagrenan/django-cookiecutter-template)&nbsp;[![Updates](https://pyup.io/repos/github/illagrenan/django-cookiecutter-template/shield.svg)](https://pyup.io/repos/github/illagrenan/django-cookiecutter-template/)&nbsp;[![Python 3](https://pyup.io/repos/github/illagrenan/django-cookiecutter-template/python-3-shield.svg)](https://pyup.io/repos/github/illagrenan/django-cookiecutter-template/)
 
 ## Use this template ##
 

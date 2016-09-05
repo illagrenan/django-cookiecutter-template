@@ -6,16 +6,17 @@ Django[argon2]==1.10.1
 psycopg2==2.6.2
 redis==2.10.5
 django-redis==4.4.4
-redis~=2.10.5
 pytz==2016.6.1
-invoke==0.13.0
+invoke==0.12.2 # pyup: ignore
+# See: https://github.com/pyinvoke/invoke/issues/345
+
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Better shell
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ipython==5.1.0
 pyreadline==2.1
-colorama==0.3.6
+colorama
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Django extras
@@ -27,7 +28,7 @@ django-annoying==0.10.1
 django-environ==0.4.0
 django-model-utils==2.5.2
 django-suit==0.2.21
-django-custom-500==0.1.0
+django-custom-500
 django-anymail[mailgun]==0.5.0
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
