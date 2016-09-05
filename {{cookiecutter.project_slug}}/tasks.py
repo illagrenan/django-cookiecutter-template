@@ -17,7 +17,7 @@ def worker():
 @task
 def beat():
     """ Run Celery Beat """
-    run("celery beat --workdir=src/ --app=main --loglevel=INFO")
+    run("celery beat --schedule=../data/celery/celerybeat-schedule --workdir=src/ --app=main --loglevel=INFO")
 
 
 @task
