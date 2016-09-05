@@ -1,7 +1,10 @@
 # -*- encoding: utf-8 -*-
 # ! python3
 
+import glob
 import logging
+import os
+import shutil
 
 from invoke import run, task
 
@@ -24,6 +27,20 @@ def beat():
 def test():
     """ Test project """
     run("pytest src/ --verbose --color=yes --showlocals")
+
+
+@task
+def clean():
+    """ Clean project """
+    for hgx in glob.glob("./**/**.py[c|o]", recursive=True):
+        print("Removing {}".format(hgx))
+        os.remove(hgx)
+
+    for hgx in glob.glob("./**/**/__pycache__", recursive=True):
+        print("Removing {}".format(hgx))
+        shutil.rmtree(hgx)
+
+    shutil.rmtree("htmlcov/", ignore_errors=True)
 
 
 @task
