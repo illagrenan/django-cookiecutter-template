@@ -194,11 +194,9 @@ DEFAULT_MIDDLEWARE = [
 ]
 
 LOCAL_MIDDLEWARE = [
-
 ]
 
 THIRD_PARTY_MIDDLEWWARE = [
-    'annoying.middlewares.StaticServe',
 ]
 
 if SENTRY_ENABLED:
