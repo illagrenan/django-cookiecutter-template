@@ -23,7 +23,7 @@ def beat():
 @task
 def test():
     """ Test project """
-    run("pytest --verbose --color=yes --showlocals")
+    run("pytest src/ --verbose --color=yes --showlocals")
 
 
 @task
