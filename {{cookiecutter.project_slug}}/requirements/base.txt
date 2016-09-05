@@ -16,7 +16,7 @@ invoke==0.12.2 # pyup: ignore
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ipython==5.1.0
 pyreadline==2.1
-colorama==0.3.6
+colorama==0.3.7
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Django extras
