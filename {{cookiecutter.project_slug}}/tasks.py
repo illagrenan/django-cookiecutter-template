@@ -32,13 +32,13 @@ def test():
 @task
 def clean():
     """ Clean project """
-    for hgx in glob.glob("./**/**.py[c|o]", recursive=True):
-        print("Removing {}".format(hgx))
-        os.remove(hgx)
+    for f in glob.glob("./**/**.py[c|o]", recursive=True):
+        print("Removing {}".format(f))
+        os.remove(f)
 
-    for hgx in glob.glob("./**/**/__pycache__", recursive=True):
-        print("Removing {}".format(hgx))
-        shutil.rmtree(hgx)
+    for ff in glob.glob("./**/**/__pycache__", recursive=True):
+        print("Removing {}".format(ff))
+        shutil.rmtree(ff)
 
     shutil.rmtree("htmlcov/", ignore_errors=True)
 
