@@ -46,8 +46,9 @@ def clean():
 @task
 def coverage():
     """ Create coverage report """
-    run("coverage run -m pytest --verbose --color=yes --showlocals src/")
+    run("coverage run --branch -m pytest --verbose --color=yes --showlocals src/")
     run("coverage report -m")
     run("coverage html")
 
     print("Open htmlcov/index.html in your browser.")
+
