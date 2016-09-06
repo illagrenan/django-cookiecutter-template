@@ -213,7 +213,7 @@ ROOT_URLCONF = 'main.urls'
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
-DJANGO_APPS = (
+DJANGO_APPS = [
     # Default Django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -227,9 +227,9 @@ DJANGO_APPS = (
     # 'suit',
     'django.contrib.admin',
     # 'django.contrib.admindocs',
-)
+]
 
-THIRD_PARTY_APPS = (
+THIRD_PARTY_APPS = [
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
@@ -237,12 +237,12 @@ THIRD_PARTY_APPS = (
     'compressor',
     'annoying',
     'django_custom_500',
-)
+]
 
 if SENTRY_ENABLED:
-    THIRD_PARTY_APPS += (
+    THIRD_PARTY_APPS += [
         'raven.contrib.django.raven_compat',
-    )
+    ]
 
     # RAVEN CONFIGURATION
     # ------------------------------------------------------------------------------
@@ -253,15 +253,15 @@ if SENTRY_ENABLED:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 if env.bool('DEBUG_TOOLBAR', default=False):
-    THIRD_PARTY_APPS += (
+    THIRD_PARTY_APPS += [
         'debug_toolbar',
-    )
+    ]
 
 # Apps specific for this project go here.
-LOCAL_APPS = (
+LOCAL_APPS = [
     'main',
     'web',
-)
+]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
