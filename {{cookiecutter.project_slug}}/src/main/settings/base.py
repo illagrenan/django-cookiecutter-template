@@ -200,9 +200,6 @@ LOCAL_MIDDLEWARE = [
 THIRD_PARTY_MIDDLEWWARE = [
 ]
 
-if SENTRY_ENABLED:
-    DEFAULT_MIDDLEWARE = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE
-
 if DEBUG_TOOLBAR_ENABLED:
     DEFAULT_MIDDLEWARE = ['main.middleware.AtopdedTo110DebugMiddleware'] + DEFAULT_MIDDLEWARE
 
