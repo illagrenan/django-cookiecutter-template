@@ -1,4 +1,6 @@
-# UFW
+# SECURITY
+
+## UFW
 
 Source: 
 
@@ -38,4 +40,32 @@ Reset all:
 
 ```bash
 ufw reset
+```
+
+
+## Fail2Ban
+
+Source: [https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1604-lts-server-part-1-basics](https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1604-lts-server-part-1-basics)
+
+```bash
+sudo nano /etc/fail2ban/jail.conf
+```
+
+Add:
+
+```ini
+[sshd]
+
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 3
+sudo nano /etc/fail2ban/jail.conf
+```
+
+
+```bash
+sudo service fail2ban restart
+sudo fail2ban-client status
 ```
