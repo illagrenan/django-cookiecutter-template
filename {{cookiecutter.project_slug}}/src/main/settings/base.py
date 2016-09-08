@@ -26,6 +26,7 @@ env.read_env(os.path.join(SITE_ROOT, "..", ".env"))
 # ------------------------------------------------------------------------------
 DEBUG = env('DEBUG')  # False if not in os.environ
 SENTRY_ENABLED = env.str('SENTRY_DSN', default=False)
+DEBUG_TOOLBAR_ENABLED = env.bool('DEBUG_TOOLBAR', default=False)
 THUMBNAIL_DEBUG = DEBUG
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -202,6 +203,9 @@ THIRD_PARTY_MIDDLEWWARE = [
 if SENTRY_ENABLED:
     DEFAULT_MIDDLEWARE = ['raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'] + DEFAULT_MIDDLEWARE
 
+if DEBUG_TOOLBAR_ENABLED:
+    DEFAULT_MIDDLEWARE = ['main.middleware.AtopdedTo110DebugMiddleware'] + DEFAULT_MIDDLEWARE
+
 MIDDLEWARE = DEFAULT_MIDDLEWARE + LOCAL_MIDDLEWARE + THIRD_PARTY_MIDDLEWWARE
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -252,7 +256,7 @@ if SENTRY_ENABLED:
     }
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-if env.bool('DEBUG_TOOLBAR', default=False):
+if DEBUG_TOOLBAR_ENABLED:
     THIRD_PARTY_APPS += [
         'debug_toolbar',
     ]
@@ -480,6 +484,11 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.redirects.RedirectsPanel',
     'debug_toolbar.panels.profiling.ProfilingPanel'
 ]
+
+# We're using Explicit setup, see: https://django-debug-toolbar.readthedocs.io/en/stable/installation.html#explicit-setup
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+INTERNAL_IPS = env.list('INTERNAL_IPS', default=[])
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # SORL CONFIGURATION
