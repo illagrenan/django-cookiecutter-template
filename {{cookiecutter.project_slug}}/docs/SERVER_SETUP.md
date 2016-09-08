@@ -203,7 +203,7 @@ sudo apt-get purge nginx
 sudo apt-get autoremove
 ```
 
-- Homepage: [http://nginx.org/](http://nginx.org/)
+Continue to page [NGINX CONFIGURATION](NGINX.md)
 
 ## 6) Supervisor ##
 
@@ -213,7 +213,7 @@ sudo apt-get autoremove
 
 Install Git:
 
-```
+```bash
 sudo apt install git-core
 ```
 
