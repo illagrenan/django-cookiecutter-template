@@ -1,6 +1,7 @@
 {
   "production": {
     "celery_enabled": false,
+    "pytest": true,
     "compress_enabled": false,
     "source_branch": "master",
     "deploy_path": "{{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}/app/",
