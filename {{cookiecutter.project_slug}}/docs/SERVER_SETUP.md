@@ -153,6 +153,8 @@ pip install --upgrade pip setuptools
 apt-cache policy postgresql
 
 sudo apt install postgresql postgresql-contrib
+
+# Needed by psycopg:
 sudo apt install libpq-dev
 ```
 
