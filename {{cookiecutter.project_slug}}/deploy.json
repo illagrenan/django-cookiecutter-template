@@ -13,7 +13,7 @@
     "venv_path": "data/.venv/bin/activate",
     "warn_on_deploy": true,
     "urls_to_check": [
-      "http://www.{{ cookiecutter.domain_name }}/",
+      "http://BASIC_AUTH_USERNAME:BASIC_AUTH_PASSWORD@www.{{ cookiecutter.domain_name }}/",
       "http://www.{{ cookiecutter.domain_name }}/admin",
       "https://www.{{ cookiecutter.domain_name }}/",
       "https://www.{{ cookiecutter.domain_name }}/admin",
