@@ -1,14 +1,16 @@
-{% extends "admin/base.html" %}
+{% raw %}
+    {% extends "admin/base.html" %}
 
-{% block extrahead %}
-    <style>
-        * {
-            font-family: Arial, sans-serif !important;
-        }
-    </style>
-{% endblock %}
+    {% block extrahead %}
+        <style>
+            * {
+                font-family: Arial, sans-serif !important;
+            }
+        </style>
+    {% endblock %}
 
-{% block blockbots %}
-    <meta name="robots" content="noindex,nofollow,noarchive">
-    <meta name="googlebot" content="nosnippet,noindex,nofollow,noarchive">
-{% endblock %}
+    {% block blockbots %}
+        <meta name="robots" content="noindex,nofollow,noarchive">
+        <meta name="googlebot" content="nosnippet,noindex,nofollow,noarchive">
+    {% endblock %}
+{% endraw %}
