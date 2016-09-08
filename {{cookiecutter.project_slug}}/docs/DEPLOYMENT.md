@@ -95,6 +95,9 @@ cd app/
 virtualenv -p /usr/bin/python3.5 data/.venv
 source activate.sh
 
+# Or if you have correct Python 3 version:
+python3 -m venv data/.venv
+
 
 pip install --upgrade pip ipython setuptools wheel
 pip install -r requirements/production.txt --upgrade --use-wheel

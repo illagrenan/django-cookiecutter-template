@@ -10,6 +10,14 @@ This guide is based on:
 
 Create new Ubuntu LTS (current LTS version is `16.04 x64` (**`xenial`**)) server. For more information check Official Server Guide: [https://help.ubuntu.com/lts/serverguide/index.html](https://help.ubuntu.com/lts/serverguide/index.html).
 
+## 01) Password ##
+
+Change root's password:
+
+```bash
+sudo passwd
+```
+
 
 ## 1) Swap ##
 
@@ -105,7 +113,10 @@ reboot
 Install required libraries:
 
 ```bash
-sudo apt install libxml2-dev libxslt1-dev libffi-dev python-lxml
+sudo apt install libffi-dev
+
+# ???:
+# sudo apt install libxml2-dev libxslt1-dev libffi-dev python-lxml
 ```
 
 ## 3) Python tools ##
@@ -113,7 +124,7 @@ sudo apt install libxml2-dev libxslt1-dev libffi-dev python-lxml
 **Install Python header files:**
 
 ```bash
-sudo apt install python-dev
+sudo apt install python3-dev
 ```
 
 **Install pip:**
@@ -135,20 +146,12 @@ pip install --upgrade pip setuptools
 - Official installation instruction: [https://virtualenv.pypa.io/en/latest/installation.html](https://virtualenv.pypa.io/en/latest/installation.html)
 
 
-## 4) Database ##
-
-A) Install MySQL:
+## 4) PostgreSQL ##
 
 ```bash
-sudo apt install mysql-server
-sudo apt install python-mysqldb libmysqlclient-dev
-```
+# Check version that will be installed (should be 9.5+)
+apt-cache policy postgresql
 
-- Check official documentation:[ https://dev.mysql.com/doc/refman/5.6/en/index.html]( https://dev.mysql.com/doc/refman/5.6/en/index.html)
-
-B) Install PostgreSQL:
-
-```bash
 sudo apt install postgresql postgresql-contrib
 sudo apt install libpq-dev
 ```
@@ -186,7 +189,7 @@ Check if nginx is installed:
 
 ```bash
 nginx -v
-nginx version: nginx/1.8.0
+nginx version: nginx/1.11.3
 ```
 
 **Note:**
@@ -202,12 +205,7 @@ sudo apt-get autoremove
 
 ## 6) Supervisor ##
 
-> Supervisor is a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems. In this dev-stack will Supervisor monitor Gunicorn process.
-
-Follow these instructions: https://github.com/illagrenan/ubuntu-supervisor-configuration.
-
-- Homepage: [http://supervisord.org/](http://supervisord.org/)
-- Tutorial: [DigitalOcean.com: How To Install and Manage Supervisor on Ubuntu and Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps)
+**Follow these instructions:** [https://github.com/illagrenan/ubuntu-supervisor-configuration](https://github.com/illagrenan/ubuntu-supervisor-configuration).
 
 ## 7) Git ##
 
@@ -324,7 +322,8 @@ apt install links2
 Install external libraries (see: [pillow.readthedocs.org/en/latest/installation.html#external-libraries](https://pillow.readthedocs.org/en/latest/installation.html#external-libraries)):
 
 ```bash
-sudo apt install libjpeg-dev libtiff-dev libfreetype6 libfreetype6-dev zlib1g-dev
+# ???
+# sudo apt install libjpeg-dev libtiff-dev libfreetype6 libfreetype6-dev zlib1g-dev
 ```
 
 and then:
@@ -338,36 +337,16 @@ pip install Pillow
 A) Redis (optional, preferred)
 
 ```bash
-sudo apt -y install python-software-properties
+# ???
+# sudo apt -y install python-software-properties
+
+
 sudo add-apt-repository -y ppa:chris-lea/redis-server
 sudo apt -y update
 sudo apt -y install redis-server
 ```
 
 See: https://github.com/niwinz/django-redis and http://michal.karzynski.pl/blog/2013/07/14/using-redis-as-django-session-store-and-cache-backend/
-
-B) Memcached (optional)
-
-```bash
-sudo apt install -y memcached libmemcached-dev libmemcached-tools
-```
-
-Check if Memcache is running by:
-
-```bash
-echo stats | nc 127.0.0.1 11211
-```
-
-To use Memcached from Python/Django, install:
-
-```bash
-pip install --upgrade python-memcached
-```
-
-For more information check:
-
-- [https://docs.djangoproject.com/en/1.8/topics/cache/#memcached](https://docs.djangoproject.com/en/1.8/topics/cache/#memcached)
-- [https://github.com/lericson/pylibmc](https://github.com/lericson/pylibmc)
 
 ## 12) Webmin (optional) ##
 
@@ -381,8 +360,8 @@ sudo apt upgrade
 Download Webmin:
 
 ```bash
-wget http://prdownloads.sourceforge.net/webadmin/webmin_1.801_all.deb
-dpkg --install webmin_1.801_all.deb
+wget https://prdownloads.sourceforge.net/webadmin/webmin_1.810_all.deb
+dpkg --install webmin_1.810_all.deb
 ```
 
 To install missing dependencies, install them with:
@@ -396,12 +375,19 @@ Now open `https://IP_ADDRESS:10000`.
 Finally remove downloaded package:
 
 ```bash
-rm webmin_1.801_all.deb
+rm webmin_1.810_all.deb
 ```
 
 For more information check:
 
 - [http://www.webmin.com/deb.html](http://www.webmin.com/deb.html)
+
+If isn't Webmin running, reboot it:
+
+```bash
+/etc/init.d/webmin restart
+```
+
 
 ## 13) RabbitMQ for Celery (deprecated, use Redis) ##
 
@@ -435,6 +421,13 @@ npm install -g gulp less jshint imagemin-pngquant node-gyp
 ```bash
 sudo apt install fail2ban
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+
+## 17) Let's Encrypt ##
+
+
+```bash
+sudo apt -y install letsencrypt 
 ```
 
 ----------
