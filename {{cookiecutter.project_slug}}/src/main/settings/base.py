@@ -3,7 +3,6 @@
 
 import os
 import sys
-from os.path import abspath
 
 import environ
 
@@ -12,7 +11,7 @@ env = environ.Env(DEBUG=(bool, False), )
 # PATH CONFIGURATION
 # ------------------------------------------------------------------------------
 # Absolute filesystem path to the Django project directory:
-DJANGO_ROOT = BASE_DIR = os.path.dirname(os.path.dirname(abspath(__file__)))  # .../src/main/
+DJANGO_ROOT = BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # .../src/main/
 
 # Absolute filesystem path to the top-level project folder: (where manage.py is)
 SITE_ROOT = os.path.dirname(DJANGO_ROOT)  # .../src/{manage.py}
