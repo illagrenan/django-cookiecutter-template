@@ -5,7 +5,7 @@
 Django[argon2]==1.10.1
 psycopg2==2.6.2
 redis==2.10.5
-django-redis==4.4.4
+django-redis==4.5.0
 pytz==2016.6.1
 invoke==0.12.2 # pyup: ignore
 # See: https://github.com/pyinvoke/invoke/issues/345
@@ -26,7 +26,7 @@ django-extensions==1.7.4
 django_compressor==2.1.0
 django-annoying==0.10.1
 django-environ==0.4.0
-django-model-utils==2.5.2
+django-model-utils==2.6
 django-suit==0.2.21
 django-custom-500==0.1.0
 django-anymail[mailgun]==0.5.0
