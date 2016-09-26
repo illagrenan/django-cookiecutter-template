@@ -26,5 +26,5 @@ django-debug-toolbar==1.5
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Documentation
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Sphinx
+Sphinx==1.4.6
 sphinx_rtd_theme
