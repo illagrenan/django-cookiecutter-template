@@ -22,3 +22,9 @@ django-debug-toolbar==1.5
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Fabric
 # -e git+git://github.com/illagrenan/django-fab-deployer.git#egg=django_fab_deployer
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Documentation
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Sphinx
+sphinx_rtd_theme
