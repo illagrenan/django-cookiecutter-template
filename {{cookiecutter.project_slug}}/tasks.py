@@ -29,7 +29,7 @@ def make_doc():
     """ Make Sphinx Doc """
     sys.path.insert(0, os.path.abspath('src/'))
     from main.settings.base import LOCAL_APPS
-    os.chdir("sphinx2")
+    os.chdir("sphinx")
 
     for a in LOCAL_APPS:
         run("sphinx-apidoc --force -o source/{app}/ ../src/{app}/".format(app=a))
