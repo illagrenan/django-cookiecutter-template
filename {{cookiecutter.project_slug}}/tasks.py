@@ -5,6 +5,7 @@ import glob
 import logging
 import os
 import shutil
+import sys
 
 from invoke import run, task
 
@@ -21,6 +22,19 @@ def worker():
 def beat():
     """ Run Celery Beat """
     run("celery beat --pidfile=../data/celery/celery-beat.pid --schedule=../data/celery/celerybeat-schedule --workdir=src/ --app=main --loglevel=INFO")
+
+
+@task
+def make_doc():
+    """ Make Sphinx Doc """
+    sys.path.insert(0, os.path.abspath('src/'))
+    from main.settings.base import LOCAL_APPS
+    os.chdir("sphinx2")
+
+    for a in LOCAL_APPS:
+        run("sphinx-apidoc --force -o source/{app}/ ../src/{app}/".format(app=a))
+
+    run("make html")
 
 
 @task
@@ -51,4 +65,3 @@ def coverage():
     run("coverage html")
 
     print("Open htmlcov/index.html in your browser.")
-
