@@ -6,7 +6,7 @@ set -e
 # | Update nginx virtualhost |
 # +--------------------------+
 
-echo "Preparing project {{ cookiecutter.project_slug }}."
+echo "Updating nginx configuration for project {{ cookiecutter.project_slug }}."
 
 if [ "$UID" -ne 0 ]
   then echo "Please run as root"
