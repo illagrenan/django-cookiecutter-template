@@ -45,3 +45,24 @@ And exit session:
 ```bash
 exit
 ```
+
+## Drop schema
+
+Source: [http://stackoverflow.com/a/13823560/752142](http://stackoverflow.com/a/13823560/752142)
+
+```bash
+\connect {{ cookiecutter.project_slug }}
+
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO public;
+```
+
+
+## Load database dump
+
+```bash
+psql -U postgres -d {{ cookiecutter.project_slug }} -f .\{{ cookiecutter.project_slug }}_2016-xxx.sql
+```

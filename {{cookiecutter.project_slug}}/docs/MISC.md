@@ -50,9 +50,3 @@ service supervisor restart
 ```
 
 More info here: [https://github.com/illagrenan/ubuntu-supervisor-configuration](https://github.com/illagrenan/ubuntu-supervisor-configuration).
-
-## Load database dump
-
-```bash
-psql -U postgres -d {{ cookiecutter.repo_name }} -f .\{{ cookiecutter.repo_name }}_2016-xxx.sql
-```
