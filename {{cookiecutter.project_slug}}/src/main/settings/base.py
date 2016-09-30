@@ -312,9 +312,23 @@ AUTH_PASSWORD_VALIDATORS = [
 # CACHES CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {
-    'default': env.cache(default="dummycache://"),
-}
+
+REDIS_URL = env.str('REDIS_URL', default=False)
+
+if REDIS_URL:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        }
+    }
+else:
+    CACHES = {
+        'default': env.cache(default="dummycache://"),
+    }
 KEY_PREFIX = REDIS_PREFIX
 CACHE_MIDDLEWARE_KEY_PREFIX = REDIS_PREFIX
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

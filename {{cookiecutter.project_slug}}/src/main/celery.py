@@ -31,14 +31,18 @@ app.conf.update(
     CELERY_ACCEPT_CONTENT=['json'],
     CELERY_ENABLE_UTC=True,
     CELERY_TIMEZONE=settings.TIME_ZONE,
-    BROKER_URL='redis://',
+    BROKER_URL='redis://localhost/{REDIS_DB_VERSION}'.format(REDIS_DB_VERSION=settings.REDIS_DB_VERSION),
     ROKER_TRANSPORT_OPTIONS={
         'fanout_prefix': True,
         'fanout_patterns': True
     },
     CELERY_DEFAULT_QUEUE='{prefix}_default'.format(prefix=settings.REDIS_PREFIX),
+    CELERY_DEFAULT_EXCHANGE = '{prefix}_exchange'.format(prefix=settings.REDIS_PREFIX),
+    CELERY_DEFAULT_ROUTING_KEY = '{prefix}_routing_key'.format(prefix=settings.REDIS_PREFIX),
     CELERY_QUEUES=(
-        Queue(name='{prefix}_default'.format(prefix=settings.REDIS_PREFIX), exchange=Exchange('default'), routing_key='default'),
+        Queue(name='{prefix}_default'.format(prefix=settings.REDIS_PREFIX),
+              exchange=Exchange('{prefix}_exchange'.format(prefix=settings.REDIS_PREFIX)),
+              routing_key='{prefix}_routing_key'.format(prefix=settings.REDIS_PREFIX)),
     )
 )
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
