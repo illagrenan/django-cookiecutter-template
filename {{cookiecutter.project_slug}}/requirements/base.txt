@@ -10,7 +10,6 @@ pytz==2016.7
 invoke==0.12.2 # pyup: ignore
 # See: https://github.com/pyinvoke/invoke/issues/345
 
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Better shell
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,7 +33,7 @@ django-anymail[mailgun]==0.5.0
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Celery (TODO Uncomment if needed)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-celery==3.1.24
+celery[redis]==3.1.24
 # flower
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
