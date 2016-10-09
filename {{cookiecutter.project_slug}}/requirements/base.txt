@@ -2,11 +2,11 @@
 # PIP requirements for {{ cookiecutter.project_slug }}
 # ==========================================================================================================
 
-Django[argon2]==1.10.1
+Django==1.10.2
 psycopg2==2.6.2
 redis==2.10.5
 django-redis==4.5.0
-pytz==2016.6.1
+pytz==2016.7
 invoke==0.12.2 # pyup: ignore
 # See: https://github.com/pyinvoke/invoke/issues/345
 
@@ -24,7 +24,7 @@ colorama==0.3.7
 django-allauth==0.27.0
 django-extensions==1.7.4
 django_compressor==2.1.0
-django-annoying==0.10.1
+django-annoying==0.10.3
 django-environ==0.4.0
 django-model-utils==2.6
 django-suit==0.2.21
@@ -34,7 +34,7 @@ django-anymail[mailgun]==0.5.0
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Celery (TODO Uncomment if needed)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-celery[redis]==3.1.23
+celery==3.1.24
 # flower
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
