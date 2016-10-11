@@ -58,7 +58,7 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 # GENERAL CONFIGURATION
 # ------------------------------------------------------------------------------
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TIME_ZONE
 TIME_ZONE = 'Europe/Prague'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
