@@ -32,7 +32,7 @@ app.conf.update(
     CELERY_ENABLE_UTC=True,
     CELERY_TIMEZONE=settings.TIME_ZONE,
     BROKER_URL=settings.REDIS_URL,
-    ROKER_TRANSPORT_OPTIONS={
+    BROKER_TRANSPORT_OPTIONS={
         'fanout_prefix': True,
         'fanout_patterns': True
     },
