@@ -26,6 +26,8 @@ ufw allow ssh
 ufw allow https
 ufw allow www
 ufw allow from YOUR_IP to any port 10000 proto tcp
+# or
+ufw allow to any port 10000 proto tcp
 ```
 
 Delete single rule:

@@ -113,19 +113,25 @@ reboot
 Install required libraries:
 
 ```bash
-sudo apt install libffi-dev
+sudo apt install libffi-dev         # bridge between interpreted and natively compiled code
+sudo apt install ntpdate            # for Time server sync (`ntp.ubuntu.com`)
 
 # ???:
-# sudo apt install libxml2-dev libxslt1-dev libffi-dev python-lxml
+# sudo apt install libxml2-dev libxslt1-dev python-lxml
 ```
 
-## 3) Python tools ##
+## 3) Python ##
 
-**Install Python header files:**
+**Install Python 3.5 [from deadsnakes](https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes):**
 
 ```bash
-sudo apt install python3-dev
+sudo apt -y install software-properties-common
+sudo add-apt-repository ppa:fkrull/deadsnakes
+sudo apt-get update
+sudo apt-get -y install python3.5 python3.5-dev
 ```
+
+Python is now installed at `/usr/bin/python3.5`.
 
 **Install pip:**
 
