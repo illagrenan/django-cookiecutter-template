@@ -561,8 +561,3 @@ CRISPY_FAIL_SILENTLY = not DEBUG
 
 # noinspection PyUnresolvedReferences
 from main.settings.app import *
-
-try:
-    from local import *
-except ImportError:
-    pass
