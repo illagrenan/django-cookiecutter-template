@@ -67,3 +67,7 @@ COMPRESS_OFFLINE = False
 # Sessions
 # ------------------------------------------------------------------------------
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# Celery
+# ------------------------------------------------------------------------------
+CELERY_ALWAYS_EAGER = True
