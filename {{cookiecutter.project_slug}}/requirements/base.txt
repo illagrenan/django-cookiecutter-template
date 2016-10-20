@@ -7,7 +7,7 @@ psycopg2==2.6.2
 redis==2.10.5
 django-redis==4.5.0
 pytz==2016.7
-Pillow==3.4.1
+Pillow==3.4.2
 invoke==0.12.2 # pyup: ignore
 # See: https://github.com/pyinvoke/invoke/issues/345
 
