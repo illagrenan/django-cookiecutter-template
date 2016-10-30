@@ -71,3 +71,4 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 # Celery
 # ------------------------------------------------------------------------------
 CELERY_ALWAYS_EAGER = True
+CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
