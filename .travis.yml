@@ -1,11 +1,10 @@
 language: python
+sudo: false
 python:
-  - "3.5"
-  - "nightly"
-
+  - 3.5
+  
 before_install:
-  - pip install mock
-  - pip install cookiecutter
+  - pip install --quiet --upgrade cookiecutter
 
 script:
   - cookiecutter . --no-input
