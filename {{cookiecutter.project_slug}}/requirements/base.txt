@@ -2,10 +2,10 @@
 # PIP requirements for {{ cookiecutter.project_slug }}
 # ==========================================================================================================
 
-Django[bcrypt]==1.10.2
+Django[bcrypt]==1.10.3
 psycopg2==2.6.2
 redis==2.10.5
-django-redis==4.5.0
+django-redis==4.6.0
 pytz==2016.7
 Pillow==3.4.2
 
@@ -25,7 +25,7 @@ django-environ==0.4.0
 django-model-utils==2.6
 django-suit==0.2.21
 django-custom-500==0.1.0
-django-anymail[mailgun]==0.6
+django-anymail[mailgun]==0.6.1
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Celery (TODO Uncomment if needed)
