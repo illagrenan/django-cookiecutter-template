@@ -5,6 +5,12 @@
 -r base.txt
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Running tasks
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+invoke==0.12.2 # pyup: ignore
+# See: https://github.com/pyinvoke/invoke/issues/345
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Better dev server (use with runserver_plus)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Werkzeug==0.11.11
