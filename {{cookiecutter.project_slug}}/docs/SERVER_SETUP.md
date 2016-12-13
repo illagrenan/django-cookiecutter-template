@@ -155,7 +155,7 @@ pip install --upgrade pip setuptools
 ## 4) PostgreSQL ##
 
 ```bash
-# Check version that will be installed (should be 9.5+)
+# Check version that will be installed (should be 9.6+)
 apt-cache policy postgresql
 
 sudo apt install postgresql postgresql-contrib

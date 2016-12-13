@@ -7,6 +7,7 @@ Source: [https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-
 Enter psql shell:
 
 ```bash
+# See why "-": http://superuser.com/a/453989/61181
 sudo su - postgres
 psql
 ```
