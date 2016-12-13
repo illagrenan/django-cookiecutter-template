@@ -13,6 +13,9 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
+[*.py]
+line_length=200
+
 [*.csv]
 end_of_line = crlf
 
@@ -22,6 +25,14 @@ end_of_line = crlf
 
 [LICENSE]
 insert_final_newline = false
+
+[*.{html,css,scss,json,yml}]
+indent_style = space
+indent_size = 2
+
+[nginx.conf]
+indent_style = space
+indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = false
