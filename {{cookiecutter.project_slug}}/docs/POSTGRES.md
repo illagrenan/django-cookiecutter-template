@@ -67,3 +67,7 @@ GRANT ALL ON SCHEMA public TO public;
 ```bash
 psql -U postgres -d {{ cookiecutter.project_slug }} -f .\{{ cookiecutter.project_slug }}_2016-xxx.sql
 ```
+
+## Rename database
+
+See: https://snikt.net/blog/2012/11/11/howto-change-table-owners-in-postgres/.

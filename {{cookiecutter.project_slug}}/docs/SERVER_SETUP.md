@@ -225,7 +225,7 @@ sudo apt install git-core
 
 - Homepage: [https://git-scm.herokuapp.com/](https://git-scm.herokuapp.com/)
 
-## 8) node.js: node&npm&bower (optional) ##
+## 8) node.js: node&(npm or yarn)&bower (optional) ##
 
 > Web sites are made of lots of things — frameworks, libraries, assets, utilities, and rainbows. Bower manages all these things for you.
 
@@ -261,6 +261,16 @@ npm -g install bower
 ```
 
 - Tutorial: [DigitalOcean.com: How To Install Node.js on an Ubuntu 14.04 server](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server)
+
+Yarn:
+
+```bash
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
+```
+
+See: [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install#linux-tab).
 
 ## 9) Useful software (optional) ##
 

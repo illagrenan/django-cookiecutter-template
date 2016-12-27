@@ -9,7 +9,7 @@
 sudo groupadd --system {{ cookiecutter.group }}
 
 mkdir -p {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-sudo useradd --system --gid {{ cookiecutter.group }} --groups supervisor --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
+sudo useradd --system --gid {{ cookiecutter.group }} -s /bin/bash --groups supervisor --home {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }} {{ cookiecutter.repo_name }}
 sudo chown -R {{ cookiecutter.repo_name }}:{{ cookiecutter.group }} {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
 ```
 
@@ -105,7 +105,9 @@ pip install -r requirements/production.txt --upgrade --use-wheel
 **Optional step**
 ```bash
 bower install
-npm install
+npm install 
+# or:
+yarn install
 ```
 
 ## 4) Configure Django
