@@ -131,7 +131,7 @@ sudo apt-get update
 sudo apt-get -y install python3.5 python3.5-dev
 ```
 
-Python is now installed at `/usr/bin/python3.5`.
+Python is now installed at `/usr/bin/python3.5`. Or use [pyenv](https://github.com/yyuu/pyenv).
 
 **Install pip:**
 
