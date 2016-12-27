@@ -6,7 +6,9 @@
   "main": "gulpfile.js",
   "scripts": {
   },
-  "dependencies": {},
+  "dependencies": {
+    "jshint": "^2.9.4"
+  },
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
     "browser-sync": "^2.9.10",

@@ -433,7 +433,7 @@ WSGI_APPLICATION = 'wsgi.application'
 # SESSION CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#sessions
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 SESSION_CACHE_ALIAS = "default"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
