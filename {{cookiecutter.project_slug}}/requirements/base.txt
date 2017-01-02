@@ -7,7 +7,7 @@ psycopg2==2.6.2
 redis==2.10.5
 django-redis==4.6.0
 pytz==2016.10
-Pillow==3.4.2
+Pillow==4.0.0
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Better shell
