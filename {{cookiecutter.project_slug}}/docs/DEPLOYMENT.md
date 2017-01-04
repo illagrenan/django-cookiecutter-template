@@ -45,6 +45,76 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 ```
 
+Create nano configuration:
+
+```bash
+touch ~/.nanorc
+nano ~/.nanorc
+```
+
+Content of `.nanorc`:
+
+```
+# More info: https://www.if-not-true-then-false.com/2009/tuning-nano-text-editor-with-nanorc/#
+
+##################################################################################
+##################################################################################
+
+## Smooth Scrolling
+set smooth
+
+## Auto-indentation
+set autoindent
+
+##################################################################################
+##################################################################################
+
+## Nanorc files
+include "/usr/share/nano/nanorc.nanorc"
+
+## C/C++
+include "/usr/share/nano/c.nanorc"
+
+## HTML
+include "/usr/share/nano/html.nanorc"
+
+## TeX
+include "/usr/share/nano/tex.nanorc"
+
+## Quoted emails (under e.g. mutt)
+include "/usr/share/nano/mutt.nanorc"
+
+## Patch files
+include "/usr/share/nano/patch.nanorc"
+
+## Manpages
+include "/usr/share/nano/man.nanorc"
+
+## Groff
+include "/usr/share/nano/groff.nanorc"
+
+## Perl
+include "/usr/share/nano/perl.nanorc"
+
+## Python
+include "/usr/share/nano/python.nanorc"
+
+## Ruby
+include "/usr/share/nano/ruby.nanorc"
+
+## Java
+include "/usr/share/nano/java.nanorc"
+
+## Assembler
+include "/usr/share/nano/asm.nanorc"
+
+## Bourne shell scripts
+include "/usr/share/nano/sh.nanorc"
+
+## POV-Ray
+include "/usr/share/nano/pov.nanorc"
+```
+
 Add {{ cookiecutter.git_provider }} to `authorized_keys`:
 
 ```bash
