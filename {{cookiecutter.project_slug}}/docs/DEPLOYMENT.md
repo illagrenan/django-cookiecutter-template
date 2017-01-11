@@ -66,6 +66,9 @@ set smooth
 ## Auto-indentation
 set autoindent
 
+## Line numbering
+set const
+
 ##################################################################################
 ##################################################################################
 
@@ -158,7 +161,7 @@ cat ~/.ssh/id_rsa.pub
 
 ```bash
 cd {{ cookiecutter.deploy_path }}{{ cookiecutter.repo_name }}
-git clone git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git app/
+git clone --depth 1 git@{{ cookiecutter.git_provider }}:{{ cookiecutter.author_username }}/{{ cookiecutter.repo_name }}.git app/
 cd app/
 
 # On Python3 using deadsnakes:
