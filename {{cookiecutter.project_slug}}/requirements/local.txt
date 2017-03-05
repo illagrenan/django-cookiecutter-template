@@ -20,7 +20,7 @@ watchdog==0.8.3
 # Debugging
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ipdb==0.10.1
-django-debug-toolbar==1.6
+django-debug-toolbar==1.7
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Documentation
