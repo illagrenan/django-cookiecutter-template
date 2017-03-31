@@ -5,4 +5,4 @@
 -r base.txt
 
 gunicorn==19.7.1
-raven==5.32.0
+raven~=6.0.0 # pyup: ignore
