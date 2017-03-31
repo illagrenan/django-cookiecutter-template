@@ -23,7 +23,6 @@ django_compressor==2.1.0
 django-annoying==0.10.3
 django-environ==0.4.1
 django-model-utils==2.6
-django-suit==0.2.25
 django-custom-500==0.1.0
 django-anymail[mailgun]==0.8
 
