@@ -18,7 +18,7 @@ ipython[terminal]==5.1.0
 # Django extras
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 django-allauth==0.30.0
-django-extensions==1.7.5
+django-extensions==1.7.8
 django_compressor==2.1.0
 django-annoying==0.10.3
 django-environ==0.4.1
