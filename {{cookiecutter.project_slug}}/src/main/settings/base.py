@@ -150,7 +150,7 @@ TEMPLATES = [
             'string_if_invalid': env('TEMPLATE_STRING_IF_INVALID', default=""),
             'context_processors': [
                 # Custom context processors:
-                # ...
+                'web.context_processors.debug',
                 # ...
 
                 # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
