@@ -1,28 +1,37 @@
 'use strict';
 
-require('es6-promise').polyfill();
+const gulp = require('gulp');
 
-var gulp = require('gulp');
+const less = require('gulp-less');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
+const gIf = require('gulp-if');
+const argv = require('yargs').argv;
+const del = require('del');
+const exec = require('gulp-exec');
+const browserSync = require('browser-sync').create();
+const plumber = require('gulp-plumber');
+const gutil = require('gulp-util');
+const imagemin = require('imagemin');
+const imageminPngquant = require('imagemin-pngquant');
+const sourcemaps = require('gulp-sourcemaps');
+const addsrc = require('gulp-add-src');
 
-var gulpLoadPlugins = require('gulp-load-plugins');
-var plugins = gulpLoadPlugins();
+const jshint = require('gulp-jshint');
+const eslint = require('gulp-eslint');
+const babel = require('gulp-babel');
+const ngAnnotate = require('gulp-ng-annotate');
+const uglify = require('gulp-uglify');
 
-plugins.pngquant = require('imagemin-pngquant');
-plugins.cleancss = require('gulp-clean-css');
-plugins.browserSync = require('browser-sync').create();
-plugins.del = require('del');
-plugins.argv = require('yargs').argv;
-
-var production = !!plugins.argv.production;
-var runserver_arg = !!plugins.argv.runserver;
-var watch_argv = !!plugins.argv.watch;
-
+const watch_argv = !!argv.watch;
+const runserver_arg = !!argv.runserver;
+const production = !!argv.production;
 
 /**
  * Activate virtualenv and run Django server
  */
 gulp.task('runserver', function () {
-    plugins.util.log(plugins.util.colors.bgGreen('Starting Django server...'));
+    gutil.log(gutil.colors.bgGreen('Starting Django server...'));
 
     var isWindows = /^win/.test(process.platform);
     var cmdToRun = 'data/.venv/bin/activate';
@@ -43,77 +52,77 @@ gulp.task('runserver', function () {
     };
 
     gulp.src('src/**')
-        .pipe(plugins.exec(cmdToRun + ' && python src/manage.py runserver', options))
-        .pipe(plugins.exec.reporter(reportOptions));
+        .pipe(exec(cmdToRun + ' && python src/manage.py runserver', options))
+        .pipe(exec.reporter(reportOptions));
 });
 
 gulp.task('browser-sync', function () {
-    plugins.browserSync.init({
+    browserSync.init({
         notify: true,
         proxy: "127.0.0.1:8000"
     });
 });
 
 gulp.task('browser-reload', function () {
-    plugins.browserSync.reload();
+    browserSync.reload();
 });
 
 gulp.task('less', function () {
     gulp.src(['src/static/less/**/*.less'])
-        .pipe(plugins.plumber())
-        .pipe(plugins.if(!production, plugins.sourcemaps.init()))
-        .pipe(plugins.less())
-        .pipe(plugins.addSrc('src/static/css/**/*.css'))
-        .pipe(plugins.if(production, plugins.cleancss({compatibility: 'ie8'})))
-        .pipe(plugins.autoprefixer({
+        .pipe(plumber())
+        .pipe(gIf(!production, sourcemaps.init()))
+        .pipe(less())
+        .pipe(addsrc('src/static/css/**/*.css'))
+        .pipe(gIf(production, cleanCSS({compatibility: 'ie8'})))
+        .pipe(autoprefixer({
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        .pipe(plugins.if(!production, plugins.sourcemaps.write('.', {
+        .pipe(gIf(!production, sourcemaps.write('.', {
             'includeContent': true,
             'sourceRoot': '.'
         })))
-        .pipe(plugins.plumber.stop())
+        .pipe(plumber.stop())
         .pipe(gulp.dest('data/build/css'));
 });
 
 gulp.task('js', function () {
     gulp.src('src/static/js/**/**.js')
-        .pipe(plugins.plumber())
-        .pipe(plugins.if(!production, plugins.sourcemaps.init()))
-        .pipe(plugins.jshint('.jshintrc'))
-        .pipe(plugins.jshint.reporter('jshint-stylish'))
-        .pipe(plugins.eslint())
-        .pipe(plugins.eslint.format())        
-        .pipe(plugins.babel({presets: ['es2015']}))
-        .pipe(plugins.ngAnnotate())
-        .pipe(plugins.if(production, plugins.uglify()))
-        .pipe(plugins.if(!production, plugins.sourcemaps.write('.', {
+        .pipe(plumber())
+        .pipe(gIf(!production, sourcemaps.init()))
+        .pipe(jshint('.jshintrc'))
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(babel({presets: ['es2015']}))
+        .pipe(ngAnnotate())
+        .pipe(gIf(production, uglify()))
+        .pipe(gIf(!production, sourcemaps.write('.', {
             'includeContent': true,
             'sourceRoot': '.'
         })))
-        .pipe(plugins.plumber.stop())
+        .pipe(plumber.stop())
         .pipe(gulp.dest('data/build/js'));
 });
 
 gulp.task('images', function () {
     return gulp.src('src/static/images/**')
-        .pipe(plugins.imagemin({
+        .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
-            use: [plugins.pngquant()]
+            use: [imageminPngquant()]
         }))
         .pipe(gulp.dest('data/build/images'));
 });
 
 gulp.task('clean:js', function () {
-    return plugins.del([
+    return del([
         'data/build/js/*'
     ]);
 });
 
 gulp.task('clean:css', function () {
-    return plugins.del([
+    return del([
         'data/build/css/*'
     ]);
 });
@@ -146,5 +155,5 @@ gulp.task('default', function () {
     gulp.watch('src/static/js/**/*.js', ['js', 'browser-reload']);
     gulp.watch('src/static/images/**', ['images', 'browser-reload']);
 
-    plugins.util.log(plugins.util.colors.bgGreen('Watching for changes...'));
+    gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
