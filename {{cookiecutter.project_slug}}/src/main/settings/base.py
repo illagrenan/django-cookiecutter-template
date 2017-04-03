@@ -200,7 +200,7 @@ THIRD_PARTY_MIDDLEWWARE = [
 ]
 
 if DEBUG_TOOLBAR_ENABLED:
-    DEFAULT_MIDDLEWARE = ['main.middleware.AtopdedTo110DebugMiddleware'] + DEFAULT_MIDDLEWARE
+    THIRD_PARTY_MIDDLEWWARE = THIRD_PARTY_MIDDLEWWARE + ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 MIDDLEWARE = DEFAULT_MIDDLEWARE + LOCAL_MIDDLEWARE + THIRD_PARTY_MIDDLEWWARE
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
