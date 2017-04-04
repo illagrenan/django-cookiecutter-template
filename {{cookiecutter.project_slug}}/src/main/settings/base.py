@@ -258,6 +258,7 @@ if DEBUG_TOOLBAR_ENABLED:
 # Apps specific for this project go here.
 LOCAL_APPS = [
     'main',
+    'users',
     'web',
 ]
 
@@ -539,6 +540,9 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # ALL-AUTH CONFIGURATION
 # ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-AUTH_USER_MODEL
+AUTH_USER_MODEL = 'users.User'
+
 # See: https://django-allauth.readthedocs.org/en/latest/advanced.html#custom-user-models
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -549,6 +553,10 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
+
+ACCOUNT_ADAPTER = 'users.adapters.AccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'users.adapters.SocialAccountAdapter'
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # DJANGO-CRISPY-FORMS CONFIGURATION
