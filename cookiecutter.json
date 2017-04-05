@@ -11,12 +11,12 @@
   "email": "foo@example.com",
   "description": "A short description of the project.",
   "domain_name": "example.com",
-  "django_version": "1.10",
+  "django_version": "1.11",
   "version": "0.1.0",
   "now": "{% now 'utc', '%d.%m.%Y' %}",
   "db_user": "{{ cookiecutter.project_slug|replace(' ', '_')|lower }}",
   "db_password": "*****",
-  "python_version": "3.5.2",
+  "python_version": "3.6.1",
   "virtualenv_path": "C:\\Users\\{{ cookiecutter.author_name }}\\.virtualenvs\\{{ cookiecutter.project_slug }}",
   "_extensions": [
     "jinja2_time.TimeExtension"
