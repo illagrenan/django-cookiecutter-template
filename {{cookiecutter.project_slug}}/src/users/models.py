@@ -5,27 +5,27 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin, UserManager
 from django.db import models
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _lazy
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), blank=False, null=False, unique=True, db_index=True, max_length=512)
-    first_name = models.CharField(_('first name'), max_length=255, blank=True)
-    last_name = models.CharField(_('last name'), max_length=255, blank=True)
+    email = models.EmailField(_lazy('email address'), blank=False, null=False, unique=True, db_index=True, max_length=512)
+    first_name = models.CharField(_lazy('first name'), max_length=255, blank=True)
+    last_name = models.CharField(_lazy('last name'), max_length=255, blank=True)
     is_staff = models.BooleanField(
-        _('staff status'),
+        _lazy('staff status'),
         default=False,
-        help_text=_('Designates whether the user can log into this admin site.'),
+        help_text=_lazy('Designates whether the user can log into this admin site.'),
     )
     is_active = models.BooleanField(
-        _('active'),
+        _lazy('active'),
         default=True,
-        help_text=_(
+        help_text=_lazy(
             'Designates whether this user should be treated as active. '
             'Unselect this instead of deleting accounts.'
         ),
     )
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    date_joined = models.DateTimeField(_lazy('date joined'), default=timezone.now)
 
     objects = UserManager()
 
@@ -33,8 +33,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
+        verbose_name = _lazy('user')
+        verbose_name_plural = _lazy('users')
 
     def get_full_name(self):
         """
