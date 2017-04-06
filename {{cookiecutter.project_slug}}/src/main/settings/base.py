@@ -76,11 +76,11 @@ USE_L10N = True
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
 
-ugettext = lambda s: s  # dummy ugettext function, as django's docs say
+from django.utils.translation import ugettext_lazy as _
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#languages
 LANGUAGES = (
-    ('cs', ugettext('Czech')),
+    ('cs', _('Czech')),
 )
 
 LOCALE_PATHS = (
@@ -319,7 +319,7 @@ if REDIS_URL and not _is_cache_url_set:
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": REDIS_URL, # redis://@localhost:6379/7
+            "LOCATION": REDIS_URL,  # redis://@localhost:6379/7
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
             },
