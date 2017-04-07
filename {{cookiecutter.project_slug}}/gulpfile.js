@@ -12,7 +12,7 @@ const exec = require('gulp-exec');
 const browserSync = require('browser-sync').create();
 const plumber = require('gulp-plumber');
 const gutil = require('gulp-util');
-const imagemin = require('imagemin');
+const imagemin = require('gulp-imagemin');
 const imageminPngquant = require('imagemin-pngquant');
 const sourcemaps = require('gulp-sourcemaps');
 const addsrc = require('gulp-add-src');
@@ -106,12 +106,14 @@ gulp.task('js', function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src('src/static/images/**')
+    gulp.src('src/static/images/**')
+        .pipe(plumber())
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [imageminPngquant()]
         }))
+        .pipe(plumber.stop())
         .pipe(gulp.dest('data/build/images'));
 });
 

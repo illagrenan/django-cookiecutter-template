@@ -27,10 +27,11 @@
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 
     <title>
+    {% block head_title_wrapper %}
     {% block head_title %}
-    {% endblock %} &ndash; {% endraw %}{{ cookiecutter.project_slug }}{% raw %}
+    {% endblock %} &mdash; {% endraw %}{{ cookiecutter.project_slug }}{% raw %}
+    {% endblock %}
     </title>
-
 
     {% block extra_head %}
     {% endblock %}
