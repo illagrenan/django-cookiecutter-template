@@ -214,7 +214,6 @@ ROOT_URLCONF = 'main.urls'
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
-    # Default Django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -222,9 +221,9 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
-    # Admin panel and documentation:
-    'django.contrib.admin'
+    'django.contrib.sitemaps',
+    'django.contrib.admin',
+    'django.contrib.postgres'
 ]
 
 THIRD_PARTY_APPS = [
