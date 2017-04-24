@@ -35,12 +35,7 @@ CACHES = {
 
 # DATABASE
 # ------------------------------------------------------------------------------
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:'
-    }
-}
+DATABASES["default"]["NAME"] = "test_{}".format(DATABASES["default"]["NAME"])
 
 # PASSWORD HASHING
 # ------------------------------------------------------------------------------
