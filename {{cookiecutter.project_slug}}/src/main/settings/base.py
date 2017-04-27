@@ -177,6 +177,8 @@ if not DEBUG:
             'django.template.loaders.app_directories.Loader',
         )),
     ]
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # MIDDLEWARE CONFIGURATION
@@ -215,6 +217,7 @@ ROOT_URLCONF = 'main.urls'
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
     'django.contrib.auth',
+    'django.forms',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
