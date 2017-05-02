@@ -33,10 +33,6 @@ CACHES = {
     }
 }
 
-# DATABASE
-# ------------------------------------------------------------------------------
-DATABASES["default"]["NAME"] = "test_{}".format(DATABASES["default"]["NAME"])
-
 # PASSWORD HASHING
 # ------------------------------------------------------------------------------
 # Use fast password hasher so tests run faster
