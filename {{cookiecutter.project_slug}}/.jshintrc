@@ -1,7 +1,3 @@
 {
-  "globals": {
-    "angular": false,
-    "jQuery": false
-  },
-  "esnext": true
+  "esversion": 6
 }
