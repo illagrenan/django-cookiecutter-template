@@ -17,12 +17,12 @@ ipython==6.1.0
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Django extras
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-django-allauth~=0.31.0 # pyup: ignore
+django-allauth==0.32.0
 django-extensions==1.7.9
 django_compressor==2.1.1
 django-annoying==0.10.3
 django-environ==0.4.3
-django-model-utils~=2.6.1 # pyup: ignore
+django-model-utils==2.6.1
 django-custom-500==0.1.1
 django-anymail[mailgun]==0.10
 
@@ -30,17 +30,17 @@ django-anymail[mailgun]==0.10
 # Celery (TODO Uncomment if needed)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 celery[redis]==4.0.2
-# flower
+flower # pyup: ignore
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Testing
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-pytest==3.1.0
-pytest-django==3.1.2
-coverage==4.4.1
-django-coverage-plugin==1.5.0
-factory-boy==2.8.1
-Faker==0.7.12
+pytest>=3.1.0 # pyup: ignore
+pytest-django>=3.1.2 # pyup: ignore
+coverage>=4.4.1 # pyup: ignore
+django-coverage-plugin>=1.5.0 # pyup: ignore
+factory-boy>=2.8.1 # pyup: ignore
+Faker>=0.7.12 # pyup: ignore
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Project requirements

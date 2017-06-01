@@ -1,3 +1,5 @@
+# pyup: ignore file
+
 # =======================================================================================================================
 # PIP local requirements (mostly tools for debugging)
 # =======================================================================================================================
@@ -7,23 +9,23 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Running tasks
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-invoke==0.12.2 # pyup: ignore
+invoke==0.12.2
 # See: https://github.com/pyinvoke/invoke/issues/345
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Better dev server (use with runserver_plus)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Werkzeug~=0.12.1 # pyup: ignore
-watchdog~=0.8.3 # pyup: ignore
+Werkzeug
+watchdog
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Debugging
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-ipdb~=0.10.2 # pyup: ignore
-django-debug-toolbar==1.8
+ipdb
+django-debug-toolbar==1.8.0
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Documentation
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Sphinx==1.6.1
-sphinx_rtd_theme==0.1.9
+Sphinx
+sphinx_rtd_theme
