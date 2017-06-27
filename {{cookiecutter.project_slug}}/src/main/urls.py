@@ -14,6 +14,7 @@ urlpatterns = [
 ]
 
 admin.site.site_header = "{{ cookiecutter.project_slug }} admin"
+admin.site.site_title = "{{ cookiecutter.project_slug }} admin"
 
 if settings.DEBUG_TOOLBAR_ENABLED:
     import debug_toolbar
