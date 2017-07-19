@@ -16,7 +16,7 @@
   "now": "{% now 'utc', '%d.%m.%Y' %}",
   "db_user": "{{ cookiecutter.project_slug|replace(' ', '_')|lower }}",
   "db_password": "*****",
-  "python_version": "3.6.1",
+  "python_version": "3.6.2",
   "virtualenv_path": "C:\\Users\\{{ cookiecutter.author_name }}\\.virtualenvs\\{{ cookiecutter.project_slug }}",
   "_extensions": [
     "jinja2_time.TimeExtension"
