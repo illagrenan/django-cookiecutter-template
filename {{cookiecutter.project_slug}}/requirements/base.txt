@@ -19,7 +19,7 @@ ipython==6.1.0
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 django-allauth==0.32.0
 django-extensions==1.8.1
-django_compressor==2.1.1
+django_compressor==2.2
 django-annoying==0.10.3
 django-environ==0.4.3
 django-model-utils==3.0.0
