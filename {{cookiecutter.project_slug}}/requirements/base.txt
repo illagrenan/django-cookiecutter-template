@@ -2,7 +2,7 @@
 # PIP requirements for {{ cookiecutter.project_slug }}
 # ==========================================================================================================
 
-Django[bcrypt]==1.11.6
+Django[bcrypt]==2.0.1
 psycopg2==2.7.3.1
 redis==2.10.6
 django-redis==4.8.0
