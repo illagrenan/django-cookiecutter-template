@@ -2,12 +2,13 @@
 # PIP requirements for {{ cookiecutter.project_slug }}
 # ==========================================================================================================
 
-Django[bcrypt]==1.11.6
-psycopg2==2.7.3.1
+Django[bcrypt]==2.0.1
+bcrypt~=3.1.4
+psycopg2==2.7.3.2
 redis==2.10.6
 django-redis==4.8.0
-pytz==2017.2
-Pillow==4.3.0
+pytz==2017.3
+Pillow==5.0.0
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Better shell
@@ -18,13 +19,13 @@ ipython==6.2.1
 # Django extras
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 django-allauth==0.34.0
-django-extensions==1.9.6
+django-extensions==1.9.9
 django_compressor==2.2
-django-annoying==0.10.3
+django-annoying==0.10.4
 django-environ==0.4.4
-django-model-utils==3.0.0
+django-model-utils==3.1.1
 django-custom-500==0.1.1
-django-anymail[mailgun]==1.0
+django-anymail[mailgun]==1.2
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Celery (TODO Uncomment if needed)
