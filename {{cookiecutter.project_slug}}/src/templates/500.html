@@ -1,97 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="500 Internal Server Error">
-    <meta name="robots" content="noindex,nofollow,noarchive">
-    <meta name="googlebot" content="nosnippet,noindex,nofollow,noarchive">
-    <title>500 Internal Server Error</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        /* Error Page Inline Styles */
-        body {
-            padding-top: 20px;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="500 Internal Server Error">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="googlebot" content="nosnippet,noindex,nofollow,noarchive">
+  <title>500 Internal Server Error</title>
 
-        /* Layout */
-        .jumbotron {
-            font-size: 21px;
-            font-weight: 200;
-            line-height: 2.1428571435;
-            color: inherit;
-            padding: 10px 0;
-        }
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        /* Everything but the jumbotron gets side spacing for mobile-first views */
-        .body-content {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
+  <style>
+    /* Error Page Inline Styles */
+    body {
+      padding-top: 3rem;
+    }
 
-        /* Main marketing message and sign up button */
-        .jumbotron {
-            text-align: center;
-            background-color: transparent;
-        }
+    /* Layout */
+    .jumbotron {
+      font-size: 21px;
+      font-weight: 200;
+      line-height: 2.1428571435;
+      color: inherit;
+      padding: 10px 0;
+    }
 
-        .jumbotron .btn {
-            font-size: 21px;
-            padding: 14px 24px;
-        }
+    /* Everything but the jumbotron gets side spacing for mobile-first views */
+    .body-content {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
 
-        #errorId {
-            font-family: 'Ubuntu Mono', 'Consolas', 'Courier New', 'Courier', monospace;
-        }
+    /* Main marketing message and sign up button */
+    .jumbotron {
+      text-align: center;
+      background-color: transparent;
+    }
 
-        .red {
-            color: #d9534f;
-        }
-    </style>
+    .jumbotron .btn {
+      font-size: 21px;
+      padding: 14px 24px;
+    }
 
+    #errorId {
+      font-family: 'Ubuntu Mono', 'Consolas', 'Courier New', 'Courier', monospace;
+    }
 
+    .red {
+      color: #d9534f;
+    }
+  </style>
 </head>
+
 <body>
 <!-- Error Page Content -->
 <div class="container">
-    <!-- Jumbotron -->
-    <div class="jumbotron">
-        <h1><span class="glyphicon glyphicon-fire red"></span> 500 Internal Server Error</h1>
-        <p class="lead">The web server is returning an internal error.</p>
-    </div>
+  <!-- Jumbotron -->
+  <div class="jumbotron">
+    <h1>
+      <span class="fa fa-fire red"></span> 500 Internal Server Error
+    </h1>
+    <p class="lead">
+      The web server is returning an internal error.
+    </p>
+  </div>
 </div>
 <div class="container">
-    <div class="body-content">
-        <div class="row">
-            <div class="col-md-6">
-                <h2>What happened?</h2>
-                <p class="lead">A 500 error status implies there is a problem with the web server's software causing it to malfunction.</p>
+  <div class="body-content">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>What happened?</h2>
+        <p class="lead">
+          A 500 error status implies there is a problem with the web server&apos;s software causing it to malfunction.
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <h2>What can I do?</h2>
+        <p class="text-justify">
+          Nothing you can do at the moment, this error has been reported. If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.
+        </p>
 
-            </div>
-            <div class="col-md-6">
-                <h2>What can I do?</h2>
-                <p class="text-justify">
-                    Nothing you can do at the moment, this error has been reported. If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.
-                </p>
+        {% if request.sentry %}
+          <h3><i class="fa fa-file-text-o"></i> Error report</h3>
+          <div class="form-group">
+            <label for="errorId">ID of this error report is:</label>
+            <input type="text" class="form-control"
+                   id="errorId" onclick="this.select();" readonly value="{{ request.sentry.id }}">
+          </div>
+        {% endif %}
 
-                {% raw %}
-                    {% if request.sentry %}
-                        <h3><i class="fa fa-file-text-o"></i> Error report</h3>
-
-                        <div class="form-group">
-                            <label for="errorId">ID of this error report is:</label>
-                            <input type="text" class="form-control" id="errorId" onClick="this.select();" readonly value="{{ request.sentry.id }}">
-                        </div>
-                    {% endif %}
-                {% endraw %}
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- End Error Page Content -->
 </body>
+
 </html>
-
-
