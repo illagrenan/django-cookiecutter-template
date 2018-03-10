@@ -5,38 +5,38 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _lazy
+from django.utils.translation import ugettext_lazy
 
-from users.managers import UserManager
+from user.managers import UserManager
 
 
-class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_lazy('email address'), blank=False, null=False, unique=True, db_index=True, max_length=512)
-    first_name = models.CharField(_lazy('first name'), max_length=255, blank=True)
-    last_name = models.CharField(_lazy('last name'), max_length=255, blank=True)
+class {{ cookiecutter.project_slug|capitalize }}User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(ugettext_lazy('email address'), blank=False, null=False, unique=True, db_index=True, max_length=512)
+    first_name = models.CharField(ugettext_lazy('first name'), max_length=255, blank=True)
+    last_name = models.CharField(ugettext_lazy('last name'), max_length=255, blank=True)
     is_staff = models.BooleanField(
-        _lazy('staff status'),
+        ugettext_lazy('staff status'),
         default=False,
-        help_text=_lazy('Designates whether the user can log into this admin site.'),
+        help_text=ugettext_lazy('Designates whether the user can log into this admin site.'),
     )
     is_active = models.BooleanField(
-        _lazy('active'),
+        ugettext_lazy('active'),
         default=True,
-        help_text=_lazy(
+        help_text=ugettext_lazy(
             'Designates whether this user should be treated as active. '
             'Unselect this instead of deleting accounts.'
         ),
     )
-    date_joined = models.DateTimeField(_lazy('date joined'), default=timezone.now)
+    date_joined = models.DateTimeField(ugettext_lazy('date joined'), default=timezone.now)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     class Meta:
-        verbose_name = _lazy('user')
-        verbose_name_plural = _lazy('users')
+        verbose_name = ugettext_lazy('user')
+        verbose_name_plural = ugettext_lazy('users')
 
     def get_full_name(self):
         """
