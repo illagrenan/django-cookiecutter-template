@@ -9,8 +9,7 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Running tasks
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-invoke==0.12.2
-# See: https://github.com/pyinvoke/invoke/issues/345
+invoke
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Better dev server (use with runserver_plus)
