@@ -260,7 +260,7 @@ if DEBUG_TOOLBAR_ENABLED:
 # Apps specific for this project go here.
 LOCAL_APPS = [
     'main',
-    'users',
+    'user',
     'web',
 ]
 
