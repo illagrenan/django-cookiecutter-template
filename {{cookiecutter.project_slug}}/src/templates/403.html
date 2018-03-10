@@ -7,13 +7,15 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="googlebot" content="nosnippet,noindex,nofollow,noarchive">
   <title>403 Forbidden</title>
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     /* Error Page Inline Styles */
     body {
-      padding-top: 20px;
+      padding-top: 3rem;
     }
 
     /* Layout */
@@ -42,28 +44,40 @@
       padding: 14px 24px;
     }
 
+    #errorId {
+      font-family: 'Ubuntu Mono', 'Consolas', 'Courier New', 'Courier', monospace;
+    }
+
     .red {
       color: #d9534f;
     }
   </style>
 </head>
 <body>
+
 <!-- Error Page Content -->
 <div class="container">
+  <!-- Jumbotron -->
   <div class="jumbotron">
-    <h1><i class="fa fa-ban red"></i> 403 Forbidden</h1>
-    <p class="lead">Sorry! You don't have access permissions for that.</p>
+    <h1>
+      <i class="fa fa-ban red"></i> 403 Forbidden
+    </h1>
+    <p class="lead">
+      Sorry! You don't have access permissions for that.
+    </p>
   </div>
 </div>
+
+
 <div class="container">
   <div class="body-content">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <h2>What happened?</h2>
         <p class="lead">A 403 error status indicates that you don't have permission to access the file or page. In general, web servers and websites have directories and files that are not
           open to the public web for security reasons.</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <h2>What can I do?</h2>
         <p>Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.</p>
       </div>
