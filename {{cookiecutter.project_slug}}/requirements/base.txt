@@ -30,7 +30,7 @@ django-anymail[mailgun]==2.0
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Celery (TODO Uncomment if needed)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-celery[redis]==4.1.0
+celery[redis]==4.2.1
 flower # pyup: ignore
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
