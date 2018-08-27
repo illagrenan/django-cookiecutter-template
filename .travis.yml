@@ -1,5 +1,6 @@
 language: python
 sudo: false
+dist: xenial
 
 python:
   - "3.6"
@@ -7,13 +8,17 @@ python:
   - "3.7-dev" # 3.7 development branch
   - "nightly" # currently points to 3.7-dev
 
+env:
+  - PYTHONUNBUFFERED="1"
+
 before_install:
-  - pip install --quiet --upgrade cookiecutter
+  - pip install --isolated --no-input --compile --exists-action=a --disable-pip-version-check --no-cache-dir --upgrade pip wheel setuptools
+  - pip install --isolated --no-input --compile --exists-action=a --disable-pip-version-check --no-cache-dir --upgrade cookiecutter
 
 script:
   - cookiecutter . --no-input
   - cd project_slug
-  - pip install --no-input --exists-action=i -r requirements/local.txt --use-wheel
+  - pip install  --isolated --no-input --compile --exists-action=i --disable-pip-version-check --no-cache-dir -r requirements/local.txt
 
 notifications:
   email:
